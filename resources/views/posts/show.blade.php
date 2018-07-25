@@ -132,7 +132,7 @@
                         </div>
                     </div>
                     <hr>
-                    <button type="button" class="btn btn-outline-success btn-lg btn-block" style="font-weight:600;">Continue (${{$post->price}})</button>
+                <a role="button" href="{{route('payment.oveview',['id'=>$post])}}" class="btn btn-success btn-lg btn-block" style="font-weight:600;">Continue (${{$post->price}})</a>
                 </div>
             </div>
             <div class="card m-t-20" id="profileCard">

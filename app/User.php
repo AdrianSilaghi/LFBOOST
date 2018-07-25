@@ -50,6 +50,10 @@ class User extends Authenticatable
         ];
     }
 
+    public function order(){
+        return $this->hasMany('App\Order');
+    }
+
     public function posts(){
         return $this->hasMany('App\Post');
     }

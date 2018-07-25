@@ -11,11 +11,23 @@
 |
 */
 use Illuminate\Support\Facades\Mail;
+Auth::routes();
 
 
 Route::get('/', 'PagesController@index')->name('index');
+Route::get('/become_a_seller','PagesController@becomeSeller')->name('becomeSeller');
 Route::get('/dashboard', 'PagesController@dashboard')->middleware('auth');
-Auth::routes();
+
+Route::post('/notification/api/get','NotificationsController@get')->name('notificationGet');
+Route::post('/notification/api/read','NotificationsController@read')->name('notificationRead');
+
+Route::get('/payment/overview','PaymentsController@overview')->name('payment.oveview')->middleware('auth');
+Route::get('/payment/finish','PaymentsController@finish')->name('payment.finish')->middleware('auth');
+Route::get('/payment/api/token','PaymentsController@token')->middleware('auth');
+Route::post('/payment/api/process','PaymentsController@payment')->middleware('auth');
+Route::post('/payment/api/getPostPrice','PaymentsController@getPostPrice')->middleware('auth');
+
+Route::post('/order/api/newOrder','OrdersController@newOrder')->middleware('auth');
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('/home/create', 'HomeController@create')->name('home.create')->middleware('auth');

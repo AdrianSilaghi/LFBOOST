@@ -4,10 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="userId" content="{{ Auth::check() ? Auth::user()->id : '' }}">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    {{ csrf_field() }}
     <title>LFBOOST</title>
 
     <!-- Styles -->
@@ -27,7 +28,7 @@
 </head>
 
 <body>
-    <div>
+    <div id="app">
         @include('_includes.nav.main')
         @include('_includes.nav.side_menu')
         @include('_includes.messages')
@@ -44,9 +45,10 @@
 </body>
     <!-- Scripts -->
     <!-- development version, includes helpful console warnings -->
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
     <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
+    
     <script src="{{asset('js/select2.js')}}"></script>
     <script src="{{asset('js/algolia.js')}}"></script>
     <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
@@ -56,4 +58,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
     <script src="{{asset('js/bootstrap-tagsinput.js')}}"></script>
     <script src="{{asset('js/jquery.barrating.min.js')}}"></script>
+    
 </html>

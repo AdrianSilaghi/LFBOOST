@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light">
-  <div class="container">
+  <div class="container justify-content-center">
     @guest
     <a class="navbar-brand m-b-5" href="{{route('home')}}">
             <img src="{{asset('images/logo@0,75x.png')}}" alt="">
@@ -26,96 +26,44 @@
       </ul>
       @guest
       <ul class="navbar-nav ml-auto">
-          <a class="nav-link" href="#">Become a seller</a>
-          <a class="nav-link" data-toggle="modal" data-target="#exampleModalCenter" href="{{route('login')}}">Sign in</a>
+      <a class="nav-link" href="{{route('becomeSeller')}}">Become a seller</a>
+          
 
-          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-              <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-                <div class="modal-content" style="width:400px;">
-                  <div class="modal-header">
-                    
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Login to <span style="font-weight:bold;">LFBOOST</span></h5>
+          <a class="nav-link m-r-10" href="" data-toggle="modal" data-target=".bd-example-modal-lg">Sign In</a>
 
-                   
-
-                  </div>
-                  
-                  <div class="modal-body">
-                    <div class="col">
-                      <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                          {{ csrf_field() }}
-  
-                          <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                              <label for="email" class="col control-label">E-Mail Address</label>
-  
-                              <div class="col">
-                                  <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-  
-                                  @if ($errors->has('email'))
-                                      <span class="help-block">
-                                          <strong>{{ $errors->first('email') }}</strong>
-                                      </span>
-                                  @endif
-                              </div>
-                          
-                              <label for="password" class="col-md-4 control-label">Password</label>
-  
-                              <div class="col">
-                                  <input id="password" type="password" class="form-control" name="password" required>
-  
-                                  @if ($errors->has('password'))
-                                      <span class="help-block">
-                                          <strong>{{ $errors->first('password') }}</strong>
-                                      </span>
-                                  @endif
-                              </div>
-                              
-                          </div>
-                          
-                         
-                          <hr>
-                          <div class="form-group">
-                           
-                              <div class="row">
-                                    <div class="col"><button type="submit" class="btn btn-success">
-                                            Continue
-                                        </button></div>
-                                    <div class="col m-t-5"><div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> <span style="font-size:0.80rem;">Remember Me</span> 
-                                            </label>
-                                        </div></div>
-                              </div>
-                                  
-                              
-                          </div>
-                          <hr>
-                          <div class="form-group" style="text-align:center;">
-                              <div class="col">
-                                  <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    <span style="font-size:0.8rem;">Forgot Your Password?</span> 
-                                </a>
-                            </div>
-                                  
-                              
-                            </div>
-                          </div>
-                          
-                      </form>
-                  </div>
-                  
-                  </div>
-                </div>
-              </div>
+            <div class="modal  bd-example-modal-lg" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                    <div class="modal-content">
+                        @include('_includes.login')
+                    </div>
+                
             </div>
-            <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#registerModal">Join</button>
+            </div>
+
+          
+              
+                  
+            <button type="button" class="btn btn-outline-success m-r-10" data-toggle="modal" data-target="#join">Join</button>
+
+            <div class="modal bd-example-modal-lg" id="join" role="dialog" aria-labelledby="myLargeModalLabel1" aria-hidden="true">
+            <div class="modal-dialog">
+                    <div class="modal-content">
+                        @include('_includes.signup')
+                    </div>
+                
+            </div>
+        </div>        
+                     
+                 
+            
 
          
           
       </ul>
+      
       @else
       <ul class="navbar-nav">
-        <a class="m-t-10 m-r-10" href="{{route('home')}}" data-placement="bottom" title="Dashboard" id="dashboardIcon"><span><i class="fas fa-chart-pie fa-lg"></i></span></a>
+        <notification v-bind:notifications="notifications"></notification>
         <li class="nav-item dropdown mr-2">
             
        

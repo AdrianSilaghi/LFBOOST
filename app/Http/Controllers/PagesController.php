@@ -19,6 +19,10 @@ class PagesController extends Controller
         return view('welcome');
     }
 
+    public function becomeSeller(){
+        return view('become_a_seller');
+    }
+
     public function dashboard(){
         return view('home');
     }
