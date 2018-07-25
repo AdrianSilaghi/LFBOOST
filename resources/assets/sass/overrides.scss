@@ -1,0 +1,330 @@
+a.list-group-item{
+    color: black;
+}
+
+a.list-group-item:hover{
+    color: grey;
+}
+
+.footer-dark{
+    color: dimgray;
+    background-color: azure;
+}
+
+#footer .container {
+    width:100%;
+    padding-right:15px;
+    padding-left:15px;
+    margin-right:auto;
+    margin-left:auto;
+  }
+
+  .footer-dark ul {
+    padding:0;
+    list-style:none;
+    line-height:1.6;
+    font-size:14px;
+    margin-bottom:0;
+  }
+  
+  .footer-dark ul a {
+    color:inherit;
+    text-decoration:none;
+    opacity:0.6;
+  }
+  
+  a:hover {
+    color:#0056b3;
+    text-decoration:underline;
+  }
+  
+  .footer-dark ul a:hover {
+    opacity:0.8;
+  }
+  
+  @media (max-width:991px) {
+    .footer-dark .item.social {
+      text-align:center;
+      margin-top:20px;
+    }
+  }
+  .footer-dark .item.social {
+    text-align:center;
+  }
+  
+  
+  
+  .highlight-clean{color:#313437;background-color:#fff;padding:50px 0}.highlight-clean p{color:#7d8285}.highlight-clean h2{font-weight:700;margin-bottom:25px;line-height:1.5;padding-top:0;margin-top:0;color:inherit}.highlight-clean .intro{font-size:16px;max-width:500px;margin:0 auto 25px}.highlight-clean .buttons{text-align:center}.highlight-clean .buttons .btn{padding:16px 32px;margin:6px;border:none;background:#ddd;box-shadow:none;text-shadow:none;opacity:.9;text-transform:uppercase;font-weight:700;font-size:13px;letter-spacing:.4px;line-height:1;outline:0}.highlight-clean .buttons .btn:hover{opacity:1}.highlight-clean .buttons .btn:active{transform:translateY(1px)}.highlight-clean .buttons .btn-primary{background-color:#055ada;color:#fff}
+ 
+
+  .nav-pills .nav-link.active,
+  .nav-pills .show > .nav-link {
+    background-color: #313437;
+  }
+
+  a {
+    color: #313437;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+  }
+  
+.navbar{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+//Navbar Categories
+#catNav .container{
+  height: 25px;
+}
+
+#catNav .dropdown:hover>.dropdown-menu{
+  display: block;
+}
+#catNav .navbar-nav .dropdown-menu {
+  width: auto;
+  padding: 5px;
+  text-align: center;
+  height: auto;
+  
+}
+#catNav .navbar-nav .dropdown-menu .dropdown-item {
+  color:rgba(0, 0, 0, 0.5);
+}
+#catNav .navbar-nav .dropdown-menu .img-fluid {
+  float: left;
+  
+}
+#catNav .navbar-nav .dropdown-menu > :active {
+  background-color: transparent;
+  color: #313437;
+}
+#catNav .navbar-nav .dropdown-menu > :hover {
+  background-color: azure;
+  color: cadetblue;
+}
+
+#catNav .dropdown-toggle::after {
+  display:none;
+}
+
+#catNav .navbar-nav .dropdown {
+    margin-left: 15px;
+}
+
+#hiddenDesc{
+  display: none;
+}
+
+
+.dropdown-menu > :active {
+  background-color: transparent;
+  color: #313437;
+}
+.dropdown-menu > :hover {
+  background-color: azure;
+  color: cadetblue;
+}
+.dropdown-item {
+  color:rgba(0, 0, 0, 0.5);
+}
+#topBarDropDown {
+  text-align: left;
+}
+
+
+
+.custom-select2 {
+  display: inline-block;
+  width: 100%;
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+  line-height: 1.5;
+  color: #495057;
+  vertical-align: middle;
+  background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
+  background-size: 8px 10px;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.custom-select2:focus {
+  border-color: #80bdff;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075), 0 0 5px rgba(128, 189, 255, 0.5);
+          box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075), 0 0 5px rgba(128, 189, 255, 0.5);
+}
+
+.custom-select2:focus::-ms-value {
+  color: #495057;
+  background-color: #fff;
+}
+
+.custom-select2[multiple],
+.custom-select2[size]:not([size="1"]) {
+  height: auto;
+  padding-right: 0.75rem;
+  background-image: none;
+}
+
+.custom-select2:disabled {
+  color: #6c757d;
+  background-color: #e9ecef;
+}
+
+.custom-select2::-ms-expand {
+  opacity: 0;
+}
+
+
+#settingsNav .nav-item> :hover {
+  color: cadetblue;
+}
+
+#settingsNav .nav {
+  padding: 5px;
+  margin-top: 10px;
+  margin-left: auto;
+  font-size: 0.85rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+#dashboardIcon > :hover{
+  color: cadetblue;
+}
+
+#jumboPage .jumbotron-fluid {
+  text-align: center;
+}
+
+#jumboPage {
+  text-align: center;
+}
+
+
+
+.display-5 {
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+#jumboPage img {
+  width: 70px;
+  height: 70px;
+  vertical-align: middle;
+  
+}
+#jumboPage a:hover {
+  color: #313437;
+  text-decoration: none;
+  
+}
+#jumboPage .card {
+  border: transparent;
+  
+}
+#jumboPage .card-img-top {
+  margin: 0 auto;
+}
+#jumboPage .lol {
+  visibility: hidden;
+}
+
+#jumboPage a:hover .lol{
+  visibility:visible;
+}
+
+#jumboPage .display-3 {
+  font-weight: 500;
+}
+
+#jumboPage .btn-primary{
+  background-color: #2ab27b;
+  border-color: #2ab27b;
+  margin: 20px;
+}
+
+#jumboPage .btn-primary:hover {
+  background-color: #313437;
+  border-color: #313437;
+}
+
+
+
+#securityJumbo .container{
+  text-align: right;
+}
+
+#reviewJumbo .container{
+  text-align: center;
+}
+
+.modal-title{
+  margin: 0 auto;
+  
+}
+
+#description {
+  height: 150px;
+}
+
+#onlineBtns .btn:not(:disabled):not(.disabled) {
+  cursor: initial;
+}
+
+
+#onlineBtns .btn-outline-success:hover {
+  color: #28a745;
+  background-color: transparent;
+}
+
+#onlineBtns .btn-outline-dark:hover{
+  color: #343a40;
+  background-color: transparent;
+}
+
+#PostE{
+  align-items: flex-start;
+  display: flex;
+  height:400px;
+  width: 235px;
+  max-height: fit-content;
+}
+
+#PostE .card{
+  height:310px;
+  max-height: 310px;
+}
+.page-item.active .page-link {
+
+  background-color: cadetblue;
+  border-color: cadetblue;
+}
+
+.page-item .page-link{
+  color: cadetblue;
+}
+
+a:hover{
+  color: #313437;
+  text-decoration: none;
+}
+#PostB .card {
+  height:310px;
+  max-height: 310px;
+}
+
+#PostE ul{
+  margin-bottom: 3px;
+}
+
+.breadcrumb {
+  padding: 0rem;
+}
+
+#profileCard ul{
+  margin-bottom: 0rem;
+}
