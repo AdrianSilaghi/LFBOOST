@@ -15,6 +15,7 @@
                        Please attach at least 2 screenshots.(They might be in the progrees of the service or after it).
                        <hr>
                    </small>
+                   {{-- push agian --}}
                    <div class="d-flex">
                         <div class="col" id="uploadForm">
                         <form action="{{url('api/addImage')}}" class="dropzone">
