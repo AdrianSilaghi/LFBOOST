@@ -43,7 +43,7 @@
                     <td>{{$seller->name}}</td>
                     <td>{{$buyer->name}}</td>
                     <td>{{$postInfo->title}}</td>
-                    {<td>{{$dueOn->addDays($days)->toFormattedDateString()}}</td>
+                    <td>{{$dueOn->addDays($days)->toFormattedDateString()}}</td>
                     <td>{{$order->deliveredAt}}</td>
                     <td>None</td>
                     <td></td>
