@@ -32,15 +32,16 @@
                     $buyer = $user->where('id',$order->buyer_id)->first();
                     $postInfo = $post->where('id',$order->post_id)->first();
                     $createdAt= $post->created_at;
+                    $days = $order->delivery_time;
                     $dueOn = $carbon->parse($createdAt);
 
                     @endphp 
                   <tr>
-                    <th>{{$order->transaction_id}}</th>
+                    <td>{{$order->transaction_id}}</td>
                     <td>{{$seller->name}}</td>
                     <td>{{$buyer->name}}</td>
                     <td>{{$postInfo->title}}</td>
-                    <td>{{$dueOn->add($order->delivery_time)->toCookieString()}}</td>
+                    <td>{{$dueOn->addDays($days)->toCookieString()}}</td>
                     <td>{{$order->deliveredAt}}</td>
                     <td>None</td>
                   </tr>
