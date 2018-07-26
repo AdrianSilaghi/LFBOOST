@@ -83,6 +83,21 @@ class OrdersController extends Controller
         return view('dashboard.orders.orders')->with('orders',$orders);
     }
 
+    public function addProof(Request $request){
+       
+        if($request->hasFile('file')){
+            $image = $request->file('file');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->save( public_path('/uploads/posts/' . $filename));
+
+        $post = Post::find($request->id);
+        $post->image = $filename;
+        $post->save();  
+        }
+
+
+    }
+
     public function speicifOrder(Request $request){
         $order = Order::where('transaction_id',$request->input('orderID'))->first();
         $seller = User::where('id',$order->seller_id)->first();

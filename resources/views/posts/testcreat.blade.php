@@ -241,7 +241,7 @@
                                 </div>
                                 <div class="d-flex">
                                     <div class="col" id="uploadForm">
-                                    <form action="{{url('api/addImage')}}" class="dropzone">
+                                    <form action="{{url('/order/api/addProof')}}" class="dropzone">
                                     {{ csrf_field() }}
                                     </form>
                                        

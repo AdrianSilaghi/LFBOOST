@@ -13,7 +13,15 @@
                    <small class="form-text text-muted">Before you can deliver your order you must provide proof of service completion.
                        <hr>
                        Please attach at least 2 screenshots.(They might be in the progrees of the service or after it).
+                       <hr>
                    </small>
+                   <div class="d-flex">
+                        <div class="col" id="uploadForm">
+                        <form action="{{url('api/addImage')}}" class="dropzone">
+                        {{ csrf_field() }}
+                        </form>
+                           
+                    </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
