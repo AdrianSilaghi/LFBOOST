@@ -153,7 +153,7 @@
                 @foreach($post as $poo)
                         <div class="d-sm-inline-flex flex-wrap flex-fill flex-column m-r-5" id="PostE">
                             <div class="card">
-                                    <img class="card-img-top" src="{{asset("uploads/posts/$poo->image")}}/" alt="Card image cap">
+                                    <img class="card-img-top" src="{{asset("uploads/posts/$poo->image")}}" alt="Card image cap">
                                     <div class="card-body">
                                       <ul class="list-inline">
                                           <li class="list-inline-item">
@@ -164,13 +164,13 @@
                                           </li>
                                       </ul>
                                       @if(strlen($poo->title)>30)
-                                        <a href="{{route('posts.show',[$poo->slug])}}"><p style="font-size:1rem;height:35px;">
+                                        <a href="{{route('showWithName',[$poo->user->name,$poo->slug])}}"><p style="font-size:1rem;height:35px;">
                                         
                                         {{substr($poo->title,0,30)}}... 
                                        
                                         </p></a>
                                         @else
-                                        <a href="{{route('posts.show',[$poo->slug])}}"><p  style="font-size:1rem;height:35px;">
+                                        <a href="{{route('showWithName',[$poo->user->name,$poo->slug])}}"><p  style="font-size:1rem;height:35px;">
                                         
                                             {{substr($poo->title,0,30)}}
                                            
