@@ -64,7 +64,7 @@
     <script src="{{asset('js/algolia.js')}}"></script>
     <script src="{{asset('js/dropzone.js')}}"></script>
     <script src="{{asset('js/jquery.smartWizard.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
     <script src="{{asset('js/bootstrap-tagsinput.js')}}"></script>
     <script src="{{asset('js/jquery.barrating.min.js')}}"></script>
 </html>
