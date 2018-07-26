@@ -35,7 +35,7 @@ const app = new Vue({
         
     }
 });
-//push this pleasesssss
+//push 
 $(document).ready(function(){
     var button = document.querySelector('#markasComplete');
     button.addEventListener('click',function(){
