@@ -28,7 +28,7 @@
                           <a class="nav-link" href="{{route('dashboardOrders',['type'=>'pending'])}}">Delivered</a>
                         </li>
                         <li class="nav-item">
-                                <a class="nav-link" href="{{route('completedOrders',['type'=>'completed'])}}">Completed</a>
+                                <a class="nav-link" href="{{route('dashboardOrders',['type'=>'completed'])}}">Completed</a>
                         </li>
                       </ul>
                       <hr>
