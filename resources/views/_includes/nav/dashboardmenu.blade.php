@@ -7,16 +7,16 @@
        
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Dashboard</a>
+              <a class="nav-link" href="/dashboard">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Orders</a>
+            <a class="nav-link" href="{{route('dashboardOrders')}}">Orders</a>
               </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Earnings</a>
+            <a class="nav-link" href="{{route('earnings')}}">Earnings</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Inbox</a>
+            <a class="nav-link" href="{{route('inbox')}}">Inbox</a>
               </li>
         </ul>
       </div>
