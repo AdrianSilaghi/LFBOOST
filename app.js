@@ -11377,38 +11377,51 @@ var app = new Vue({
     }
 });
 
-document.getElementById('exampleModal').ready(function () {
-    var button = document.querySelector('#markasComplete');
-    button.addEventListener('click', function () {
-        var comment = $('#commentArea').val();
-        var raiting = $('#example').val();
-        var post_id = $('#post_id').val();
-        var transaction_id = $('#transaction_id').val();
-        console.log(comment, raiting);
-        axios.post('/api/addReview', {
-            comment: comment,
-            raiting: raiting,
-            post_id: post_id
-        }).then(function (response) {
-            axios.post('/order/api/markascomplete', {
-                transaction_id: transaction_id
+$(document).ready(function () {
+    if ($('#markasComplete').length > 0) {
+        var button = document.querySelector('#markasComplete');
+        button.addEventListener('click', function () {
+            var comment = $('#commentArea').val();
+            var raiting = $('#example').val();
+            var post_id = $('#post_id').val();
+            var transaction_id = $('#transaction_id').val();
+            axios.post('/api/addReview', {
+                comment: comment,
+                raiting: raiting,
+                post_id: post_id
             }).then(function (response) {
-                if (response.status) {
-                    console.log('markedascomplete');
-                    $('#exampleModal').modal('hide');
-                    location.reload(false);
-                }
+                axios.post('/order/api/markascomplete', {
+                    transaction_id: transaction_id
+                }).then(function (response) {
+                    if (response.status) {
+                        console.log('markedascomplete');
+                        $('#exampleModal').modal('hide');
+                        location.reload(false);
+                    }
+                });
             });
         });
-    });
+    }
+
+    if ($('#accetButton').length > 0) {
+        var button = document.querySelector('#accetButton');
+        button.addEventListener('click', function () {
+            var transaction_id = $('#transaction_id').val();
+            axios.post('/order/api/markasactive', {
+                transaction_id: transaction_id
+            }).then(function (response) {
+
+                location.reload(false);
+            });
+        });
+    }
 });
 
-document.getElementById('paymentsPage').ready(function () {
+$(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip();
 
-    document.getElementById('paymentsPage').ready(function () {
-
-        function GetURLParameter(sParam) {
+    if ($('#paymentsPage').length > 0) {
+        var GetURLParameter = function GetURLParameter(sParam) {
             var sPageURL = window.location.search.substring(1);
             var sURLVariables = sPageURL.split('&');
             for (var i = 0; i < sURLVariables.length; i++) {
@@ -11417,7 +11430,8 @@ document.getElementById('paymentsPage').ready(function () {
                     return sParameterName[1];
                 }
             }
-        }
+        };
+
         var x = GetURLParameter('id');
 
         axios.get('/payment/api/token').then(function (response) {
@@ -11436,11 +11450,14 @@ document.getElementById('paymentsPage').ready(function () {
                             payload: payload,
                             postId: x
                         }).then(function (response) {
+                            var noteForBuyer = $('#notesForSeller').val();
+
                             var data = response.data.transaction;
                             if (response.status == 200) {
                                 axios.post('/order/api/newOrder', {
                                     data: data,
-                                    postId: x
+                                    postId: x,
+                                    noteForBuyer: noteForBuyer
                                 }).then(function (response) {});
                             }
                         }).catch(function (error) {
@@ -11450,18 +11467,22 @@ document.getElementById('paymentsPage').ready(function () {
                 });
             });
         }).catch(function (error) {}).then(function () {});
-    });
-});
-
-///scrips
-$(document).ready(function () {
-    $('.select-multiple').select2();
+    }
 });
 
 $(document).ready(function () {
-    $('#example').barrating({
-        theme: 'fontawesome-stars'
-    });
+    if ($('.select-multiple').length > 0) {
+        $('.select-multiple').select2();
+    }
+});
+
+$(document).ready(function () {
+    if ($('#example').length > 0) {
+
+        $('#example').barrating({
+            theme: 'fontawesome-stars'
+        });
+    }
 });
 
 $('#selectCategory').ready(function () {
