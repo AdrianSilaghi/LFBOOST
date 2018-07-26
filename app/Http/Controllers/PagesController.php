@@ -14,6 +14,9 @@ use App\Country;
 
 class PagesController extends Controller
 {
+    public function commingOutSoon(){
+        return view('outsoon');
+    }
     public function index(){
         
         return view('welcome');

@@ -15,7 +15,7 @@ Auth::routes();
 
 
 
-Route::get('/', 'PagesController@index')->name('index');
+Route::get('/', 'PagesController@commingOutSoon')->name('index');
 
 Route::get('/become_a_seller','PagesController@becomeSeller')->name('becomeSeller');
 Route::get('/dashboard', 'PagesController@dashboard')->middleware('auth');
