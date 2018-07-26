@@ -68,7 +68,7 @@
             
        
           <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src="http://lfboost.com/uploads/avatars/{{Auth::user()->avatar}}" style="width:32px; height:32px; position:aboslute; top: 10px; left: 10px; border-radius:50%">    
+                <img src="https://lfboost.com/uploads/avatars/{{Auth::user()->avatar}}" style="width:32px; height:32px; position:aboslute; top: 10px; left: 10px; border-radius:50%">    
               Hey {{Auth::user()->name}}
           </a>
           
