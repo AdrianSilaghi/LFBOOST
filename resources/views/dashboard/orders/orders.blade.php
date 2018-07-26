@@ -55,7 +55,7 @@
                             <th scope="col">Seller</th>
                             <th scope="col">Buyer</th>
                             <th scope="col">Order Name</th>
-                            <th class="col">Due on</th>
+                            <th class="col" style="width:100px;">Due on</th>
                             <th class="col">Delivered On</th>
                             <th class="col">Status</th>
                       </tr>
