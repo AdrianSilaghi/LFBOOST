@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="container" id="createPost">
+<div class="container">
 <div class="row justify-content-md-center m-t-20">
     <div class="col-md-10 col-offset-2">
         {{ csrf_field() }}
