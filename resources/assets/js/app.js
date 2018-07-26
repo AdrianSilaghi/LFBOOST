@@ -37,6 +37,7 @@ const app = new Vue({
 });
 //push 
 $(document).ready(function(){
+    if($('#markasComplete').length > 0 ){
     var button = document.querySelector('#markasComplete');
     button.addEventListener('click',function(){
         var comment = $('#commentArea').val();
@@ -63,14 +64,15 @@ $(document).ready(function(){
 
 
     })
+    }
 })
 
 $(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip(); 
     
     
-    $(document).ready(function () {
 
+    if($('#paymentsPage').length > 0 ) {
         function GetURLParameter(sParam) {
             var sPageURL = window.location.search.substring(1);
             var sURLVariables = sPageURL.split('&');
@@ -131,9 +133,8 @@ $(document).ready(function () {
             });
 
 
+        }
 
-
-    });
 
 });
 
