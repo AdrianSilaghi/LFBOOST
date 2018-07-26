@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 @section('content')
-@inject('user','App\User')
+{{-- @inject('user','App\User')
 @inject('post','App\Post')
 @inject('carbon','Carbon\Carbon')
 
@@ -43,6 +43,6 @@
               </table>
         </div>
     </div>
-</div>
+</div> --}}
 
 @endsection
