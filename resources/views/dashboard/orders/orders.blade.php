@@ -20,7 +20,7 @@
                     <th scope="col">Seller</th>
                     <th scope="col">Buyer</th>
                     <th scope="col">Order Name</th>
-                    <th class="col">Due on</th>
+                    {{-- <th class="col">Due on</th> --}}
                     <th class="col">Delivered On</th>
                     <th class="col">Status</th>
                   </tr>
@@ -41,7 +41,7 @@
                     <td>{{$seller->name}}</td>
                     <td>{{$buyer->name}}</td>
                     <td>{{$postInfo->title}}</td>
-                    <td>{{$dueOn->addDays($days)->toCookieString()}}</td>
+                    {{-- <td>{{$dueOn->addDays($days)->toCookieString()}}</td> --}}
                     <td>{{$order->deliveredAt}}</td>
                     <td>None</td>
                   </tr>
