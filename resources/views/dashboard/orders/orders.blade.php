@@ -12,9 +12,10 @@
         </div>
     </div>
     
-
+    <div class="row">
+        <div class="col">
             <div class="table-responsive">
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                   <tr>
                     <th scope="col">Order Number</th>
@@ -24,7 +25,7 @@
                     <th scope="col">Due on</th>
                     <th scope="col">Delivered On</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Mark As</th>
+                    <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -63,12 +64,15 @@
                         <button type="button" class="btn btn-success btn-sm" disabled="disabled">Delivered</button>
                         @endif
                     </td>
-                    <td></td>
+                    <td><a href="#"><i class="fas fa-angle-double-right fa-lg" style="color:#00b22d;"></i></a></td>
                   </tr>
                   @endforeach
                 </tbody>
               </table>
             </div>
+                        
+        </div>
+    </div>
 
     
 </div>
