@@ -16,7 +16,7 @@
         <div class="col">
                 <ul class="nav" id="menu">
                         <li class="nav-item" id="link">
-                        <a class="nav-link" href="#">All</a>
+                        <a class="nav-link" href="{{route('dashboardOrders')}}">All</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="{{route('queuedOrders')}}">Pending</a>
@@ -32,7 +32,7 @@
                         </li>
                       </ul>
                       <hr>
-                      
+
                 @include('orderstable')
         </div>
     </div>
