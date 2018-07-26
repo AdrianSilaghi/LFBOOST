@@ -11,7 +11,7 @@
            <h3>Manage your orders</h3>
         </div>
     </div>
-    <div class="row">
+    
         <div class="col">
             <table class="table">
                 <thead>
@@ -49,7 +49,7 @@
                 </tbody>
               </table>
         </div>
-    </div>
+    
 </div>
 
 @endsection
