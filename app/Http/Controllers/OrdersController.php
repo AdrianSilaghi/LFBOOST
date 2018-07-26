@@ -38,7 +38,7 @@ class OrdersController extends Controller
     public function dashboardOrders(){
         
         $user = auth()->user();
-        $orders = Order::where('seller_id',$user->id)->orWhere('buyer_id',$user->id);
+        $orders = Order::where('seller_id',$user->id)->orWhere('buyer_id',$user->id)->get();
         return view('dashboard.orders.orders')->with('orders',$orders);
     }
 }

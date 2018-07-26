@@ -7,13 +7,13 @@
 
 <div class="contianer">
     <div class="row">
-        <div class="col">
+        <div class="col m-t-50 m-b-50">
            <h3>Manage your orders</h3>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <table class="table table-dark">
+            <table class="table">
                 <thead>
                   <tr>
                     <th scope="col">Order Number</th>
