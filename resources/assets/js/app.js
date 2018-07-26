@@ -44,7 +44,6 @@ $(document).ready(function(){
         var raiting = $('#example').val();
         var post_id = $('#post_id').val();
         var transaction_id = $('#transaction_id').val();
-        console.log(comment,raiting);
         axios.post('/api/addReview',{
             comment:comment,
             raiting:raiting,
@@ -64,6 +63,20 @@ $(document).ready(function(){
 
 
     })
+    }
+    
+    if($('#accetButton').length > 0 ){
+        var button = document.querySelector('accetButton');
+        button.addEventListener('click',function(){
+            var transaction_id = $('#transaction_id').val();
+            axios.post('/order/api/markasactive',{
+                transaction_id:transaction_id,
+            }).then(function(response){
+                if(response.success){
+                    location.reload(false);
+                }
+            })
+        })
     }
 })
 

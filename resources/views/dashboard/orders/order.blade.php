@@ -197,7 +197,8 @@ $deliveredAt = $carbon->parse($order->deliveredAt);
                                             New orders are Queued. Waiting for you the seller to accept them!
                                         </small>
                                         <hr>
-                                        <button class="btn btn-info btn-lg btn-block">Accept order</button>
+                                        <button id="accetButton" class="btn btn-info btn-lg btn-block">Accept order</button>
+                                         <input type="hidden" id="transaction_id" value="{{$order->transaction_id}}" name="transaction_id">
                                         <small class="form-text text-muted">
                                                 After accepting the order , it will go in Active mode, where you can start working on it.
                                         </small>
