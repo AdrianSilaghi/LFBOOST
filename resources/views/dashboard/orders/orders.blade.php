@@ -12,7 +12,8 @@
         </div>
     </div>
     
-        
+    <div class="row">
+    <div class="col">   
             <table class="table">
                 <thead>
                   <tr>
@@ -23,7 +24,7 @@
                     <th class="col">Due on</th>
                     <th class="col">Delivered On</th>
                     <th class="col">Status</th>
-                    <th></th>
+                    <th class="col">Mark As</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -42,7 +43,7 @@
                     <td>{{$seller->name}}</td>
                     <td>{{$buyer->name}}</td>
                     <td>{{$postInfo->title}}</td>
-                    {{-- <td>{{$dueOn->addDays($days)->toCookieString()}}</td> --}}
+                    {<td>{{$dueOn->addDays($days)->toCookieString()}}</td> --}}
                     <td>{{$order->deliveredAt}}</td>
                     <td>None</td>
                     <td></td>
@@ -50,6 +51,8 @@
                   @endforeach
                 </tbody>
               </table>
+            </div>
+        </div> 
     
 </div>
 
