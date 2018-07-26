@@ -12,7 +12,7 @@
         </div>
     </div>
     
-        <div class="col">
+        
             <table class="table">
                 <thead>
                   <tr>
@@ -20,7 +20,7 @@
                     <th scope="col">Seller</th>
                     <th scope="col">Buyer</th>
                     <th scope="col">Order Name</th>
-                    {{-- <th class="col">Due on</th> --}}
+                    <th class="col">Due on</th>
                     <th class="col">Delivered On</th>
                     <th class="col">Status</th>
                   </tr>
@@ -51,10 +51,13 @@
               <table class="table">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                            <th scope="col">Order Number</th>
+                            <th scope="col">Seller</th>
+                            <th scope="col">Buyer</th>
+                            <th scope="col">Order Name</th>
+                            <th class="col">Due on</th>
+                            <th class="col">Delivered On</th>
+                            <th class="col">Status</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -78,7 +81,7 @@
                       </tr>
                     </tbody>
                   </table>
-        </div>
+        
     
 </div>
 
