@@ -92,8 +92,8 @@ $(document).ready(function () {
             
         });
         };
-       
-       
+        var note = $('#notesForSeller').val();
+        console.log(note);
         axios.get('/payment/api/token')
             .then(function (response) {
                 
@@ -104,8 +104,8 @@ $(document).ready(function () {
                     var price = data;
                     return price;
                     });
-                var note = $('#notesForSeller').val();
-                console.log(note);   
+                
+                  
                 braintree.dropin.create({
                     authorization: CLIENT_TOKEN_FROM_SERVER,
                     container: '#dropin-container',

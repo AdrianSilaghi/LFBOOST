@@ -30,7 +30,13 @@
                     <td>{{$buyer->name}}</td>
                     <td>{{$postInfo->title}}</td>
                     <td>{{$dueOn->toFormattedDateString()}}</td>    
-                    <td>{{$deliveredAt->toFormattedDateString()}}</td>
+                    <td>
+                      @if($order->deliveredAt==null)
+                         Not yet delivered
+                         @else
+                         {{$deliveredAt->toFormattedDateString()}}
+                         @endif
+                    </td>
                     <td>
                         @if($order->queued==true)
                         <button type="button" class="btn btn-warning btn-sm" disabled>Queued</button>
