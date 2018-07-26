@@ -31,13 +31,18 @@
                     $seller = $user->where('id',$order->seller_id)->first();
                     $buyer = $user->where('id',$order->buyer_id)->first();
                     $postInfo = $post->where('id',$order->post_id)->first();
+                    $createdAt= $post->created_at;
+                    $dueOn = $carbon->parse($createdAt);
+
                     @endphp 
                   <tr>
                     <th>{{$order->transaction_id}}</th>
                     <td>{{$seller->name}}</td>
                     <td>{{$buyer->name}}</td>
                     <td>{{$postInfo->title}}</td>
-                    <td></td>
+                    <td>{{$dueOn->add($order->delivery_time)->toCookieString()}}</td>
+                    <td>{{$order->deliveredAt}}</td>
+                    <td>None</td>
                   </tr>
                   @endforeach
                 </tbody>
