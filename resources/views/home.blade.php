@@ -34,7 +34,7 @@
                                                 <div class="card-body">
                                                   <ul class="list-inline">
                                                       <li class="list-inline-item">
-                                                            <img src="https://localhost/uploads/avatars/{{$poo->user->avatar }}" style="width:25px; height:25px;border-radius:50%;"> 
+                                                            <img src="http://localhost/uploads/avatars/{{$poo->user->avatar}}" style="width:25px; height:25px;border-radius:50%;"> 
                                                       </li>
                                                       <li class="list-inline-item">
                                                             <a href="{{route('show.user.slug',[$poo->user->slug])}}"><p class="h6">{{$poo->user->name}}</p></a>
@@ -130,7 +130,7 @@
                         @foreach($post as $poo)
                                 <div class="d-sm-inline-flex flex-wrap flex-fill flex-column m-r-5 m-l-5 m-t-10" id="PostE">
                                         <div class="card">
-                                                <img class="card-img-top" src="{{asset("uploads/posts/$poo->image")}}/" alt="Card image cap">
+                                                <img class="card-img-top" src="{{asset("uploads/posts/$poo->image")}}" alt="Card image cap">
                                                 <div class="card-body">
                                                   <ul class="list-inline">
                                                       <li class="list-inline-item">
