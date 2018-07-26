@@ -11,7 +11,7 @@
               <hr>
         </div>
     </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center m-b-50">
         <div class="col text-center m-t-50">
                 <div class="jumbotron jumbotron-fluid">
                         <div class="container">
