@@ -62,7 +62,7 @@ class PaymentsController extends Controller
           $payload = $request->input('payload',false);
           $nonce = $payload['nonce'];
             
-          $post = Post::find($request->input('postId'))->first();
+          $post = Post::where('id',$request->input('postId'))->first();
 
           $status = Braintree_Transaction::sale([
           'amount' => $post->price+2,
