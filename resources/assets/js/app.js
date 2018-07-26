@@ -65,7 +65,7 @@ $('#exampleModal').ready(function(){
     })
 })
 
-$(document).ready(function () {
+document.getElementById('paymentsPage').ready(function () {
     $('[data-toggle="tooltip"]').tooltip(); 
     
     
