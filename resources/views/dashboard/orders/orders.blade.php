@@ -19,7 +19,7 @@
                         <a class="nav-link" href="{{route('dashboardOrders')}}">All</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="{{route('queuedOrders')}}">Pending</a>
+                          <a class="nav-link" href="{{route('queuedOrders',['type'=>'queued'])}}">Pending</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="{{route('activeOrders')}}">Active</a>

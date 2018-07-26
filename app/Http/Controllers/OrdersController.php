@@ -36,11 +36,19 @@ class OrdersController extends Controller
         
     }
     
-    public function dashboardOrders(){
+    public function dashboardOrders(Request $request){
         
         $user = auth()->user();
-        $orders = Order::where('seller_id',$user->id)->orWhere('buyer_id',$user->id)->get();
-        return view('dashboard.orders.orders')->with('orders',$orders);
+        $order = Order::where('seller_id',$user->id)->orWhere('buyer_id',$user->id)->get();
+
+        if($request->input('type')!=null){
+            $orders= $order->where($request->input('type'),true);
+            return view('dashboard.orders.orders')->with('orders',$orders);
+        }else{
+            return view('dashboard.orders.orders')->with('orders',$order);
+        }
+
+       
     }
 
     public function queuedOrders(){
