@@ -19,16 +19,16 @@
                         <a class="nav-link" href="{{route('dashboardOrders')}}">All</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="{{route('queuedOrders',['type'=>'queued'])}}">Pending</a>
+                          <a class="nav-link" href="{{route('dashboardOrders',['type'=>'queued'])}}">Pending</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="{{route('activeOrders')}}">Active</a>
+                          <a class="nav-link" href="{{route('dashboardOrders',['type'=>'progress'])}}">Active</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="{{route('deliveredOrders')}}">Delivered</a>
+                          <a class="nav-link" href="{{route('dashboardOrders',['type'=>'pending'])}}">Delivered</a>
                         </li>
                         <li class="nav-item">
-                                <a class="nav-link" href="{{route('completedOrders')}}">Completed</a>
+                                <a class="nav-link" href="{{route('completedOrders',['type'=>'completed'])}}">Completed</a>
                         </li>
                       </ul>
                       <hr>

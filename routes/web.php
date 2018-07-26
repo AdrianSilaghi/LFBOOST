@@ -24,10 +24,7 @@ Route::post('/order/api/markascomplete','OrdersController@markOrderAsComplete')-
 Route::get('/dashboard/orders','OrdersController@dashboardOrders')->name('dashboardOrders')->middleware('auth');
 
 Route::get('/dashboard/order','OrdersController@speicifOrder')->name('speicifOrder')->middleware('auth');
-Route::get('/dashboard/orders/queuedOrders','OrdersController@queuedOrders')->name('queuedOrders')->middleware('auth');
-Route::get('/dashboard/orders/activeOrders','OrdersController@activeOrders')->name('activeOrders')->middleware('auth');
-Route::get('/dashboard/orders/deliveredOrders','OrdersController@deliveredOrders')->name('deliveredOrders')->middleware('auth');
-Route::get('/dashboard/orders/completedOrders','OrdersController@completedOrders')->name('completedOrders')->middleware('auth');
+
 
 Route::get('/dashboard/earnings','PagesController@earnings')->name('earnings')->middleware('auth');
 Route::get('/dashboard/inbox','PagesController@inbox')->name('inbox')->middleware('auth');
