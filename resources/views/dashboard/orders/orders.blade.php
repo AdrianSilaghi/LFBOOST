@@ -23,6 +23,7 @@
                     <th class="col">Due on</th>
                     <th class="col">Delivered On</th>
                     <th class="col">Status</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -44,44 +45,11 @@
                     {{-- <td>{{$dueOn->addDays($days)->toCookieString()}}</td> --}}
                     <td>{{$order->deliveredAt}}</td>
                     <td>None</td>
+                    <td></td>
                   </tr>
                   @endforeach
                 </tbody>
               </table>
-              <table class="table">
-                    <thead>
-                      <tr>
-                            <th scope="col">Order Number</th>
-                            <th scope="col">Seller</th>
-                            <th scope="col">Buyer</th>
-                            <th scope="col">Order Name</th>
-                            <th class="col" style="width:100px;">Due on</th>
-                            <th class="col">Delivered On</th>
-                            <th class="col">Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
-                    </tbody>
-                  </table>
-        
     
 </div>
 
