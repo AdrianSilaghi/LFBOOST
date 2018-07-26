@@ -109,12 +109,13 @@ $(document).ready(function () {
                                 postId:x,
                             }).then(function(response){
                                 var noteForBuyer = $('#notesForSeller').val();
-                                console.log(noteForBuyer);
+                                
                                 var data = response.data.transaction;
                                if(response.status == 200){
                                    axios.post('/order/api/newOrder',{
                                         data,
                                        postId:x,
+                                       noteForBuyer:noteForBuyer
                                    }).then(function(response){
                                     
                                    })

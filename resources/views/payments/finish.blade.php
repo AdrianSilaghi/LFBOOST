@@ -36,6 +36,9 @@
                                                                 </div>
                                                                 <textarea class="form-control" name="notes" id="notesForSeller" rows="4" aria-label="With textarea"></textarea>
                                                 </div>
+                                                <small class="form-text text-muted">
+                                                                Please provide some notes(indications) for the buyer.
+                                                </small>
                                 </div>
                             
             </div>

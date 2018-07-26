@@ -26,6 +26,7 @@ class OrdersController extends Controller
         $order->transaction_id = $request->input('data.id');
         $order->delivery_time = $post->delivery_time;
         $order->post_id = $post->id;
+        $order->notes = $request->input('noteForBuyer');
         $order->save();
 
 
