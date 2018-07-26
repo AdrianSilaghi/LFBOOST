@@ -36,8 +36,8 @@
                     $createdAt= $post->created_at;
                     $days = $order->delivery_time;
                     $dueOn = $carbon->parse($createdAt)->addDays($days);
-                    $dueOn->toFormattedDateString();
-                    $deliveredAt = $order->deliveredAt;
+                    $deliveredAt = $carbon->parse($order->deliveredAt);
+                    
                     @endphp 
                   <tr>
                     <th scope="row">{{$order->transaction_id}}</td>
@@ -45,8 +45,24 @@
                     <td>{{$buyer->name}}</td>
                     <td>{{$postInfo->title}}</td>
                     <td>{{$dueOn->toFormattedDateString()}}</td>    
-                    <td>{{$deliveredAt}}</td>
-                    <td>None</td>
+                    <td>{{$deliveredAt->toFormattedDateString()}}</td>
+                    <td>
+                        @if($order->queued==true)
+                        <button type="button" class="btn btn-warning btn-sm" disabled>Queued</button>
+                        @endif
+
+                        @if($order->progress==true)
+                        <button type="button" class="btn btn-info btn-sm" disabled>Active</button>
+                        @endif
+
+                        @if($order->pending==true)
+                        <button type="button" class="btn btn-primary btn-sm" disabled="disabled">Delivered</button>
+                        @endif
+
+                        @if($order->completed==true)
+                        <button type="button" class="btn btn-success btn-sm" disabled="disabled">Delivered</button>
+                        @endif
+                    </td>
                     <td></td>
                   </tr>
                   @endforeach
