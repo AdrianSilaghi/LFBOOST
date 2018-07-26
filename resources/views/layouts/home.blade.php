@@ -62,7 +62,6 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
     <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
-    
     <script src="{{asset('js/select2.js')}}"></script>
     <script src="{{asset('js/algolia.js')}}"></script>
     <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>

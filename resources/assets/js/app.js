@@ -35,7 +35,7 @@ const app = new Vue({
         
     }
 });
-//push 
+
 $(document).ready(function(){
     if($('#markasComplete').length > 0 ){
     var button = document.querySelector('#markasComplete');
@@ -154,18 +154,23 @@ $(document).ready(function () {
 
 });
 
-///scrips
 $(document).ready(function () {
-    $('.select-multiple').select2()
-
-
+    if($('.select-multiple').length > 0 ){
+        $('.select-multiple').select2();
+    }
+   
 });
 
 $(document).ready(function () {
+    if($('#example').length > 0 ){
+
+   
     $('#example').barrating({
         theme: 'fontawesome-stars'
     });
+}
 });
+
 
 $('#selectCategory').ready(function () {
     $('#selectCategory').on('change', '.custom-select', function () {
