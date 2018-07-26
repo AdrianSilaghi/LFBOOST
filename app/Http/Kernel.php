@@ -60,6 +60,5 @@ class Kernel extends HttpKernel
         'role' => \Laratrust\Middleware\LaratrustRole::class,
         'permission' => \Laratrust\Middleware\LaratrustPermission::class,
         'ability' => \Laratrust\Middleware\LaratrustAbility::class,
-        'under-construction' => \LarsJanssen\UnderConstruction\UnderConstruction::class,
     ];
 }
