@@ -2,11 +2,11 @@
   <div class="container justify-content-center">
     @guest
     <a class="navbar-brand m-b-5" href="{{route('home')}}">
-            <img src="{{asset('images/logos/logo1.png')}}" alt="">
+            <img src="{{asset('images/logos/logo0.75.png')}}" alt="">
           </a>
     @else
     <a class="navbar-brand m-b-5" href="{{route('home')}}">
-      <img src="{{asset('images/logo@0,75x.png')}}" alt="">
+      <img src="{{asset('images/logos/logo0.75.png')}}" alt="">
     </a>
     @endguest
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
