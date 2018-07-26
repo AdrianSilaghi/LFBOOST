@@ -29,7 +29,7 @@
 </head>
 
 <body>
-    <div>
+    <div id="app">
         @include('_includes.nav.paymentnav')
         @include('_includes.messages')
         <div class="container" id="paymentsPage">

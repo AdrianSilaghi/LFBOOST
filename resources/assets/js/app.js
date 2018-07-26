@@ -85,7 +85,7 @@ $(document).ready(function () {
         }
         var x = GetURLParameter('id');
         
-      
+        
         
        
         axios.get('/payment/api/token')
@@ -108,6 +108,8 @@ $(document).ready(function () {
                                 payload,
                                 postId:x,
                             }).then(function(response){
+                                var noteForBuyer = $('#notesForSeller').val();
+                                console.log(noteForBuyer);
                                 var data = response.data.transaction;
                                if(response.status == 200){
                                    axios.post('/order/api/newOrder',{
