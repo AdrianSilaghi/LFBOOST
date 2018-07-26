@@ -37,7 +37,7 @@
 
                     @endphp 
                   <tr>
-                    <td>{{$order->transaction_id}}</td>
+                    <th scope="row">{{$order->transaction_id}}</td>
                     <td>{{$seller->name}}</td>
                     <td>{{$buyer->name}}</td>
                     <td>{{$postInfo->title}}</td>
