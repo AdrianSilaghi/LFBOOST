@@ -22,7 +22,8 @@
         "spatie/laravel-backup": "^5.9",
         "spatie/laravel-tags": "^2.0",
         "torann/geoip": "^1.0",
-        "unisharp/laravel-ckeditor": "^4.7"
+        "unisharp/laravel-ckeditor": "^4.7",
+        "larsjanssen6/underconstruction"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
