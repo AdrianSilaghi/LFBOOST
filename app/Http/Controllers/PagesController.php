@@ -61,7 +61,7 @@ class PagesController extends Controller
 
     public function inbox(){
 
-        return view('dashboad.inbox');
+        return view('dashboard.inbox');
     }
     public function security(){
         $user = Auth::user();
