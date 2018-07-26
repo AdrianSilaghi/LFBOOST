@@ -22,7 +22,7 @@ Route::get('/dashboard', 'PagesController@dashboard')->middleware('auth');
 
 Route::get('/dashboar/orders','OrdersController@dashboardOrders')->name('dashboardOrders')->middleware('auth');
 Route::get('/dashboard/earnings','PagesController@earnings')->name('earnings')->middleware('auth');
-oute::get('/dashboard/inbox','PagesController@inbox')->name('inbox')->middleware('auth');
+Route::get('/dashboard/inbox','PagesController@inbox')->name('inbox')->middleware('auth');
 
 Route::post('/notification/api/get','NotificationsController@get')->name('notificationGet');
 Route::post('/notification/api/read','NotificationsController@read')->name('notificationRead');
