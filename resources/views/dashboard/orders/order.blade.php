@@ -205,6 +205,13 @@ $deliveredAt = $carbon->parse($order->deliveredAt);
                                         <hr>
                                         <small class="form-text text-muted">
                                                 While the order is in Active mode, there will be a chat box on this page, letting you talk details with the buyer.
+                                                <hr>
+                                        </small>
+                                        <button id="accetButton" class="btn btn-primary btn-lg btn-block">Deliver order</button>
+                                        <small class="form-text text-muted">
+                                                Once you finish your order you must deliver it.Otherwise it will not count towards your account balance.
+                                                <hr>
+                                                Once you click, a form will apear, you will need to upload 1-2 screenshots from while u were performing the service for confirmation.
                                         </small>
                                         @endif
                                          @if($order->completed==true)
