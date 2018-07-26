@@ -40,6 +40,6 @@ class OrdersController extends Controller
 
         $orders->where('buyer_id',auth()->user()->id)->orWhere('seller_id',auth()->user()->id)->get();
 
-        return view('dashboard.orders')->with('orders',$orders);
+        return view('dashboard.orders.orders')->with('orders',$orders);
     }
 }

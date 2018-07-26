@@ -55,6 +55,14 @@ class PagesController extends Controller
         
     }
 
+    public function earnings(){
+        return view('dashboard.earnings');
+    }
+
+    public function inbox(){
+
+        return view('dashboad.inbox');
+    }
     public function security(){
         $user = Auth::user();
         return view('settings.security')->with('user',$user);
