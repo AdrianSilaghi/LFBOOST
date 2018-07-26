@@ -36,7 +36,7 @@ const app = new Vue({
     }
 });
 
-$('#exampleModal').ready(function(){
+document.getElementById('exampleModal').ready(function(){
     var button = document.querySelector('#markasComplete');
     button.addEventListener('click',function(){
         var comment = $('#commentArea').val();
