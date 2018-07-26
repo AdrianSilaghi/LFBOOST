@@ -13,6 +13,10 @@
 use Illuminate\Support\Facades\Mail;
 Auth::routes();
 
+Route::group(['middleware' => 'under-construction'], function () {
+    Route::get('/live-site', function() {
+        echo 'content!';
+
 
 Route::get('/', 'PagesController@index')->name('index');
 Route::get('/become_a_seller','PagesController@becomeSeller')->name('becomeSeller');
@@ -92,3 +96,6 @@ Route::post('/api/validatePost','PostsController@validatePost')->name('validateP
 Route::get('/{user}/{post}','PostsController@showWithName')->name('showWithName')->middleware('auth');
 
 Route::post('/api/addReview','ReviewsController@store')->name('addReview')->middleware('auth');
+
+});
+});
