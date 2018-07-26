@@ -123,8 +123,7 @@ $(document).ready(function () {
                                         data,
                                        postId:x,
                                    }).then(function(response){
-                                    var note = $('#notesForSeller').val();
-                                    console.log(note);
+                                    
                                    })
                                }
                             }).catch(function (error){
