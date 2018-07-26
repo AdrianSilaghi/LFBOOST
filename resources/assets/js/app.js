@@ -72,9 +72,9 @@ $(document).ready(function(){
             axios.post('/order/api/markasactive',{
                 transaction_id:transaction_id,
             }).then(function(response){
-                if(response.success){
+                
                     location.reload(false);
-                }
+                
             })
         })
     }
