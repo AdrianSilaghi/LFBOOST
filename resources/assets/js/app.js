@@ -64,9 +64,9 @@ $(document).ready(function(){
 
     })
     }
-    
+
     if($('#accetButton').length > 0 ){
-        var button = document.querySelector('accetButton');
+        var button = document.querySelector('#accetButton');
         button.addEventListener('click',function(){
             var transaction_id = $('#transaction_id').val();
             axios.post('/order/api/markasactive',{
