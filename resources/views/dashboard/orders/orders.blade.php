@@ -22,7 +22,7 @@
                     <th scope="col">Seller</th>
                     <th scope="col">Buyer</th>
                     <th scope="col">Order Name</th>
-                    <th class="col" style="width:fit-content;">Due on</th>
+                    <th class="col">Due on</th>
                     <th class="col">Delivered On</th>
                     <th class="col">Status</th>
                     <th class="col">Mark As</th>
@@ -36,16 +36,16 @@
                     $postInfo = $post->where('id',$order->post_id)->first();
                     $createdAt= $post->created_at;
                     $days = $order->delivery_time;
-                    $dueOn = $carbon->parse($createdAt);
-
+                    $dueOn = $carbon->parse($createdAt)->addDays($days);
+                    $deliveredAt = $order->deliveredAt;
                     @endphp 
                   <tr>
                     <th scope="row">{{$order->transaction_id}}</td>
                     <td>{{$seller->name}}</td>
                     <td>{{$buyer->name}}</td>
                     <td>{{$postInfo->title}}</td>
-                    <td>{{$dueOn->addDays($days)->toFormattedDateString()}}</td>
-                    <td>{{$order->deliveredAt}}</td>
+                    <td>{{$dueOn->toFormattedDateString()}}</td>    
+                    <td>{{$deliveredAt->toFormattedDateString()}}</td>
                     <td>None</td>
                     <td></td>
                   </tr>
