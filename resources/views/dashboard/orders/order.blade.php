@@ -80,6 +80,11 @@ $deliveredAt = $carbon->parse($order->deliveredAt);
                         Control Panel
                     </div>
                     <div class="card-body">
+                                    @if($order->queued==true)
+                                    <small class="form-text text-muted m-b-20">
+                                            Order is Queued. Waiting for seller to accept it!
+                                     </small>
+                                    @endif
                                      @if($order->completed==true)
                                         <h6 class="form-text text-muted text-center">Thank you for the review!</h6>
                                         <small class="form-text text-muted m-b-20 text-center">
@@ -217,7 +222,7 @@ $deliveredAt = $carbon->parse($order->deliveredAt);
                                         @if($order->progress==true)
                                         <small class="form-text text-muted">
                                                The order is in Active state, please use the chat box below to communicate with the buyer.
-                                         </small>
+                                        </small>
 
                                         
                                         @endif
