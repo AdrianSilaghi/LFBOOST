@@ -36,16 +36,16 @@
                     $postInfo = $post->where('id',$order->post_id)->first();
                     $createdAt= $post->created_at;
                     $days = $order->delivery_time;
-                    $dueOn = $carbon->parse($createdAt)->addDays($days);
-                    $deliveredAt = $order->deliveredAt;
+                    $dueOn = $carbon->parse($createdAt)->addDays($days)->toFormattedDateString();
+                    $deliveredAt = $order->deliveredAt->toFormattedDateString();
                     @endphp 
                   <tr>
                     <th scope="row">{{$order->transaction_id}}</td>
                     <td>{{$seller->name}}</td>
                     <td>{{$buyer->name}}</td>
                     <td>{{$postInfo->title}}</td>
-                    <td>{{$dueOn->toFormattedDateString()}}</td>    
-                    <td>{{$deliveredAt->toFormattedDateString()}}</td>
+                    <td>{{$dueOn}}</td>    
+                    <td>{{$deliveredAt}}</td>
                     <td>None</td>
                     <td></td>
                   </tr>
