@@ -36,8 +36,8 @@
                     $postInfo = $post->where('id',$order->post_id)->first();
                     $createdAt= $post->created_at;
                     $days = $order->delivery_time;
-                    $dueOn = $carbon->parse($createdAt)->addDays($days)->toFormattedDateString();
-                    $deliveredAt = $order->deliveredAt->toFormattedDateString();
+                    $dueOn = $carbon->parse($createdAt)->addDays($days);
+                    $deliveredAt = $order->deliveredAt;
                     @endphp 
                   <tr>
                     <th scope="row">{{$order->transaction_id}}</td>
