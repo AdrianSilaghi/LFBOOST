@@ -20,7 +20,12 @@ Route::get('/', 'PagesController@commingOutSoon')->name('index');
 Route::get('/become_a_seller','PagesController@becomeSeller')->name('becomeSeller');
 Route::get('/dashboard', 'PagesController@dashboard')->name('dashboard')->middleware('auth');
 
-Route::get('/dashboar/orders','OrdersController@dashboardOrders')->name('dashboardOrders')->middleware('auth');
+Route::get('/dashboard/orders','OrdersController@dashboardOrders')->name('dashboardOrders')->middleware('auth');
+Route::get('/dashboard/orders/queuedOrders','OrdersController@queuedOrders')->name('queuedOrders')->middleware('auth');
+Route::get('/dashboard/orders/activeOrders','OrdersController@activeOrders')->name('activeOrders')->middleware('auth');
+Route::get('/dashboard/orders/deliveredOrders','OrdersController@deliveredOrders')->name('deliveredOrders')->middleware('auth');
+Route::get('/dashboard/orders/completedOrders','OrdersController@completedOrders')->name('completedOrders')->middleware('auth');
+
 Route::get('/dashboard/earnings','PagesController@earnings')->name('earnings')->middleware('auth');
 Route::get('/dashboard/inbox','PagesController@inbox')->name('inbox')->middleware('auth');
 

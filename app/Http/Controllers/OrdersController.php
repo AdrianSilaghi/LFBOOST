@@ -41,4 +41,39 @@ class OrdersController extends Controller
         $orders = Order::where('seller_id',$user->id)->orWhere('buyer_id',$user->id)->get();
         return view('dashboard.orders.orders')->with('orders',$orders);
     }
+
+    public function queuedOrders(){
+        $user = auth()->user();
+        $order = Order::where('seller_id',$user->id)->orWhere('buyer_id',$user->id)->get();
+
+        $orders= $order->where('queued',true);
+        return view('dashboard.orders.orders')->with('orders',$orders);
+    }
+
+    public function activeOrders(){
+        $user = auth()->user();
+        $order = Order::where('seller_id',$user->id)->orWhere('buyer_id',$user->id)->get();
+
+        $orders= $order->where('progress',true);
+        return view('dashboard.orders.orders')->with('orders',$orders);
+    }
+
+    public function deliveredOrders(){
+        $user = auth()->user();
+        $order = Order::where('seller_id',$user->id)->orWhere('buyer_id',$user->id)->get();
+
+        $orders= $order->where('pending',true);
+        return view('dashboard.orders.orders')->with('orders',$orders);
+    }
+
+    public function completedOrders(){
+        $user = auth()->user();
+        $order = Order::where('seller_id',$user->id)->orWhere('buyer_id',$user->id)->get();
+
+        $orders= $order->where('completed',true);
+        return view('dashboard.orders.orders')->with('orders',$orders);
+    }
+
+
+    
 }

@@ -14,6 +14,24 @@
     
     <div class="row">
         <div class="col">
+                <ul class="nav">
+                        <li class="nav-item">
+                        <a class="nav-link" href="{{route('dashboardOrders')}}">All</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{route('queuedOrders')}}">Pending</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{route('activeOrders')}}">Active</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link disabled" href="{{route('deliveredOrders')}}">Delivered</a>
+                        </li>
+                        <li class="nav-item">
+                                <a class="nav-link" href="{{route('completedOrders')}}">Completed</a>
+                              </li>
+                      </ul>
+                      <hr>
             <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
