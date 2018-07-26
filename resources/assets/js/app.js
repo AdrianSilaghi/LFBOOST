@@ -36,7 +36,7 @@ const app = new Vue({
     }
 });
 
-document.getElementById('exampleModal').ready(function(){
+$(document).ready(function(){
     var button = document.querySelector('#markasComplete');
     button.addEventListener('click',function(){
         var comment = $('#commentArea').val();
@@ -65,11 +65,11 @@ document.getElementById('exampleModal').ready(function(){
     })
 })
 
-document.getElementById('paymentsPage').ready(function () {
+$(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip(); 
     
     
-    document.getElementById('paymentsPage').ready(function () {
+    $(document).ready(function () {
 
         function GetURLParameter(sParam) {
             var sPageURL = window.location.search.substring(1);
@@ -83,6 +83,9 @@ document.getElementById('paymentsPage').ready(function () {
         }
         var x = GetURLParameter('id');
         
+      
+        
+       
         axios.get('/payment/api/token')
             .then(function (response) {
                 
