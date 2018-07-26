@@ -36,6 +36,7 @@
                     $createdAt= $post->created_at;
                     $days = $order->delivery_time;
                     $dueOn = $carbon->parse($createdAt)->addDays($days);
+                    $dueOn->toFormattedDateString();
                     $deliveredAt = $order->deliveredAt;
                     @endphp 
                   <tr>
