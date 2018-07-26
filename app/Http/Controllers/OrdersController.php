@@ -34,7 +34,7 @@ class OrdersController extends Controller
         $user->notify(new NotifyOrderOwner($order));
         
     }
-
+    
     public function dashboardOrders(){
         
         $user = auth()->user();
