@@ -12,8 +12,7 @@
         </div>
     </div>
     
-    <div class="row justify-content-center">
-    <div class="col">   
+
             <div class="table-responsive">
             <table class="table">
                 <thead>
@@ -53,8 +52,7 @@
                 </tbody>
               </table>
             </div>
-            </div>
-        </div> 
+
     
 </div>
 
