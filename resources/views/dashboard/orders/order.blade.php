@@ -207,7 +207,8 @@ $deliveredAt = $carbon->parse($order->deliveredAt);
                                                 While the order is in Active mode, there will be a chat box on this page, letting you talk details with the buyer.
                                                 <hr>
                                         </small>
-                                        <button id="accetButton" class="btn btn-primary btn-lg btn-block">Deliver order</button>
+                                        <button id="" data-toggle="modal" data-target="#deliverModal" class="btn btn-primary btn-lg btn-block">Deliver order</button>
+                                        @include('dashboard.orders.delivermodal')
                                         <small class="form-text text-muted">
                                                 Once you finish your order you must deliver it.Otherwise it will not count towards your account balance.
                                                 <hr>
