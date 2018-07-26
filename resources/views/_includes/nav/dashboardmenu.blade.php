@@ -6,20 +6,17 @@
       <div class="collapse navbar-collapse" id="navbarNav">
        
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#">All</a>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">New</a>
+                <a class="nav-link" href="#">Orders</a>
               </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">In Progress</a>
+              <a class="nav-link" href="#">Earnings</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Delivered</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Completed</a>
+                <a class="nav-link" href="#">Inbox</a>
               </li>
         </ul>
       </div>
