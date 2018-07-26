@@ -92,8 +92,8 @@ $(document).ready(function () {
             
         });
         };
-        var note = $('#notesForSeller').val();
-        console.log(note);
+        
+       
         axios.get('/payment/api/token')
             .then(function (response) {
                 
@@ -123,7 +123,8 @@ $(document).ready(function () {
                                         data,
                                        postId:x,
                                    }).then(function(response){
-                                       console.log(data);
+                                    var note = $('#notesForSeller').val();
+                                    console.log(note);
                                    })
                                }
                             }).catch(function (error){
