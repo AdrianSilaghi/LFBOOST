@@ -69,7 +69,7 @@ document.getElementById('paymentsPage').ready(function () {
     $('[data-toggle="tooltip"]').tooltip(); 
     
     
-    $(document).ready(function () {
+    document.getElementById('paymentsPage').ready(function () {
 
         function GetURLParameter(sParam) {
             var sPageURL = window.location.search.substring(1);
@@ -83,27 +83,13 @@ document.getElementById('paymentsPage').ready(function () {
         }
         var x = GetURLParameter('id');
         
-        function getPriceById (id) {
-        return axios.post('/payment/api/getPostPrice',{
-            postId:x,
-        }).then(response=> {
-            this.response = response.data
-            return this.response
-            
-        });
-        };
-        
-       
         axios.get('/payment/api/token')
             .then(function (response) {
                 
                 var CLIENT_TOKEN_FROM_SERVER = response.data;
                 var button = document.querySelector('#submit-button');
                 
-                getPriceById(x).then(data=>{
-                    var price = data;
-                    return price;
-                    });
+               
                 
                   
                 braintree.dropin.create({

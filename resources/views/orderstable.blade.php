@@ -20,7 +20,8 @@
                     $postInfo = $post->where('id',$order->post_id)->first();
                     $createdAt= $post->created_at;
                     $days = $order->delivery_time;
-                    $dueOn = $carbon->parse($createdAt)->addDays($days);
+                    $dueOn = $carbon->parse($createdAt);
+                    $dueontime = $dueOn->addDays($days);
                     $deliveredAt = $carbon->parse($order->deliveredAt);
                     
                     @endphp 
@@ -29,7 +30,7 @@
                     <td>{{$seller->name}}</td>
                     <td>{{$buyer->name}}</td>
                     <td>{{$postInfo->title}}</td>
-                    <td>{{$dueOn->toFormattedDateString()}}</td>    
+                    <td>{{$dueontime->toFormattedDateString()}}</td>    
                     <td>
                       @if($order->deliveredAt==null)
                          Not yet delivered
