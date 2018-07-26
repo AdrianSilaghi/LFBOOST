@@ -21,10 +21,10 @@
                     <th scope="col">Seller</th>
                     <th scope="col">Buyer</th>
                     <th scope="col">Order Name</th>
-                    <th class="col">Due on</th>
-                    <th class="col">Delivered On</th>
-                    <th class="col">Status</th>
-                    <th class="col">Mark As</th>
+                    <th scope="col">Due on</th>
+                    <th scope="col">Delivered On</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Mark As</th>
                   </tr>
                 </thead>
                 <tbody>
