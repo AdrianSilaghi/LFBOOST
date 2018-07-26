@@ -36,7 +36,34 @@ const app = new Vue({
     }
 });
 
+$('#exampleModal').ready(function(){
+    var button = document.querySelector('#markasComplete');
+    button.addEventListener('click',function(){
+        var comment = $('#commentArea').val();
+        var raiting = $('#example').val();
+        var post_id = $('#post_id').val();
+        var transaction_id = $('#transaction_id').val();
+        console.log(comment,raiting);
+        axios.post('/api/addReview',{
+            comment:comment,
+            raiting:raiting,
+            post_id:post_id,
+        }).then(function(response){
+            axios.post('/order/api/markascomplete',{
+                transaction_id:transaction_id,
+            }).then(function(response){
+                if(response.status){
+                    console.log('markedascomplete');
+                    $('#exampleModal').modal('hide');
+                    location.reload(false);
+                }
+            })
+           
+        });
 
+
+    })
+})
 
 $(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip(); 

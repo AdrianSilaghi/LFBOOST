@@ -72,44 +72,6 @@
                     
             </div>
 
-            <div class="card m-t-20">
-                <div class="card-body">
-                        <form class="form-horizontal" method="POST" action="{{ route('addReview',[$post->id]) }}">
-                                {{ csrf_field() }}
-                        
-                                <div class="form-group{{ $errors->has('comment') ? ' has-error' : '' }}">
-                                <label for="name" class="col-md-4 control-label">Comment</label>
-                        
-                                    
-                                    <textarea class="form-control" name="comment" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        
-                                        @if ($errors->has('name'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('name') }}</strong>
-                                            </span>
-                                        @endif
-                                    
-                                </div>
-                                <div class="form-group{{ $errors->has('comment') ? ' has-error' : '' }}">
-                                        <label for="example" class="col-md-4 control-label">Raiting</label>
-
-                                        <select id="example" name="raiting">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                        </select>
-                                
-                                    <input type="hidden" name="post_id" value="{{$post->id}}">            
-                                            
-                                </div>
-                                <div class="form-group">
-                                    <button class="btn btn-outline-success" type="submit">Add</button>
-                                </div>
-                        </form>
-                </div>
-            </div>
             @foreach($tags as $tag)
             <button class="btn btn-outline-dark btn-sm m-t-10" disabled="disabled">{{$tag->name}}</button>
             @endforeach

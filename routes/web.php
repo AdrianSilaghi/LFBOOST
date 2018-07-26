@@ -19,8 +19,11 @@ Route::get('/', 'PagesController@commingOutSoon')->name('index');
 
 Route::get('/become_a_seller','PagesController@becomeSeller')->name('becomeSeller');
 Route::get('/dashboard', 'PagesController@dashboard')->name('dashboard')->middleware('auth');
+Route::post('/order/api/markascomplete','OrdersController@markOrderAsComplete')->middleware('auth');
 
 Route::get('/dashboard/orders','OrdersController@dashboardOrders')->name('dashboardOrders')->middleware('auth');
+
+Route::get('/dashboard/order','OrdersController@speicifOrder')->name('speicifOrder')->middleware('auth');
 Route::get('/dashboard/orders/queuedOrders','OrdersController@queuedOrders')->name('queuedOrders')->middleware('auth');
 Route::get('/dashboard/orders/activeOrders','OrdersController@activeOrders')->name('activeOrders')->middleware('auth');
 Route::get('/dashboard/orders/deliveredOrders','OrdersController@deliveredOrders')->name('deliveredOrders')->middleware('auth');

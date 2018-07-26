@@ -48,7 +48,7 @@
                         <button type="button" class="btn btn-success btn-sm" disabled="disabled">Completed</button>
                         @endif
                     </td>
-                    <td><a href="#"><i class="fas fa-angle-double-right fa-lg" style="color:#00b22d;"></i></a></td>
+                    <td><a href="{{route('speicifOrder',['orderID'=>$order->transaction_id])}}"><i class="fas fa-angle-double-right fa-lg" style="color:#00b22d;"></i></a></td>
                   </tr>
                   @endforeach
                 </tbody>

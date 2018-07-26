@@ -14,7 +14,7 @@
     
     <div class="row">
         <div class="col">
-                <ul class="nav" id="menu">
+                <ul class="nav nav-tabs">
                         <li class="nav-item" id="link">
                         <a class="nav-link" href="{{route('dashboardOrders')}}">All</a>
                         </li>
@@ -25,7 +25,7 @@
                           <a class="nav-link" href="{{route('activeOrders')}}">Active</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link disabled" href="{{route('deliveredOrders')}}">Delivered</a>
+                          <a class="nav-link" href="{{route('deliveredOrders')}}">Delivered</a>
                         </li>
                         <li class="nav-item">
                                 <a class="nav-link" href="{{route('completedOrders')}}">Completed</a>
