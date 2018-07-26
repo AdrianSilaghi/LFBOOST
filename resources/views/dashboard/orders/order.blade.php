@@ -203,17 +203,8 @@ $deliveredAt = $carbon->parse($order->deliveredAt);
                                                 After accepting the order , it will go in Active mode, where you can start working on it.
                                         </small>
                                         <hr>
-                                        <small class="form-text text-muted">
-                                                While the order is in Active mode, there will be a chat box on this page, letting you talk details with the buyer.
-                                                <hr>
-                                        </small>
-                                        <button id="" data-toggle="modal" data-target="#deliverModal" class="btn btn-primary btn-lg btn-block">Deliver order</button>
-                                        @include('dashboard.orders.delivermodal')
-                                        <small class="form-text text-muted">
-                                                Once you finish your order you must deliver it.Otherwise it will not count towards your account balance.
-                                                <hr>
-                                                Once you click, a form will apear, you will need to upload 1-2 screenshots from while u were performing the service for confirmation.
-                                        </small>
+                                    
+                                        
                                         @endif
                                          @if($order->completed==true)
                                          <small class="form-text text-muted">
@@ -225,15 +216,28 @@ $deliveredAt = $carbon->parse($order->deliveredAt);
                                         <small class="form-text text-muted m-t-20">
                                             <span style="font-weight:bold;">${{$priceforSeller}} </span> have been added to your acccount and the 14 days clearence period starts now!
                                         </small>
-                                         @endif
-                                         @if($order->pending == true)
-                                         
+                                        @endif
+                                        @if($order->pending == true)
+                                         <small class="form-text text-muted">The order has been delivered.
+                                                <hr> 
+                                            Waiting for buyers confirmation.
+                                            <hr>
+                                            If he doesn't reply within 3 days, the order will be marked as complete.
+                                        
+                                        </small>
                                         @else
                                         @if($order->progress==true)
                                         <small class="form-text text-muted">
                                                The order is in Active state, please use the chat box below to communicate with the buyer.
                                         </small>
-
+                                        <hr>
+                                        <button id="" data-toggle="modal" data-target="#deliverModal" class="btn btn-primary btn-lg btn-block">Deliver order</button>
+                                        @include('dashboard.orders.delivermodal')
+                                        <small class="form-text text-muted">
+                                                Once you finish your order you must deliver it.Otherwise it will not count towards your account balance.
+                                                <hr>
+                                                Once you click, a form will apear, you will need to upload 1-2 screenshots from while u were performing the service for confirmation.
+                                        </small>
                                         
                                         @endif
                                         @endif
