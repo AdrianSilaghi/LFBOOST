@@ -30,10 +30,12 @@
                                         </ul>
                                 </div>
                                 <div class="card-footer">
-                                    <a role="button" href="{{route('payment.finish',['id'=>$post])}}" class="btn btn-success btn-block btn-lg" style="color:white;">Order Now</a>
-                                    <small id="passwordHelpBlock" class="form-text text-muted text-center">
-                                           You wont be charged yet.
-                                          </small>
+                                                <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                  <span class="input-group-text">Notes for the seller:</span>
+                                                                </div>
+                                                                <textarea class="form-control" name="notes" id="notesForSeller" rows="4" aria-label="With textarea"></textarea>
+                                                </div>
                                 </div>
                             
             </div>

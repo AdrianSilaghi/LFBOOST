@@ -81,8 +81,9 @@ $deliveredAt = $carbon->parse($order->deliveredAt);
                     </div>
                     <div class="card-body">
                                     @if($order->queued==true)
-                                    <small class="form-text text-muted m-b-20">
+                                    <small class="form-text text-muted m-b-20 text-center">
                                             Order is Queued. Waiting for seller to accept it!
+                                            <hr>
                                      </small>
                                     @endif
                                      @if($order->completed==true)
