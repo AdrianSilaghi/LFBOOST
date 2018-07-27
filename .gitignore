@@ -1,10 +1,12 @@
 /node_modules
 /public/hot
 /public/storage
+/public/js/app.js
 /storage/*.key
 /vendor
 /.idea
 /.vagrant
+.gitignore
 Homestead.json
 Homestead.yaml
 npm-debug.log
