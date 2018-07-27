@@ -8,6 +8,7 @@ use Auth;
 use App\User;
 use App\Order;
 use App\Notifications\NotifyOrderOwner;
+use Image;
 
 class OrdersController extends Controller
 {
