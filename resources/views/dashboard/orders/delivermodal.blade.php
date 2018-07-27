@@ -17,7 +17,7 @@
                    </small>
                    {{-- push agianss --}}
                    <div class="d-flex">
-                        <
+                        
                         <form action="{{url('/order/api/addProof')}}" class="dropzone">
                         {{ csrf_field() }}
                         </form>
