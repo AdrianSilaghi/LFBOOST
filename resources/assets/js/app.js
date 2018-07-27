@@ -41,9 +41,16 @@ $(document).ready(function(){
     if($('#deliverModal').length > 0 ){
         var myDropzone = Dropzone.forElement('.dropzone');
         var button = document.querySelector('#deliverOrder');
+        var transaction_id = $('#transaction_id').val();
         button.addEventListener('click',function(){
+
+            myDropzone.on("sending", function (file, xhr, formData) {
+
+                formData.append("transaction_id", transaction_id);
+
+            });
             myDropzone.processQueue();
-            axios.post('/order/api/markasdelivere',{
+            axios.post('/order/api/markasdelivered',{
                 transaction_id:transaction_id,
             }).then(function(response){
                 if(response.status){

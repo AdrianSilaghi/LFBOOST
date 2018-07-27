@@ -91,9 +91,9 @@ class OrdersController extends Controller
             $filename = time() . '.' . $image->getClientOriginalExtension();
             Image::make($image)->save( public_path('/uploads/posts/' . $filename));
 
-        $post = Post::find($request->id);
-        $post->image = $filename;
-        $post->save();  
+        $order = Order::where('transaction_id',$request->transaction_id)->first();
+        $order->image = $filename;
+        $order->save();  
         }
 
 
