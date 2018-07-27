@@ -22,7 +22,7 @@ Route::get('/dashboard', 'PagesController@dashboard')->name('dashboard')->middle
 
 Route::post('/order/api/markascomplete','OrdersController@markOrderAsComplete')->middleware('auth');
 Route::post('/order/api/markasactive','OrdersController@markOrderAsActive')->middleware('auth');
-Route::post('/order/api/markasdelivere','OrdersController@markOrderAsDelivered')->middleware('auth');
+Route::post('/order/api/markasdelivered','OrdersController@markOrderAsDelivered')->middleware('auth');
 Route::post('/order/api/addProof','OrdersController@addProof')->middleware('auth');
 
 Route::get('/dashboard/orders','OrdersController@dashboardOrders')->name('dashboardOrders')->middleware('auth');
