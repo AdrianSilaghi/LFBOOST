@@ -69,6 +69,13 @@
     <script src="{{asset('js/bootstrap-tagsinput.js')}}"></script>
     <script src="{{asset('js/jquery.barrating.min.js')}}"></script>
     <script src="https://js.braintreegateway.com/web/dropin/1.11.0/js/dropin.min.js"></script>
-    <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4 log-level="warn"></script>
+    <!-- Load PayPal's checkout.js Library. -->
+<script src="https://www.paypalobjects.com/api/checkout.js" data-version-4 log-level="warn"></script>
+
+<!-- Load the client component. -->
+<script src="https://js.braintreegateway.com/web/3.34.1/js/client.min.js"></script>
+
+<!-- Load the PayPal Checkout component. -->
+<script src="https://js.braintreegateway.com/web/3.34.1/js/paypal-checkout.min.js"></script>
     
 </html>

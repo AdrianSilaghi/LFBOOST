@@ -149,7 +149,7 @@ $(document).ready(function () {
         }
         var x = GetURLParameter('id');
         
-        
+        var price = GetURLParameter('price')
         
        
         axios.get('/payment/api/token')
@@ -158,16 +158,93 @@ $(document).ready(function () {
                 var CLIENT_TOKEN_FROM_SERVER = response.data;
                 var button = document.querySelector('#submit-button');
                 
-               
-                
+                braintree.client.create({
+                    authorization: CLIENT_TOKEN_FROM_SERVER
+                  }, function (clientErr, clientInstance) {
                   
+                    // Stop if there was a problem creating the client.
+                    // This could happen if there is a network error or if the authorization
+                    // is invalid.
+                    if (clientErr) {
+                      console.error('Error creating client:', clientErr);
+                      return;
+                    }
+                  
+                    // Create a PayPal Checkout component.
+                    braintree.paypalCheckout.create({
+                      client: clientInstance
+                    }, function (paypalCheckoutErr, paypalCheckoutInstance) {
+                  
+                      // Stop if there was a problem creating PayPal Checkout.
+                      // This could happen if there was a network error or if it's incorrectly
+                      // configured.
+                      if (paypalCheckoutErr) {
+                        console.error('Error creating PayPal Checkout:', paypalCheckoutErr);
+                        return;
+                      }
+                  
+                      // Set up PayPal with the checkout.js library
+                      paypal.Button.render({
+                        env: 'sandbox', // Or 'sandbox'
+                        commit: true, // This will add the transaction amount to the PayPal button
+                  
+                        payment: function () {
+                          return paypalCheckoutInstance.createPayment({
+                            flow: 'checkout', // Required
+                            amount: price, // Required
+                            currency: 'EUR', // Required
+                            
+                          });
+                        },
+                  
+                        onAuthorize: function (data, actions) {
+                          return paypalCheckoutInstance.tokenizePayment(data, function (err, payload) {
+                            axios.post('/payment/api/process', {
+                                payload,
+                                postId:x,
+                            }).then(function(response){
+                                var noteForBuyer = $('#notesForSeller').val();
+                                
+                                var data = response.data.transaction;
+                               if(response.status == 200){
+                                   axios.post('/order/api/newOrder',{
+                                        data,
+                                       postId:x,
+                                       noteForBuyer:noteForBuyer
+                                   }).then(function(response){
+                                    
+                                   })
+                               }
+                            }).catch(function (error){
+                                console.log(error);
+                            })
+                          });
+                        },
+                  
+                        onCancel: function (data) {
+                          console.log('checkout.js payment cancelled', JSON.stringify(data, 0, 2));
+                        },
+                  
+                        onError: function (err) {
+                          console.error('checkout.js error', err);
+                        }
+                      }, '#paypal-button').then(function () {
+                        // The PayPal button will be rendered in an html element with the id
+                        // `paypal-button`. This function will be called when the PayPal button
+                        // is set up and ready to be used.
+                      });
+                  
+                    });
+                  
+                  });
+
                 braintree.dropin.create({
                     authorization: CLIENT_TOKEN_FROM_SERVER,
                     container: '#dropin-container',
-                    paypal,
                 }, function (createErr, instance) {
                     button.addEventListener('click', function () {
                         instance.requestPaymentMethod(function (err, payload) {
+                            console.log(CLIENT_TOKEN_FROM_SERVER);
                             axios.post('/payment/api/process', {
                                 payload,
                                 postId:x,

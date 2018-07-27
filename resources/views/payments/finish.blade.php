@@ -47,7 +47,11 @@
                             Payment
                     </div>
                     <div class="card-body">
-                                
+                            <div class="col text-center">
+                                        <div id="paypal-button"></div>
+                            </div>
+                        
+                        <hr>
                         <div id="dropin-container"></div>
                         <button class="btn btn-outline-success float-right" id="submit-button">Make payment</button>
                         
