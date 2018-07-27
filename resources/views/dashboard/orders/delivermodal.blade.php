@@ -12,7 +12,7 @@
             <div class="modal-body">
                    <small class="form-text text-muted">Before you can deliver your order you must provide proof of service completion.
                        <hr>
-                       Please attach at least 2 screenshots.(They might be in the progrees of the service or after it).
+                       Please attach 1 screenshot.(They might be in the progrees of the service or after it).
                        <hr>
                    </small>
                    {{-- push agianss --}}
