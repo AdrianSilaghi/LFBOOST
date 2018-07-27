@@ -40,7 +40,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="">
         @include('_includes.nav.main')
         @include('_includes.nav.dashboardmenu')
         @include('_includes.messages')
