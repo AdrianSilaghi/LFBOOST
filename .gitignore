@@ -1,7 +1,7 @@
 /node_modules
 /public/hot
 /public/storage
-
+/public/js/app.js
 /storage/*.key
 /vendor
 /.idea
@@ -15,4 +15,4 @@ yarn-error.log
 composser.json
 package.json
 composer.lock
-/public/js/app.js
+

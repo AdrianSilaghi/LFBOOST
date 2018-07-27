@@ -36,6 +36,8 @@
 
                                                 <small id="shortDescHelpBlock" class="form-text text-muted">
                                                         Title is the first thing buyers see about your boost!
+                                                        <hr>
+                                                        Make sure it is representative of what the service will offer!
                                                 </small>
 
                                         </div>
@@ -127,6 +129,8 @@
                                         <div class="col">
                                                 <small id="shortDescHelpBlock" class="form-text text-muted">
                                                         Summarize what this boost offers buyers, and why you included these items in your boost.
+                                                        <br>
+                                                        (e.g:"5 games won in ranked <br>"You will reach x ELO" <br> "You will reach x ILVL" <br> etc )
                                                 </small>
                                         </div>
                                     </div>
@@ -236,7 +240,9 @@
                                                 </div>
                                         </div>
                                         <div class="col">
-                                            <small class="form-text text-muted">Indicate what you need before you can start working.</small>
+                                            <small class="form-text text-muted">Indicate what you need before you can start working. <br> 
+                                            (e.g Provide me with the following information: Game ID, etc)
+                                            </small>
                                         </div>
                                 </div>
                                 <div class="d-flex">

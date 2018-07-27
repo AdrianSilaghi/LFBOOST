@@ -20,6 +20,10 @@ Route::get('/', 'PagesController@commingOutSoon')->name('index');
 Route::get('/become_a_seller','PagesController@becomeSeller')->name('becomeSeller');
 Route::get('/dashboard', 'PagesController@dashboard')->name('dashboard')->middleware('auth');
 
+
+Route::get('/dashboard/inbox/messages','MessageController@fetch')->middleware('auth');
+Route::post('/dashboard/inbox/messages','MessageController@sentMessage')->middleware('auth');
+
 Route::post('/order/api/markascomplete','OrdersController@markOrderAsComplete')->middleware('auth');
 Route::post('/order/api/markasactive','OrdersController@markOrderAsActive')->middleware('auth');
 Route::post('/order/api/markasdelivered','OrdersController@markOrderAsDelivered')->middleware('auth');

@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.dashboardid')
 @section('content')
 
 @inject('user','App\User')

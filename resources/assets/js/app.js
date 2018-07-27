@@ -16,11 +16,14 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 Vue.component('notification', require('./components/Notification.vue'));
+Vue.component('message', require('./components/Message.vue'));
+Vue.component('sent-message', require('./components/Sent.vue'));
 
 const app = new Vue({
     el: '#app',
     data: {
-        notifications: ''
+        notifications: '',
+        messages:[],
     },
     created() {
         axios.post('/notification/api/get').then(response => {
@@ -32,8 +35,29 @@ const app = new Vue({
                 .notification((notification) => {
                     this.notifications.push(notification);
                 });
-        
-    }
+                
+        this.fetchMessages();
+        Echo.private('chat').listen('MessageSentEvent',(e)=>{
+            this.messages.push({
+                message:e.message.message,
+                user:e.user,
+            })
+        })
+               
+    },
+    methods: {
+        addMessage(message){
+            this.messages.push(message)
+            axios.post('/dashboard/inbox/messages',message).then(response=>{
+
+            });
+        },
+        fetchMessages(){
+            axios.get('/dashboard/inbox/messages').then(response=>{
+                this.messages = response.data
+            });
+        },
+    },
 });
 
 

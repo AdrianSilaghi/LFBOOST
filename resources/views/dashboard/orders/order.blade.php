@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.dashboardid')
 @section('content')
 @inject('carbon','Carbon\Carbon')
 @php
@@ -84,12 +84,16 @@ $deliveredAt = $carbon->parse($order->deliveredAt);
                                     <small class="form-text text-muted m-b-20 text-center">
                                             Order is Queued. Waiting for seller to accept it!
                                             <hr>
+                                            Once the order is Active you will be able to communicate with the seller trough our system.
+                                            <hr>
+                                            A new conversation will appear in the Inbox (Dashboard).
                                      </small>
                                     @endif
                                      @if($order->completed==true)
                                         <h6 class="form-text text-muted text-center">Thank you for the review!</h6>
                                         <small class="form-text text-muted m-b-20 text-center">
-                                                This is all.
+                                            <hr>
+                                                Thanks for choosing us.
                                          </small>
                                      @endif
                                      @if($order->pending == true)
@@ -222,13 +226,15 @@ $deliveredAt = $carbon->parse($order->deliveredAt);
                                                 <hr> 
                                             Waiting for buyers confirmation.
                                             <hr>
-                                            If he doesn't reply within 3 days, the order will be marked as complete.
+                                            If the buyer doesn't reply within 3 days, the order will be marked as complete and the clearence process will begin.
                                         
                                         </small>
                                         @else
                                         @if($order->progress==true)
                                         <small class="form-text text-muted">
-                                               The order is in Active state, please use the chat box below to communicate with the buyer.
+                                               The order is Active. Please use our system to communicate with the buyer!
+                                               <hr>
+                                               Go to Dashboard -> Inbox to see the new conversation that has been created.
                                         </small>
                                         <hr>
                                         <button id="" data-toggle="modal" data-target="#deliverModal" class="btn btn-primary btn-lg btn-block">Deliver order</button>

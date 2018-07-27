@@ -40,7 +40,7 @@
 </head>
 {{-- ss --}}
 <body>
-    <div id="app">
+    <div>
         @include('_includes.nav.main')
         @include('_includes.nav.dashboardmenu')
         @include('_includes.messages')
