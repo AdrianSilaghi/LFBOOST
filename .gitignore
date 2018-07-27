@@ -14,4 +14,4 @@ yarn-error.log
 .env
 composser.json
 package.json
-
+composer.lock
