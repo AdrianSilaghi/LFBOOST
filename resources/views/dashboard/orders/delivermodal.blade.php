@@ -21,6 +21,8 @@
                         <form action="{{url('/order/api/addProof')}}" class="dropzone">
                         {{ csrf_field() }}
                         </form>
+
+                        <button type="button" class="btn btn-primary btn-block btn-lg" id="deliverOrder">Deliver Order</button>
                         </div>
                            
             </div>

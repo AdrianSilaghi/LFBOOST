@@ -36,6 +36,26 @@ const app = new Vue({
     }
 });
 
+
+$(document).ready(function(){
+    if($('#deliverModal').length > 0 ){
+        var myDropzone = Dropzone.forElement('.dropzone');
+        var button = document.querySelector('#deliverOrder');
+        button.addEventListener('click',function(){
+            myDropzone.processQueue();
+            axios.post('/order/api/markasdelivere',{
+                transaction_id:transaction_id,
+            }).then(function(response){
+                if(response.status){
+                    $('#deliverModal').modal('hide');
+                    location.reload(false);
+                }
+            })
+
+        })
+    }
+})
+
 $(document).ready(function(){
     if($('#markasComplete').length > 0 ){
     var button = document.querySelector('#markasComplete');
