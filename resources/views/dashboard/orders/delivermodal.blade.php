@@ -22,7 +22,7 @@
                         {{ csrf_field() }}
                         </form>
 
-                        <button type="button" class="btn btn-primary btn-block btn-lg" id="deliverOrder">Deliver Order</button>
+                        <button type="button" class="btn btn-primary btn-block btn-lg m-t-20" id="deliverOrder">Deliver Order</button>
                         </div>
                            
             </div>
