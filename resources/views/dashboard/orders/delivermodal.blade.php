@@ -17,10 +17,11 @@
                    </small>
                    {{-- push agianss --}}
                    <div class="d-flex">
-                        
+                        <div class="col">
                         <form action="{{url('/order/api/addProof')}}" class="dropzone">
                         {{ csrf_field() }}
                         </form>
+                        </div>
                            
             </div>
             <div class="modal-footer">
