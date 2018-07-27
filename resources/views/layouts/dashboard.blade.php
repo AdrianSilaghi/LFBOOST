@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap-tagsinput.css')}}">
     <link rel="stylesheet" href="{{asset('css/fontawesome-stars.css')}}">
 </head>
-
+{{--  --}}
 <body>
     <div>
         @include('_includes.nav.main')
