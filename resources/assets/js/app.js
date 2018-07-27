@@ -55,7 +55,7 @@ $(document).ready(function(){
             }).then(function(response){
                 if(response.status){
                     $('#deliverModal').modal('hide');
-                    location.reload(false);
+                    //location.reload(false);
                 }
             })
 
