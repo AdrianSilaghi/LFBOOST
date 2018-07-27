@@ -92,7 +92,7 @@ class OrdersController extends Controller
             Image::make($image)->save( public_path('/uploads/posts/' . $filename));
 
         $order = Order::where('transaction_id',$request->transaction_id)->first();
-        $order->image = $filename;
+        $order->image[] = $filename;
         $order->save();  
         }
 
