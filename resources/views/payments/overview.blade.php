@@ -1,4 +1,4 @@
-@extends('layouts.payments')
+@extends('layouts.payments2')
 @section('content')
 <div class="container" id="payUP">
     <div class="row justify-content-center">

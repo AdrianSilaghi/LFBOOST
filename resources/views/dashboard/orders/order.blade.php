@@ -69,6 +69,21 @@ $deliveredAt = $carbon->parse($order->deliveredAt);
                                             <a href="{{route('showWithName',[$boost->user->name,$boost->slug])}}">{{$boost->title}}</a>
                                             </li> 
                                     </ul>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item float-left">Category</li>
+                                        <li class="list-inline-item float-right text-muted">
+                                        {{$boost->cat_name}}</a>
+                                        </li> 
+                                    </ul>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item float-left">Subcategory</li>
+                                            <li class="list-inline-item float-right text-muted">
+                                            {{$boost->subcat_name}}</a>
+                                            </li> 
+                                    </ul>
+                                        <p>Notes from the seller:</p>
+                                        <hr>
+                                        <p class="" >{{$boost->requirements}}</p>
                             </div>
                             
                     </div>
@@ -185,6 +200,21 @@ $deliveredAt = $carbon->parse($order->deliveredAt);
                                                 <a href="{{route('showWithName',[$boost->user->name,$boost->slug])}}">{{$boost->title}}</a>
                                                 </li> 
                                         </ul>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item float-left">Category</li>
+                                            <li class="list-inline-item float-right text-muted">
+                                            {{$boost->cat_name}}</a>
+                                            </li> 
+                                        </ul>
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item float-left">Subcategory</li>
+                                                <li class="list-inline-item float-right text-muted">
+                                                {{$boost->subcat_name}}</a>
+                                                </li> 
+                                        </ul>
+                                            <p>Notes from the buyer:</p>
+                                            <hr>
+                                            <p class="" >{{$order->notes}}</p>
                                 </div>
                                 
                         </div>

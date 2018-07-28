@@ -34,10 +34,10 @@
                                                                 <div class="input-group-prepend">
                                                                   <span class="input-group-text">Notes for the seller:</span>
                                                                 </div>
-                                                                <textarea class="form-control" name="notes" id="notesForSeller" rows="4" aria-label="With textarea"></textarea>
+                                                                <textarea class="form-control" name="notes" id="notesForSeller" rows="4" aria-label="With textarea" required></textarea>
                                                 </div>
                                                 <small class="form-text text-muted">
-                                                                Please provide some notes(indications) for the seller.
+                                                        Please provide some notes (indications) for the seller.
                                                 </small>
                                 </div>
                             
