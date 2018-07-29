@@ -1,8 +1,8 @@
 <template>
     
-    <div class="btn-group dropleft">
-  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Notifications {{ notifications.length }}
+    <div class="btn-group dropleft ">
+  <button type="button" class="btn btn-outline-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="far fa-bell m-r-5"></i>{{ notifications.length }}
   </button>
   <div class="dropdown-menu">
     <li v-for="notification in notifications">

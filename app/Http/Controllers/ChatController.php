@@ -72,7 +72,8 @@ class ChatController extends Controller
             'contact_id'=> $request->contact_id,
             'chat'=> $request->chat
         ]);
-
+        $user = User::find($request->user_id);
+        $user->notify(new NotifyChat($chat));
         return [];
     }
 
