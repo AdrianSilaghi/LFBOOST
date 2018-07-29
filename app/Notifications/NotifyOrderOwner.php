@@ -46,7 +46,8 @@ class NotifyOrderOwner extends Notification
     {
         return [
             'data' => [
-                'order' => $this->order
+                'order' => $this->order,
+                'msg' => 'You have a new order!'
             ]
         ];
     }

@@ -6,7 +6,7 @@ use App\Chat;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
-
+use App\Notifications\NotifyChat;
 class ChatController extends Controller
 {
     /**
@@ -72,8 +72,11 @@ class ChatController extends Controller
             'contact_id'=> $request->contact_id,
             'chat'=> $request->chat
         ]);
-        $user = User::find($request->user_id);
-        $user->notify(new NotifyChat($chat));
+        $userb = User::find($request->user_id);
+
+        $user = User::find($request->contact_id);
+        $user->notify(new NotifyChat($userb));
+
         return [];
     }
 

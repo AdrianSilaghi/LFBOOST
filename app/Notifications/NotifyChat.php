@@ -6,20 +6,21 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use App\Chat;
+use App\User;
+
 
 class NotifyChat extends Notification
 {
     use Queueable;
-    public $chat;
+    public $user;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(Chat $chat)
+    public function __construct(User $user)
     {
-        $this->chat = $chat;
+        $this->user = $user;
     }
 
     /**
@@ -56,14 +57,16 @@ class NotifyChat extends Notification
     public function toDatabase($notifiable)
     {
         return [
-            'chat' => $this->chat
+            'user' => $this->user,
+            'msg' => 'You have a new message'
         ];
     }
     public function toBroadcast($notifiable)
     {
         return [
             'data' => [
-                'chat' => $this->chat
+                'user' => $this->user,
+                'msg' => 'You have a new message'
             ]
         ];
     }

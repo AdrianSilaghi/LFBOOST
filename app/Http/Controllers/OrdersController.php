@@ -30,9 +30,9 @@ class OrdersController extends Controller
         $order->notes = $request->input('noteForBuyer');
         $order->save();
 
-
-        $order = Order::where('seller_id',$post->user_id)->first();
-        $user = User::where('id',$order->seller_id)->first();
+        $trans_id = $request->input('data.id');
+        $order = Order::where('transaction_id',$trans_id)->first();
+        $user = User::find($order->seller_id);
         $user->notify(new NotifyOrderOwner($order));
         
     }

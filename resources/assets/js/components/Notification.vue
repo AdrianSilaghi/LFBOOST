@@ -7,12 +7,19 @@
   <div class="dropdown-menu">
     <li v-for="notification in notifications">
         <a class="dropdown-item" href="#" v-on:click="MarkAsRead(notification)">
-        You have a new order!<br>
-                    <small></small>
+        
+        <div v-if="notification.type.includes('NotifyChat')">
+            <p>You have a new message from {{notification.data.user.name}}</p>
+            <small class="form-text text-muted">Please check your inbox.</small>
+        </div>
+        <div v-else v-on:click="GoToOrder(notification)">
+            <p>You have a new order!</p>
+            <small class="form-text text-muted">Please check your Orders.</small>
+            </div>
         </a>
     </li>
     <li v-if="notifications.length == 0">
-                <a href=" " class="dropdown-item">
+                <a class="dropdown-item">
                 You have no notifications
                     
                 </a>
@@ -30,8 +37,14 @@
                     id: notification.id
                 };
                 axios.post('/notification/api/read', data).then(response => {
-                    location.reload(false);
+                    
                 });
+            },
+            GoToOrder: function(notification){
+                var data = {
+                    transaction_id:notification.data.order.transaction_id
+                };
+                window.location.href = window.location.origin + '/dashboard/order?orderID=' + data.transaction_id;
             }
         }
     }
