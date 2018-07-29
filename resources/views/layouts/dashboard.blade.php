@@ -37,21 +37,21 @@
     <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/bootstrap-tagsinput.css')}}">
     <link rel="stylesheet" href="{{asset('css/fontawesome-stars.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
 </head>
 {{-- ss --}}
 <body>
-    <div id="app">
+    <div>
         @include('_includes.nav.main')
         @include('_includes.nav.dashboardmenu')
         @include('_includes.messages')
         <div class="container">
-            <div class="row justify-content-center">
-                
-                
                 @yield('content')
+        </div>
                 
-        </div>
-        </div>
+                
+                
+          
         @include('_includes.nav.footer')
     </div>
 </body>

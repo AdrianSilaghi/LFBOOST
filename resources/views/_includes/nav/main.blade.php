@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light">
-  <div class="container justify-content-center">
+  <div class="container justify-content-center" id="notification">
     @guest
     <a class="navbar-brand m-b-5" href="{{route('home')}}">
             <img src="{{asset('images/logos/logoGood.png')}}" alt="">

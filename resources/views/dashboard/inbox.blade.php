@@ -3,12 +3,22 @@
 
 <div class="contianer">
     <div class="row">
-        <div class="col">
-           <h1 class="text-center">Chat app</h1>
-           <message :messages="messages"></message>
-           <sent-message v-on:messagesent="addMessage" :user="{{Auth()->user()}}"></sent-message>
-        </div>
+            <div class="col-2 m-t-20 ">
+                    @forelse($contacts as $contact)
+            <a href="{{route('dashboard.showChat',['id'=>$contact->id])}}">
+                    <div class="card m-t-5">
+                            <div class="card-body">
+                            <p class="text-muted">{{$contact->name}}</p>
+                            
+                            </div>
+                          </div>
+                        </a>
+                    @empty
+                    You have no contacts;
+                    @endforelse
+                </div>
     </div>
+
 </div>
 
 @endsection

@@ -16,14 +16,94 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 Vue.component('notification', require('./components/Notification.vue'));
-Vue.component('message', require('./components/Message.vue'));
-Vue.component('sent-message', require('./components/Sent.vue'));
+Vue.component('chat', require('./components/Chat.vue'));
+Vue.component('chat-composer', require('./components/ChatComposer.vue'));
+
+const chat = new Vue({
+    el: '#chat',
+    data: {
+      chats: ''
+        
+    },
+    created() {
+      const userId = $('meta[name="userId"]').attr('content');
+      const contactId = $('meta[name="contactId"]').attr('content');         
+
+        if(contactId != undefined){
+            axios.post('/dashboard/inbox/getChat/' + contactId).then((response) =>{
+                this.chats = response.data;
+            });
+
+            Echo.private('Chat.' + contactId + '.' + userId)
+            .listen('BroadcastChat',(e)=>{
+                this.chat.push(e.chat);
+            });
+        }
+    },
+});
+
+
+
+    // const contacts = new Vue({
+    //     el: '#contacts',
+    //     data: {
+    //         contacts:'',
+    //     },
+    //     created(){
+    //         this.fetchContacts();
+    //     },
+    //     methods:{
+    //         fetchContacts(){
+    //             axios.get('/messages/api/getcontacts').then(response=>{
+    //                 this.contacts = response.data;
+    //             })
+    //         },
+    //         messages: function(id){
+    //             alert(id);
+    //         }
+    //     }
+        
+
+    // });
+
+
+    // const chat = new Vue({
+    //     el: '#chat',
+    //     data: {
+    //         messages:[],
+    //     },
+    //     created() {
+                    
+    //         this.fetchMessages();
+    //         Echo.private('chat').listen('MessageSentEvent',(e)=>{
+    //             this.messages.push({
+    //                 message:e.message.message,
+    //                 user:e.user,
+    //             })
+    //         })
+                
+    //     },
+    //     methods: {
+    //         addMessage(message,conversation_id){
+    //             this.messages.push(message)
+    //             axios.post('/dashboard/inbox/messages',message,conversation_id).then(response=>{
+
+    //             });
+    //         },
+    //         fetchMessages(){
+    //             axios.get('/dashboard/inbox/messages').then(response=>{
+    //                 this.messages = response.data
+    //             });
+    //         },
+    //     },
+    // });
+
 
 const app = new Vue({
-    el: '#app',
+    el: '#notification',
     data: {
         notifications: '',
-        messages:[],
+        
     },
     created() {
         axios.post('/notification/api/get').then(response => {
@@ -35,29 +115,8 @@ const app = new Vue({
                 .notification((notification) => {
                     this.notifications.push(notification);
                 });
-                
-        this.fetchMessages();
-        Echo.private('chat').listen('MessageSentEvent',(e)=>{
-            this.messages.push({
-                message:e.message.message,
-                user:e.user,
-            })
-        })
                
-    },
-    methods: {
-        addMessage(message){
-            this.messages.push(message)
-            axios.post('/dashboard/inbox/messages',message).then(response=>{
-
-            });
-        },
-        fetchMessages(){
-            axios.get('/dashboard/inbox/messages').then(response=>{
-                this.messages = response.data
-            });
-        },
-    },
+    }
 });
 
 

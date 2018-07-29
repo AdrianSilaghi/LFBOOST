@@ -50,6 +50,18 @@ class User extends Authenticatable
         ];
     }
 
+    public function contactsOfMine(){
+        return $this->belongsToMany('App\User','contacts','user_id','contact_id');
+    }
+
+    
+    public function contactsOf(){
+        return $this->belongsToMany('App\User','contacts','contact_id','user_id');
+    }
+    
+    public function contacts(){
+        return $this->contactsOfMine->merge($this->contactsOf);
+    }
 
     public function messages(){
         return $this->hasMany(Message::class);

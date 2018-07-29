@@ -16,7 +16,7 @@
             <a class="nav-link" href="{{route('earnings')}}">Earnings</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="{{route('inbox')}}">Inbox</a>
+            <a class="nav-link" href="{{route('dashboard.getContacts')}}">Inbox</a>
               </li>
         </ul>
       </div>

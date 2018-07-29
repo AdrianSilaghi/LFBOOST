@@ -20,14 +20,21 @@ Route::get('/', 'PagesController@commingOutSoon')->name('index');
 Route::get('/become_a_seller','PagesController@becomeSeller')->name('becomeSeller');
 Route::get('/dashboard', 'PagesController@dashboard')->name('dashboard')->middleware('auth');
 
+Route::get('/dashboard/inbox','ChatController@index')->name('dashboard.getContacts')->middleware('auth');
+Route::get('/dashboard/inbox/{id}','ChatController@show')->name('dashboard.showChat')->middleware('auth');
+Route::post('/dashboard/inbox/getChat/{id}','ChatController@getChat')->middleware('auth');
+Route::post('/dahsboard/inbox/sendChat','ChatController@sendChat')->middleware('auth');
 
 Route::get('/dashboard/inbox/messages','MessageController@fetch')->middleware('auth');
 Route::post('/dashboard/inbox/messages','MessageController@sentMessage')->middleware('auth');
+
 
 Route::post('/order/api/markascomplete','OrdersController@markOrderAsComplete')->middleware('auth');
 Route::post('/order/api/markasactive','OrdersController@markOrderAsActive')->middleware('auth');
 Route::post('/order/api/markasdelivered','OrdersController@markOrderAsDelivered')->middleware('auth');
 Route::post('/order/api/addProof','OrdersController@addProof')->middleware('auth');
+
+
 
 Route::get('/dashboard/orders','OrdersController@dashboardOrders')->name('dashboardOrders')->middleware('auth');
 
@@ -35,7 +42,7 @@ Route::get('/dashboard/order','OrdersController@speicifOrder')->name('speicifOrd
 
 
 Route::get('/dashboard/earnings','PagesController@earnings')->name('earnings')->middleware('auth');
-Route::get('/dashboard/inbox','PagesController@inbox')->name('inbox')->middleware('auth');
+
 
 Route::post('/notification/api/get','NotificationsController@get')->name('notificationGet');
 Route::post('/notification/api/read','NotificationsController@read')->name('notificationRead');
