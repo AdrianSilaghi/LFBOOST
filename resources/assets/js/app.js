@@ -62,7 +62,7 @@ const app = new Vue({
     }
 });
 
-
+//deliver modal
 $(document).ready(function(){
     if($('#deliverModal').length > 0 ){
         var myDropzone = Dropzone.forElement('.dropzone');
@@ -89,6 +89,16 @@ $(document).ready(function(){
     }
 })
 
+
+
+//table pagination
+
+$(document).ready(function(){
+    if($('#ordersTable').length > 0 ){
+        $('#ordersTable').DataTable();
+    }
+})
+//mark as complete
 $(document).ready(function(){
     if($('#markasComplete').length > 0 ){
     var button = document.querySelector('#markasComplete');
@@ -133,7 +143,7 @@ $(document).ready(function(){
     }
 })
 
-
+//payment function .... meh
 $(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip(); 
     
@@ -223,13 +233,6 @@ $(document).ready(function () {
                                         contact_id: response.data.buyer_id
                                        }).then(function(response){
                                            if(response.data == 1 ){
-                                            $.notify({
-                                                // options
-                                                message: 'Your payment was successful, order and a new conversation have been created!' 
-                                            },{
-                                                // settings
-                                                type: 'success'
-                                            });
                                             function RedirectToDashboard() {
                                                 setTimeout(function () {
                                                     window.location.href = window.location.origin + '/dashboard'
@@ -242,16 +245,9 @@ $(document).ready(function () {
                                                 user_id: userone,
                                                 contact_id: usertwo,
                                             }).then(function(){
-                                                $.notify({
-                                                    // options
-                                                    message: 'Your payment was successful, order and a new conversation have been created!' 
-                                                },{
-                                                    // settings
-                                                    type: 'success'
-                                                });
                                                 function RedirectToDashboard() {
                                                     setTimeout(function () {
-                                                        window.location.href = window.location.origin + '/dashboard'
+                                                        window.location.href = window.location.origin + '/dashboard#paymentcomplete'
                                                     }, 3000);                                            
                                                 }
                                                 RedirectToDashboard();
@@ -314,16 +310,9 @@ $(document).ready(function () {
                                         contact_id: response.data.buyer_id
                                        }).then(function(response){
                                            if(response.data == 1 ){
-                                            $.notify({
-                                                // options
-                                                message: 'Your payment was successful, order and a new conversation have been created!' 
-                                            },{
-                                                // settings
-                                                type: 'success'
-                                            });
                                             function RedirectToDashboard() {
                                                 setTimeout(function () {
-                                                    window.location.href = window.location.origin + '/dashboard'
+                                                    window.location.href = window.location.origin + '/dashboard#paymentcomplete'
                                                 }, 3000);                                            
                                             }
                                             RedirectToDashboard();
@@ -333,16 +322,9 @@ $(document).ready(function () {
                                                 user_id: userone,
                                                 contact_id: usertwo,
                                             }).then(function(){
-                                                $.notify({
-                                                    // options
-                                                    message: 'Your payment was successful, order and a new conversation have been created!' 
-                                                },{
-                                                    // settings
-                                                    type: 'success'
-                                                });
                                                 function RedirectToDashboard() {
                                                     setTimeout(function () {
-                                                        window.location.href = window.location.origin + '/dashboard'
+                                                        window.location.href = window.location.origin + '/dashboard#paymentcomplete'
                                                     }, 3000);                                            
                                                 }
                                                 RedirectToDashboard();
@@ -372,6 +354,23 @@ $(document).ready(function () {
 
 });
 
+//notifications
+$(document).ready(function(){
+
+        if(window.location.hash === "#paymentcomplete"){
+            $.notify({
+                // options
+                message: 'Your payment was successful, order and a new conversation have been created!' 
+            },{
+                // settings
+                type: 'success'
+            });
+        }
+    
+})
+
+
+//select multiple
 $(document).ready(function () {
     if($('.select-multiple').length > 0 ){
         $('.select-multiple').select2();
@@ -379,6 +378,7 @@ $(document).ready(function () {
    
 });
 
+//stars plugin
 $(document).ready(function () {
     if($('#example').length > 0 ){
 
@@ -389,7 +389,7 @@ $(document).ready(function () {
 }
 });
 
-
+//categories
 $('#selectCategory').ready(function () {
     $('#selectCategory').on('change', '.custom-select', function () {
 
@@ -419,6 +419,7 @@ $('#selectCategory').ready(function () {
     });
 });
 
+//language 
 $(document).ready(function () {
     $('#addNewLangDiv').on('click', '.btn', function () {
         var languageId = $('#language').val();
@@ -439,8 +440,6 @@ $(document).ready(function () {
         });
     });
 });
-
-
 $(document).ready(function () {
     $('#hello').on('click', '.btn', function () {
         var langId = $('#languageId').val();
@@ -458,6 +457,8 @@ $(document).ready(function () {
         });
     });
 });
+
+//game
 $(document).ready(function () {
     $('#addNewGame').on('click', '.btn', function () {
         var gameId = $('#game').val();
@@ -477,8 +478,6 @@ $(document).ready(function () {
         });
     });
 });
-
-
 $(document).ready(function () {
     $('#gameList').on('click', '.btn', function () {
         var gameId = $('#uG').val();
@@ -497,6 +496,7 @@ $(document).ready(function () {
     });
 });
 
+//achivement
 $('#achivmentSelect').ready(function () {
     $('#achivmentSelect').on('change', '.custom-select', function () {
 
@@ -575,6 +575,8 @@ $(document).ready(function () {
 
 });
 
+
+//faq
 $(document).ready(function () {
     $('#faq').on('click', '#faqButton', function () {
 

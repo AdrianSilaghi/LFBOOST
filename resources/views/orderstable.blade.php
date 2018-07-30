@@ -1,11 +1,12 @@
-<div class="table-responsive">
-            <table class="table">
+
+            <table class="table" id="ordersTable">
                 <thead>
                   <tr>
                     <th scope="col">Order Number</th>
                     <th scope="col">Seller</th>
                     <th scope="col">Buyer</th>
                     <th scope="col">Order Name</th>
+                    <th scope="col">Price</th>
                     <th scope="col">Due on</th>
                     <th scope="col">Delivered On</th>
                     <th scope="col">Status</th>
@@ -30,6 +31,7 @@
                     <td>{{$seller->name}}</td>
                     <td>{{$buyer->name}}</td>
                     <td>{{$postInfo->title}}</td>
+                    <td>${{$postInfo->price}}</td>
                     <td>{{$dueontime->toFormattedDateString()}}</td>    
                     <td>
                       @if($order->deliveredAt==null)
@@ -60,4 +62,3 @@
                   @endforeach
                 </tbody>
               </table>
-</div>        

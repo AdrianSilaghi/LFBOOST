@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap-tagsinput.css')}}">
     <link rel="stylesheet" href="{{asset('css/fontawesome-stars.css')}}">
     <link rel="stylesheet" href="{{asset('css/animate.min.css')}}">
- 
+    <link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
 </head>
 {{-- ss --}}
 <body>
@@ -72,4 +72,5 @@
     <script src="{{asset('js/bootstrap-tagsinput.js')}}"></script>
     <script src="{{asset('js/jquery.barrating.min.js')}}"></script>
     <script src="{{asset('js/bootstrap-notify.min.js')}}"></script>
+    <script src="{{asset('js/datatables.min.js')}}"></script>
 </html>
