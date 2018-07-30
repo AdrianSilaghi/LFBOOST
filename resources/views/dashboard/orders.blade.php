@@ -1,48 +1,53 @@
 @extends('layouts.dashboard')
 @section('content')
-{{-- @inject('user','App\User')
-@inject('post','App\Post')
-@inject('carbon','Carbon\Carbon')
+@php
+$user = Auth::user();
+@endphp
 
-<div class="contianer">
-    <div class="row">
-        <div class="col">
-           <h3>Manage your orders</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-md m-t-20">
+        <div class="card" id="profileCard">
+            <div class="card-body" style="width:350px;">
+                <div class="row">
+                        <div class="col" id="onlineBtns">
+                                @if($user->isOnline())
+                                <span class="btn btn-outline-success btn-sm" id="onlineBtn">Online</span>
+                                @else
+                                <span class="btn btn-outline-dark btn-sm">Offline</span>
+                                @endif
+                        <div class="text-center">
+                            <img src="{{asset("uploads/avatars/$user->avatar")}}" style="width:150px; height:150px;border-radius:50%;">
+                        </div>
+                    <h5 class="card-title text-center m-t-15">{{$user->name}}</h5>
+                    <p class="small text-muted text-center" style="">
+                            @if(is_null($user->short_description))
+                            "You don't have any short description."
+                            @else
+                            "{{$user->short_description}}"
+                            @endif
+                    </p>
+                    </div>
+                    
+                </div>  
+                <div class="row">
+                <div class="col">
+                  
+                </div>  
+                </div> 
+                <div class="row">
+                    <div class="col">
+                         
+                    </div>
+                </div>  
+            </div>
         </div>
+        
     </div>
-    <div class="row">
-        <div class="col">
-            <table class="table table-dark">
-                <thead>
-                  <tr>
-                    <th scope="col">Order Number</th>
-                    <th scope="col">Seller</th>
-                    <th scope="col">Buyer</th>
-                    <th scope="col">Order Name</th>
-                    <th class="col">Due on</th>
-                    <th class="col">Delivered On</th>
-                    <th class="col">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    @foreach($orders as $order)
-                    @php
-                    $seller = $user->where('id',$order->seller_id)->first();
-                    $buyer = $user->where('id',$order->buyer_id)->first();
-                    $postInfo = $post->where('id',$order->post_id)->first();
-                    @endphp 
-                  <tr>
-                    <th>{{$order->transaction_id}}</th>
-                    <td>{{$seller->name}}</td>
-                    <td>{{$buyer->name}}</td>
-                    <td>{{$postInfo->title}}</td>
-                    <td></td>
-                  </tr>
-                  @endforeach
-                </tbody>
-              </table>
-        </div>
+    <div class="col">
+
     </div>
-</div> --}}
+    </div>
+  </div>
 
 @endsection

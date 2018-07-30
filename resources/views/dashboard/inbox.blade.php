@@ -1,11 +1,13 @@
 @extends('layouts.dashboard')
 @section('content')
 
+
+@if(count($contacts))
 <div class="contianer">
     <div class="row">
 
-            <div class="col-3 m-t-20"  id="contacts">
-                    <div class="card">
+            <div class="col-sm-lg m-t-20"  id="contacts">
+                    <div class="card" style="width:300px;">
                                 <div class="card-header">
                                                 <h5 class="form-text text-muted">Contacts:</h5>
                                  </div>
@@ -19,7 +21,7 @@
                                 </div>
                         </a>
                     @empty
-                    You have no contacts;
+                    
                     @endforelse
                 </div>
         </div>
@@ -27,6 +29,18 @@
     </div>
 
 </div>
-
+@else
+<div class="container">
+                <div class="row justify-content-center">
+                        <div class="col text-center m-t-100">
+                                        <span class="text-muted">
+                                                        <i class="far fa-comments fa-7x"></i>
+                                                        <h1 class="display-4">Nothing to see here yet!</h1>
+                                                        <small class="form-text text-muted">Please check again after you have recived an order!</small>
+                                        </span>
+                        </div>
+                </div>
+            </div>
+@endif
 @endsection
 
