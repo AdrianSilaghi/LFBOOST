@@ -14,7 +14,7 @@
                         </div>
                         <div id="chat">
                         <chat v-bind:chats="chats" v-bind:userid="{{auth()->user()->id}}" v-bind:contactid="{{$contact->id}}"></chat>
-                        </div>
+                        </div>  
                                 
                         
                 </div>

@@ -1,7 +1,7 @@
 <template>
 
         <div class="card"> 
-        <div class="card-body" v-if="chats.length != 0" style="overflow-y:scroll;height:600px;">
+        <div class="card-body" v-if="chats.length != 0" style="overflow-y:scroll;height:500px;">
         
             <div class="" v-for="chat in chats">
                     <div v-if="chat.user_id == userid">
