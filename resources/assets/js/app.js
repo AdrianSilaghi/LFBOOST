@@ -36,7 +36,7 @@ const chat = new Vue({
 
             Echo.private('Chat.' + contactId + '.' + userId)
             .listen('BroadcastChat',(e)=>{
-                this.chat.push(e.chat);
+                this.chats.push(e.chat);
             });
         }
     },

@@ -9,6 +9,7 @@ use App\Events\BroadcastChat;
 class Chat extends Model
 {
 
+
     protected $dispatchesEvents = [
         'created' => BroadcastChat::class
     ];
