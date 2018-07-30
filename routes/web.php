@@ -25,6 +25,10 @@ Route::get('/dashboard/inbox/{id}','ChatController@show')->name('dashboard.showC
 Route::post('/dashboard/inbox/getChat/{id}','ChatController@getChat')->middleware('auth');
 Route::post('/dahsboard/inbox/sendChat','ChatController@sendChat')->middleware('auth');
 
+Route::post('/dashboard/api/addContact','ContactsController@store')->middleware('auth');
+Route::post('/dashbaord/api/checkIfContact','ContactsController@checkIfContacts')->middleware('auth');
+
+
 Route::get('/dashboard/inbox/messages','MessageController@fetch')->middleware('auth');
 Route::post('/dashboard/inbox/messages','MessageController@sentMessage')->middleware('auth');
 

@@ -16,11 +16,34 @@ class ContactsController extends Controller
     }
 
     public function store (Request $request){
-        $cotnact = new Contacts;
-        $contact->user_id = Auth::user()->id;
-        $contact->contact_id= $request->contact_id;
+
+        $user_id = $request->user_id;
+        $contact_id = $request->contact_id;
+
+        $contact = new Contacts;
+        $contact->user_id = $user_id;
+        $contact->contact_id= $contact_id;
         $contact->save();
 
+        session()->flash('success','Your payment was successful , order and a new conversation were created!');
+        return response(200);
+    }
+
+    public function checkIfContacts (Request $request){
+        $user_id = $request->user_id;
+        $contact_id = $request->contact_id;
+
+        $contact = Contacts::where(function ($query) use ($user_id,$contact_id){
+            $query->where('user_id' , '=', $user_id)->where('contact_id','=',$contact_id);
+        })->orWhere(function($query) use ($user_id,$contact_id) {
+            $query->where('user_id','=',$contact_id)->where('contact_id','=', $user_id);
+        })->get();
+
+        if(count($contact)){
+            return 1;
+        }else{
+            return 2;
+        }
 
     }
 

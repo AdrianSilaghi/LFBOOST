@@ -40,6 +40,7 @@
     <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/bootstrap-tagsinput.css')}}">
     <link rel="stylesheet" href="{{asset('css/fontawesome-stars.css')}}">
+    <link rel="stylesheet" href="{{asset('css/animate.min.css')}}">
 </head>
 
 <body>
@@ -75,5 +76,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
     <script src="{{asset('js/bootstrap-tagsinput.js')}}"></script>
     <script src="{{asset('js/jquery.barrating.min.js')}}"></script>
- 
+    <script src="{{asset('js/bootstrap-notify.min.js')}}"></script>
 </html>

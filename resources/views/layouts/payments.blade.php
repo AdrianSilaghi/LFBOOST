@@ -40,6 +40,7 @@
     <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/bootstrap-tagsinput.css')}}">
     <link rel="stylesheet" href="{{asset('css/fontawesome-stars.css')}}">
+    <link rel="stylesheet" href="{{asset('css/animate.min.css')}}">
 </head>
 
 <body>
@@ -77,5 +78,5 @@
 
     <!-- Load the PayPal Checkout component. -->
     <script src="https://js.braintreegateway.com/web/3.34.1/js/paypal-checkout.min.js"></script>
-        
+    <script src="{{asset('js/bootstrap-notify.min.js')}}"></script>
 </html>

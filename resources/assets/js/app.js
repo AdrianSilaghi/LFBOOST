@@ -42,63 +42,6 @@ const chat = new Vue({
     },
 });
 
-
-
-    // const contacts = new Vue({
-    //     el: '#contacts',
-    //     data: {
-    //         contacts:'',
-    //     },
-    //     created(){
-    //         this.fetchContacts();
-    //     },
-    //     methods:{
-    //         fetchContacts(){
-    //             axios.get('/messages/api/getcontacts').then(response=>{
-    //                 this.contacts = response.data;
-    //             })
-    //         },
-    //         messages: function(id){
-    //             alert(id);
-    //         }
-    //     }
-        
-
-    // });
-
-
-    // const chat = new Vue({
-    //     el: '#chat',
-    //     data: {
-    //         messages:[],
-    //     },
-    //     created() {
-                    
-    //         this.fetchMessages();
-    //         Echo.private('chat').listen('MessageSentEvent',(e)=>{
-    //             this.messages.push({
-    //                 message:e.message.message,
-    //                 user:e.user,
-    //             })
-    //         })
-                
-    //     },
-    //     methods: {
-    //         addMessage(message,conversation_id){
-    //             this.messages.push(message)
-    //             axios.post('/dashboard/inbox/messages',message,conversation_id).then(response=>{
-
-    //             });
-    //         },
-    //         fetchMessages(){
-    //             axios.get('/dashboard/inbox/messages').then(response=>{
-    //                 this.messages = response.data
-    //             });
-    //         },
-    //     },
-    // });
-
-
 const app = new Vue({
     el: '#notification',
     data: {
@@ -190,6 +133,7 @@ $(document).ready(function(){
     }
 })
 
+
 $(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip(); 
     
@@ -265,14 +209,60 @@ $(document).ready(function () {
                                 var noteForBuyer = $('#notesForSeller').val();
                                 
                                 var data = response.data.transaction;
+                                var orderinfo = response.data;
                                if(response.status == 200){
                                    axios.post('/order/api/newOrder',{
                                         data,
                                        postId:x,
                                        noteForBuyer:noteForBuyer
-                                   }).then(function(response){
+                                   }).then(response =>{
+                                    var userone = response.data.buyer_id;
+                                    var usertwo = response.data.seller_id;
+                                       axios.post('/dashbaord/api/checkIfContact',{
+                                        user_id: response.data.seller_id,
+                                        contact_id: response.data.buyer_id
+                                       }).then(function(response){
+                                           if(response.data == 1 ){
+                                            $.notify({
+                                                // options
+                                                message: 'Your payment was successful, order and a new conversation have been created!' 
+                                            },{
+                                                // settings
+                                                type: 'success'
+                                            });
+                                            function RedirectToDashboard() {
+                                                setTimeout(function () {
+                                                    window.location.href = window.location.origin + '/dashboard'
+                                                }, 3000);                                            
+                                            }
+                                            RedirectToDashboard();
+                                            
+                                           }else{
+                                            axios.post('/dashboard/api/addContact',{
+                                                user_id: userone,
+                                                contact_id: usertwo,
+                                            }).then(function(){
+                                                $.notify({
+                                                    // options
+                                                    message: 'Your payment was successful, order and a new conversation have been created!' 
+                                                },{
+                                                    // settings
+                                                    type: 'success'
+                                                });
+                                                function RedirectToDashboard() {
+                                                    setTimeout(function () {
+                                                        window.location.href = window.location.origin + '/dashboard'
+                                                    }, 3000);                                            
+                                                }
+                                                RedirectToDashboard();
+                                            })               
+                                           }
                                     
+                                       })
                                    })
+                                   
+ 
+
                                }
                             }).catch(function (error){
                                 console.log(error);
@@ -303,7 +293,7 @@ $(document).ready(function () {
                 }, function (createErr, instance) {
                     button.addEventListener('click', function () {
                         instance.requestPaymentMethod(function (err, payload) {
-                            console.log(CLIENT_TOKEN_FROM_SERVER);
+                            
                             axios.post('/payment/api/process', {
                                 payload,
                                 postId:x,
@@ -316,8 +306,50 @@ $(document).ready(function () {
                                         data,
                                        postId:x,
                                        noteForBuyer:noteForBuyer
-                                   }).then(function(response){
+                                   }).then(response =>{
+                                    var userone = response.data.buyer_id;
+                                    var usertwo = response.data.seller_id;
+                                       axios.post('/dashbaord/api/checkIfContact',{
+                                        user_id: response.data.seller_id,
+                                        contact_id: response.data.buyer_id
+                                       }).then(function(response){
+                                           if(response.data == 1 ){
+                                            $.notify({
+                                                // options
+                                                message: 'Your payment was successful, order and a new conversation have been created!' 
+                                            },{
+                                                // settings
+                                                type: 'success'
+                                            });
+                                            function RedirectToDashboard() {
+                                                setTimeout(function () {
+                                                    window.location.href = window.location.origin + '/dashboard'
+                                                }, 3000);                                            
+                                            }
+                                            RedirectToDashboard();
+                                            
+                                           }else{
+                                            axios.post('/dashboard/api/addContact',{
+                                                user_id: userone,
+                                                contact_id: usertwo,
+                                            }).then(function(){
+                                                $.notify({
+                                                    // options
+                                                    message: 'Your payment was successful, order and a new conversation have been created!' 
+                                                },{
+                                                    // settings
+                                                    type: 'success'
+                                                });
+                                                function RedirectToDashboard() {
+                                                    setTimeout(function () {
+                                                        window.location.href = window.location.origin + '/dashboard'
+                                                    }, 3000);                                            
+                                                }
+                                                RedirectToDashboard();
+                                            })               
+                                           }
                                     
+                                       })
                                    })
                                }
                             }).catch(function (error){
@@ -332,7 +364,6 @@ $(document).ready(function () {
 
             })
             .then(function () {
-
             });
 
 

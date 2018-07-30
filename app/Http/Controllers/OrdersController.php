@@ -19,7 +19,7 @@ class OrdersController extends Controller
 
     public function newOrder(Request $request){
         $post = Post::where('id',$request->input('postId'))->first();
-        $authUser = Auth::user()->first();
+        $authUser = Auth::user();
        
         $order = New Order;
         $order->buyer_id = $authUser->id;
@@ -35,6 +35,8 @@ class OrdersController extends Controller
         $user = User::find($order->seller_id);
         $user->notify(new NotifyOrderOwner($order));
         
+        session()->flash('success','Your payment was successful , order and a new conversation were created!');
+        return $order;
     }
     
     public function dashboardOrders(Request $request){
@@ -48,6 +50,7 @@ class OrdersController extends Controller
         }else{
             return view('dashboard.orders.orders')->with('orders',$order);
         }
+
 
        
     }

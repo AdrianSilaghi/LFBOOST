@@ -71,7 +71,7 @@ class PaymentsController extends Controller
               'submitForSettlement' => True
           ]
           ]);
-            
+          session()->flash('success','Your payment was successful , order and a new conversation were created!');
           return response()->json($status);
     }
 
