@@ -328,3 +328,31 @@ a:hover{
 #profileCard ul{
   margin-bottom: 0rem;
 }
+
+#chat .card-header {
+  padding: 0.05rem 0.4rem;
+  height: 25px;
+}
+#chat .card-body {
+  padding: 0.40rem 1rem;
+  height:fit-content;
+
+}
+
+#chat p{
+  margin-bottom: 0.2rem;
+}
+
+#contacts > a .card-body {
+  padding: 0.2rem;
+  text-align: left;
+}
+
+#contacts >a p{
+  margin-bottom: 0.2rem;
+}
+
+#contacts  .card-header {
+  padding: 0.2rem;
+  text-align: center;
+}
