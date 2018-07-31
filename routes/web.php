@@ -28,6 +28,7 @@ Route::post('/dahsboard/inbox/sendChat','ChatController@sendChat')->middleware('
 Route::post('/dashboard/api/addContact','ContactsController@store')->middleware('auth');
 Route::post('/dashbaord/api/checkIfContact','ContactsController@checkIfContacts')->middleware('auth');
 
+Route::post('/dasbhoard/api/addPendingMoney','PendingmoneyController@addMoney')->middleware('auth');
 
 Route::get('/dashboard/inbox/messages','MessageController@fetch')->middleware('auth');
 Route::post('/dashboard/inbox/messages','MessageController@sentMessage')->middleware('auth');
@@ -45,7 +46,7 @@ Route::get('/dashboard/orders','OrdersController@dashboardOrders')->name('dashbo
 Route::get('/dashboard/order','OrdersController@speicifOrder')->name('speicifOrder')->middleware('auth');
 
 
-Route::get('/dashboard/earnings','PagesController@earnings')->name('earnings')->middleware('auth');
+Route::get('/dashboard/earnings','PendingmoneyController@earnings')->name('earnings')->middleware('auth');
 
 
 Route::post('/notification/api/get','NotificationsController@get')->name('notificationGet');

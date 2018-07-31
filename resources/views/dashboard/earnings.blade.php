@@ -40,9 +40,16 @@
                         <div class="card-header text-center text-muted">
                             Pending Clearence
                         </div>
+
+                        @php
+                        $totalAmmount = 0;
+                        foreach($pendingMoney as $pm){
+                            $totalAmmount += $pm->ammount;
+                        }
+                        @endphp
                         <div class="card-body text-center">
                             <h1 class="display-4" style="font-size:2.5rem;">
-                                $0
+                                ${{$totalAmmount}}
                             </h1>
                         </div>
                     </div>

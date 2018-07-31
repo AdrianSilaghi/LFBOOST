@@ -50,6 +50,11 @@ class User extends Authenticatable
         ];
     }
 
+    public function pendingmoney(){
+        return $this->belongsToMany(Pendingmoney::class)->withPivot('pendingmoney_id','user_id');
+    }
+
+
     public function contactsOfMine(){
         return $this->belongsToMany('App\User','contacts','user_id','contact_id');
     }

@@ -91,6 +91,10 @@ $(document).ready(function(){
 
 
 
+//addPendingMoney
+
+
+
 //table pagination
 
 $(document).ready(function(){
@@ -112,18 +116,25 @@ $(document).ready(function(){
             raiting:raiting,
             post_id:post_id,
         }).then(function(response){
-            axios.post('/order/api/markascomplete',{
-                transaction_id:transaction_id,
+            if(response.status == 200){
+                axios.post('/order/api/markascomplete',{
+                    transaction_id:transaction_id,
+            
             }).then(function(response){
-                if(response.status){
-                    console.log('markedascomplete');
+                if(response.status==200){
+                    axios.post('/dasbhoard/api/addPendingMoney',{
+                        transaction_id:transaction_id,
+                    }).then(function(response){
+                        console.log(response);
+                    })
+
                     $('#exampleModal').modal('hide');
-                    location.reload(false);
+                    //location.reload(false);
                 }
             })
-           
+        }       
         });
-
+    
 
     })
     }

@@ -9,6 +9,7 @@ use App\User;
 use App\Order;
 use App\Notifications\NotifyOrderOwner;
 use Image;
+use Carbon\Carbon;
 
 class OrdersController extends Controller
 {
@@ -121,6 +122,8 @@ class OrdersController extends Controller
         $order->completed = true;
         $order->queued = false;
         $order->save();
+
+        return $order;
     }
 
     public function markOrderAsActive(Request $request){
@@ -130,6 +133,8 @@ class OrdersController extends Controller
         $order->completed = false;
         $order->queued = false;
         $order->save();
+
+        return $order;
     }
 
     public function markOrderAsDelivered(Request $request){
@@ -138,7 +143,10 @@ class OrdersController extends Controller
         $order->progress = false;
         $order->completed = false;
         $order->queued = false;
+        $order->deliveredAt = Carbon::now();
         $order->save(); 
+
+        return $order;  
     }
     
 }
