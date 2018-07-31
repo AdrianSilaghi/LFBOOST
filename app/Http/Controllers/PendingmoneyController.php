@@ -9,6 +9,7 @@ use App\Post;
 use App\User;
 use Carbon\Carbon;
 use Auth;
+use App\Transaction;
 
 class PendingmoneyController extends Controller
 {
@@ -21,8 +22,9 @@ class PendingmoneyController extends Controller
     public function earnings(){
         $user = Auth::user();        
         $pendingMoney = $user->pendingmoney;
-        $withdrawalMoney = $user->withdrawalmoney;
-        return view('dashboard.earnings')->with('user',$user)->with('pendingMoney',$pendingMoney)->with('withdrawalMoney',$withdrawalMoney);
+        $availalbeWithdrawal = $user->availalbeWithdrawal;
+        $totalwithdrawal = $user->totalwithdrawal;
+        return view('dashboard.earnings')->with('user',$user)->with('pendingMoney',$pendingMoney)->with('availalbeWithdrawal',$availalbeWithdrawal)->with('totalwithdrawal',$totalwithdrawal);
     }
     
 
@@ -46,9 +48,39 @@ class PendingmoneyController extends Controller
 
 
         $seller->pendingmoney()->attach($pmoney);
-        
+
+        $transaction = new Transaction;
+        $transaction->user_id = $seller->id;
+        $transaction->name = $post->title;
+        $transaction->status = 1;
+        $transaction->transaction_id = $order->transaction_id;
+        $transaction->save();
 
         return response(200);
 
     }
+
+    public function removeWithdrawal(Request $request){
+        $user = Auth::user();
+        $totalAmmount = $user->availalbeWithdrawal;
+        $payoutAmmount = $request->ammount;
+        //new balance = 
+
+        $transaction = new Transaction;
+        $transaction->user_id = $user->id;
+        $transaction->name = 'Withdrawal';
+        $transaction->status = 3;
+        $transaction->transaction_id = rand(1,99999999);
+        $transaction->save();
+
+        $user->availalbeWithdrawal = $totalAmmount - $payoutAmmount;
+        $user->totalwithdrawal += $payoutAmmount;
+        $user->save();
+
+        return response(200);
+
+    }
+
+    
+    
 }

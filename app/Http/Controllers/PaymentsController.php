@@ -9,6 +9,7 @@ use Auth;
 use Braintree_Gateway;
 use Braintree_Transaction;
 use Braintree_Configuration;
+use App\Rules\PayoutAmmount;
 
 class PaymentsController extends Controller
 {
@@ -127,4 +128,74 @@ class PaymentsController extends Controller
         }
         return view('payments.finish')->with('post',$posts)->with('raiting',$avg)->with('countReviews',$countReviews);
     }
+
+    public function validatePayout(Request $request){
+        
+
+        $this->validate($request,[
+            'ammount'=> ['required',new PayoutAmmount],
+            'email'=>'required|email'
+        ]);
+
+        return response(200);
+    }
+
+
+    public function payout(Request $request){
+
+        $this->validate($request,[
+            'ammount'=> ['required',new PayoutAmmount],
+            'email'=>'required|email'
+        ]);
+        
+        $email = $request->email;
+        $ammount = $request->ammount;
+        
+        
+        $apiContext = new \PayPal\Rest\ApiContext(
+            new \PayPal\Auth\OAuthTokenCredential(
+              'AY44Io5lRKKKUS64t6TZapX2AMAc8ul_Mo9WPs8VFjd5ABWX_cb7mo0RppjZEvQvYdqFkBhssXKjJ4kc',
+              'ENmpQcK5gqBGdECmDjGjlz4xNV1LpwLYSqSpTktoVsEY2vZGefmwO6v-O6bl_d7X5WdxPdWmWCKg0E0x'
+            )
+          );
+
+        $payouts = new \PayPal\Api\Payout();
+    
+
+        $senderBatchHeader = new \PayPal\Api\PayoutSenderBatchHeader();
+
+        $senderBatchHeader->setSenderBatchId(uniqid())
+            ->setEmailSubject("You have a payment");
+        
+            $senderItem1 = new \PayPal\Api\PayoutItem(
+                array(
+                    "recipient_type" => "EMAIL",
+                    "receiver" => $email,
+                    "note" => "Thank you.",
+                    "sender_item_id" => uniqid(),
+                    "amount" => array(
+                        "value" => $ammount,
+                        "currency" => "USD"
+                    )
+            
+                )
+            );
+
+        $payouts->setSenderBatchHeader($senderBatchHeader)
+                ->addItem($senderItem1);
+        
+
+        $request = clone $payouts;
+        
+        try {
+            $output = $payouts->create(null,$apiContext);
+        } catch (Exception $ex) {
+            return $ex;
+            exit(1);
+        }
+        
+        return $output;
+    }
+
+
 }

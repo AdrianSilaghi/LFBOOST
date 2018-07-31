@@ -39,7 +39,9 @@ Route::post('/order/api/markasactive','OrdersController@markOrderAsActive')->mid
 Route::post('/order/api/markasdelivered','OrdersController@markOrderAsDelivered')->middleware('auth');
 Route::post('/order/api/addProof','OrdersController@addProof')->middleware('auth');
 
-
+Route::post('/dashboard/api/validatePayout','PaymentsController@validatePayout')->middleware('auth');
+Route::post('/dashboard/api/removeWithdrawal','PendingmoneyController@removeWithdrawal')->middleware('auth');
+Route::post('/payment/api/payOut','PaymentsController@payout')->middleware('auth');
 
 Route::get('/dashboard/orders','OrdersController@dashboardOrders')->name('dashboardOrders')->middleware('auth');
 

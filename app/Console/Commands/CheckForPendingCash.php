@@ -60,11 +60,25 @@ class CheckForPendingCash extends Command
                     $withdrawal->transaction_id = $pm->transaction_id;
                     $withdrawal->save();
 
+                    
+                    $transaction = new Transaction;
+                    $transaction->user_id = $seller->id;
+                    $transaction->name = 'Cleared';
+                    $transaction->status = 2;
+                    $transaction->transaction_id = $order->transaction_id;
+                    $transaction->save();
+
+
                     $seller->withdrawalmoney()->attach($withdrawal);
                     $seller->pendingmoney()->detach($pm);
 
                     $sellerEarnings = $seller->totalearnings;
                     $sellerEarnings += $withdrawal->ammount; 
+
+                    $availableWithdrawal = $seller->availalbeWithdrawal;
+                    $availableWithdrawal += $withdrawal->ammount;
+
+                    $seller->availalbeWithdrawal = $availableWithdrawal;
                     $seller->totalearnings = $sellerEarnings;
                     $seller->save();
                     $this->info('Job Done');

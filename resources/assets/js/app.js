@@ -6,6 +6,7 @@
 
 require('./bootstrap');
 
+
 window.Vue = require('vue');
 
 
@@ -89,10 +90,27 @@ $(document).ready(function(){
     }
 })
 
-
-
-//addPendingMoney
-
+$(document).ready(function(){
+    if($('#testButton').length > 0 ){
+        var button = document.querySelector('#payout');
+        button.addEventListener('click',function(){
+          axios.post('/payment/api/payOut',{
+                ammount: $('#ammount').val(),
+                email: $('#emailInput').val(),
+          }).then(response=>{
+            if(response.status == 200){
+                axios.post('/dashboard/api/removeWithdrawal',{
+                    ammount:$('#ammount').val(),
+                }).then(response=>{
+                    if(response == 200){
+                        window.location.href = window.location.origin + '/dashboard/earnings#payoutComplete'
+                    }
+                })
+            }
+          })  
+        })
+    }
+})
 
 
 //table pagination
@@ -377,6 +395,17 @@ $(document).ready(function(){
                 type: 'success'
             });
         }
+
+        if(window.location.hash === "#payoutComplete"){
+            $.notify({
+                // options
+                message: 'Your withdrawal was successful please check your email!' 
+            },{
+                // settings
+                type: 'success'
+            });
+        }
+        
     
 })
 
