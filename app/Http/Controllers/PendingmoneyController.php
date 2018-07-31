@@ -21,8 +21,8 @@ class PendingmoneyController extends Controller
     public function earnings(){
         $user = Auth::user();        
         $pendingMoney = $user->pendingmoney;
-
-        return view('dashboard.earnings')->with('user',$user)->with('pendingMoney',$pendingMoney);
+        $withdrawalMoney = $user->withdrawalmoney;
+        return view('dashboard.earnings')->with('user',$user)->with('pendingMoney',$pendingMoney)->with('withdrawalMoney',$withdrawalMoney);
     }
     
 

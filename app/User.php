@@ -54,6 +54,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Pendingmoney::class)->withPivot('pendingmoney_id','user_id');
     }
 
+    public function withdrawalmoney(){
+        return $this->belongsToMany(withdrawalmoney::class)->withPivot('withdrawalmoney_id','user_id');
+    }
 
     public function contactsOfMine(){
         return $this->belongsToMany('App\User','contacts','user_id','contact_id');

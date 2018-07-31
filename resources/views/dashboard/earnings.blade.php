@@ -18,7 +18,7 @@
                 </div>
                 <div class="card-body text-center">
                     <h1 class="display-4" style="font-size:2.5rem;">
-                        $0
+                        ${{$user->totalearnings}}
                     </h1>
                 </div>
             </div>
@@ -59,9 +59,15 @@
                         <div class="card-header text-center text-muted">
                             Available for Whidrawal
                         </div>
+                        @php
+                        $totalAmmountw = 0;
+                        foreach($withdrawalMoney as $wd){
+                            $totalAmmountw += $wd->ammount;
+                        }
+                        @endphp
                         <div class="card-body text-center">
                             <h1 class="display-4" style="font-size:2.5rem;">
-                                $0
+                                ${{$totalAmmountw}}
                             </h1>
                         </div>
                     </div>
