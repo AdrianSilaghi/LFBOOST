@@ -113,11 +113,11 @@ class PostsController extends Controller
             'title'=>'required|min:15|max:55|regex:/^[a-zA-Z\s]*$/',
             'categories'=>'required',
             'subcategories' => 'required',
-            'price_description'=>'required|min:20|max:120|regex:/^[a-z\d\-_\s]+$/i',
+            'price_description'=>'required|min:20|max:120|regex:/^[a-zA-Z\s\w\#!.?-]*$/i',
             'price'=>'required|min:5|max:995|integer|',
             'delivery_time'=>'required|min:5|max:30|integer',
-            'body'=>'required|min:120|max:1200|regex:/^[a-z\d\-_\s]+$/i',
-            'requirements'=>'required|min:10|regex:/^[a-z\d\-_\s]+$/i',
+            'body'=>'required|min:120|max:1200|regex:/^[a-zA-Z\s\w\#!.?-]*$/i',
+            'requirements'=>'required|min:10|regex:/^[a-zA-Z\s\w\#!.?-]*$/i',
         ]);
     }
 

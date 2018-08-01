@@ -45,7 +45,7 @@
                                               </li>
                                           </ul>
                                           @if(strlen($poo->title)>30)
-                                            <a href="{{route('showWithName',[$poo->user->name,$poo->slug])}}"><p style="font-size:1rem;height:35px;">
+                                            <a href="{{route('showWithName',[$poo->user->name,$poo->slug])}}"><p style="font-size:1rem;height:35px;width:195px;">
                                             
                                             {{substr($poo->title,0,30)}}... 
                                            
@@ -80,9 +80,9 @@
                                                                 }
                                                             @endphp
                                                             @if($avg)
-                                                            @for($i=0;$i<$avg;$i++)
+                                                            
                                                             <small><i class="fas fa-star" style="color:#EDB867;"></i></small>
-                                                            @endfor
+                                                            
                                                             
                                                             <small><span style="color:#EDB867">{{$avg}}</span></small>
                                                             <small><span class="text-muted">({{round($countReviews,1)}})</span></small>

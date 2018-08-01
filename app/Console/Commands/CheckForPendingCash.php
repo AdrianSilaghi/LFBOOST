@@ -9,6 +9,7 @@ use App\User;
 use App\Pendingmoney;
 use App\Withdrawalmoney;
 use Carbon\Carbon;
+use App\Transaction;
 
 class CheckForPendingCash extends Command
 {
@@ -64,7 +65,7 @@ class CheckForPendingCash extends Command
                     $transaction = new Transaction;
                     $transaction->user_id = $seller->id;
                     $transaction->name = 'Cleared';
-                    $transaction->status = 2;
+                    $transaction->ammount = $pm->ammount;
                     $transaction->transaction_id = $order->transaction_id;
                     $transaction->save();
 
@@ -73,14 +74,16 @@ class CheckForPendingCash extends Command
                     $seller->pendingmoney()->detach($pm);
 
                     $sellerEarnings = $seller->totalearnings;
-                    $sellerEarnings += $withdrawal->ammount; 
+                    $sellerEarnings += $pm->ammount; 
+                    
+                    $availalbeWithdrawal = $seller->availalbeWithdrawal;
+                    $availalbeWithdrawal += $withdrawal->ammount;
 
-                    $availableWithdrawal = $seller->availalbeWithdrawal;
-                    $availableWithdrawal += $withdrawal->ammount;
 
-                    $seller->availalbeWithdrawal = $availableWithdrawal;
+                    $seller->availalbeWithdrawal = $availalbeWithdrawal;
                     $seller->totalearnings = $sellerEarnings;
                     $seller->save();
+
                     $this->info('Job Done');
                 }
             }else{

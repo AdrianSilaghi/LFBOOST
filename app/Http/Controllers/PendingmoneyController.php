@@ -24,7 +24,13 @@ class PendingmoneyController extends Controller
         $pendingMoney = $user->pendingmoney;
         $availalbeWithdrawal = $user->availalbeWithdrawal;
         $totalwithdrawal = $user->totalwithdrawal;
-        return view('dashboard.earnings')->with('user',$user)->with('pendingMoney',$pendingMoney)->with('availalbeWithdrawal',$availalbeWithdrawal)->with('totalwithdrawal',$totalwithdrawal);
+        $transactions = Transaction::where('user_id',$user->id)->get();
+
+        return view('dashboard.earnings')->with('user',$user)
+                                        ->with('pendingMoney',$pendingMoney)
+                                        ->with('availalbeWithdrawal',$availalbeWithdrawal)
+                                        ->with('totalwithdrawal',$totalwithdrawal)
+                                        ->with('transactions',$transactions);
     }
     
 
@@ -51,8 +57,8 @@ class PendingmoneyController extends Controller
 
         $transaction = new Transaction;
         $transaction->user_id = $seller->id;
-        $transaction->name = $post->title;
-        $transaction->status = 1;
+        $transaction->name = 'Pending Clearence';
+        $transaction->ammount = $finalPrice;
         $transaction->transaction_id = $order->transaction_id;
         $transaction->save();
 
@@ -69,8 +75,8 @@ class PendingmoneyController extends Controller
         $transaction = new Transaction;
         $transaction->user_id = $user->id;
         $transaction->name = 'Withdrawal';
-        $transaction->status = 3;
-        $transaction->transaction_id = rand(1,99999999);
+        $transaction->ammount = $payoutAmmount;
+        $transaction->transaction_id = str_random(8);
         $transaction->save();
 
         $user->availalbeWithdrawal = $totalAmmount - $payoutAmmount;

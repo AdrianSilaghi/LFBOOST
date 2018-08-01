@@ -1,6 +1,7 @@
 @extends('layouts.dashboard')
 @section('content')
 
+@inject('carbon','Carbon\Carbon')
 <div class="contianer" id="payoutPage">
     <div class="row">
         <div class="col m-t-20">
@@ -69,7 +70,8 @@
     </div>
     
     <div class="row">
-        <div class="col m-t-20">
+        <div class="col">
+            <hr>
             <p class="text-muted">WITHDRAW: 
                 @if($availalbeWithdrawal > 10)
                 <button class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#payoutModal" > <img src="{{asset('images/ppaccount.png')}}" style="width:60%;height:60%"> </button>
@@ -78,14 +80,32 @@
                 <button class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#payoutModal" disabled > <img src="{{asset('images/ppaccount.png')}}" style="width:60%;height:60%"> </button>
                    <small class="form-text text-muted">Minimum withdraw is $10.</small>
                 @endif
-               
-
-                <button id="testButton" class="btn btn-outline-dark"> Test </button>
-                
-{{-- 
-                 data-toggle="modal" data-target="#deliverModal" --}}
-                {{-- <button id="payout" class="btn btn-outline-primary">test</button> </i></p>
-             --}}
+               <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table" id="transactionTable">
+                <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">For</th>
+                    <th scope="col">Ammount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach($transactions as $tr)  
+                  @php
+                    $date = $carbon->parse($tr->created_at);
+                  @endphp
+                  <tr>
+                  <td>{{$date->toFormattedDateString()}}</td>
+                  <td>{{$tr->name}}</td>
+                  <td>${{$tr->ammount}}</td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
         </div>
     </div>
 </div>

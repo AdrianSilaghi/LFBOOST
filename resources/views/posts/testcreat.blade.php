@@ -1,6 +1,7 @@
 @extends('layouts.create')
 @section('content')
 
+<meta name="userSlug" content="{{Auth::user()->slug}}">
 <div class="container">
 <div class="row justify-content-md-center m-t-20">
     <div class="col-md-10 col-offset-2">

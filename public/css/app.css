@@ -11020,7 +11020,7 @@ a {
 
 #catNav .navbar-nav .dropdown-menu > :hover {
   background-color: azure;
-  color: cadetblue;
+  color: #00b22d;
 }
 
 #catNav .dropdown-toggle::after {
@@ -11042,7 +11042,7 @@ a {
 
 .dropdown-menu > :hover {
   background-color: azure;
-  color: cadetblue;
+  color: #00b22d;
 }
 
 .dropdown-item {
@@ -11220,12 +11220,12 @@ a {
 }
 
 .page-item.active .page-link {
-  background-color: cadetblue;
-  border-color: cadetblue;
+  background-color: #28a745;
+  border-color: #28a745;
 }
 
 .page-item .page-link {
-  color: cadetblue;
+  color: #28a745;
 }
 
 a:hover {

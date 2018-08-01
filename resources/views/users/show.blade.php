@@ -164,7 +164,7 @@
                                           </li>
                                       </ul>
                                       @if(strlen($poo->title)>30)
-                                        <a href="{{route('showWithName',[$poo->user->name,$poo->slug])}}"><p style="font-size:1rem;height:35px;">
+                                        <a href="{{route('showWithName',[$poo->user->name,$poo->slug])}}"><p style="font-size:1rem;height:35px;width:195px;">
                                         
                                         {{substr($poo->title,0,30)}}... 
                                        

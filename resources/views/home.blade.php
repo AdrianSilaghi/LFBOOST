@@ -41,7 +41,7 @@
                                                       </li>
                                                   </ul>
                                                   @if(strlen($poo->title)>30)
-                                                    <a href="{{route('showWithName',[$poo->user->name,$poo->slug])}}"><p style="font-size:1rem;height:35px;">
+                                                    <a href="{{route('showWithName',[$poo->user->name,$poo->slug])}}"><p style="font-size:1rem;height:35px;width:195px;">
                                                     
                                                     {{substr($poo->title,0,30)}}... 
                                                    
@@ -77,9 +77,9 @@
                                                               @endphp
                                                               
                                                               @if($avg)
-                                                              @for($i=0;$i<$avg;$i++)
+                                                              
                                                               <small><i class="fas fa-star" style="color:#EDB867;"></i></small>
-                                                              @endfor
+                                                              
                                                               <small><span style="color:#EDB867">{{$avg}}</span></small>
                                                               <small><span class="text-muted">({{$countReviews}})</span></small>
                                                               @endif 
@@ -140,8 +140,8 @@
                                                             <a href="{{route('show.user.slug',[$poo->user->slug])}}"><p class="h6">{{$poo->user->name}}</p></a>
                                                       </li>
                                                   </ul>
-                                                  @if(strlen($poo->title)>30)
-                                                    <a href="{{route('showWithName',[$poo->user->name,$poo->slug])}}"><p style="font-size:1rem;height:35px;">
+                                                  @if(strlen($poo->title)>10)
+                                                    <a href="{{route('showWithName',[$poo->user->name,$poo->slug])}}"><p style="font-size:1rem;height:35px;width:195px;">
                                                     
                                                     {{substr($poo->title,0,30)}}... 
                                                    
@@ -149,7 +149,7 @@
                                                     @else
                                                     <a href="{{route('showWithName',[$poo->user->name,$poo->slug])}}"><p  style="font-size:1rem;height:35px;">
                                                     
-                                                        {{substr($poo->title,0,30)}}
+                                                        {{substr($poo->title,0,10)}}
                                                        
                                                     </p></a>
                                                     @endif
@@ -177,9 +177,9 @@
                                                             @endphp
                                                             
                                                             @if($avg)
-                                                            @for($i=0;$i<$avg;$i++)
+                                                            
                                                             <small><i class="fas fa-star" style="color:#EDB867;"></i></small>
-                                                            @endfor
+                                                                
                                                             <small><span style="color:#EDB867">{{$avg}}</span></small>
                                                             <small><span class="text-muted">({{$countReviews}})</span></small>
                                                             @endif 

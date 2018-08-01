@@ -91,7 +91,7 @@ $(document).ready(function(){
 })
 
 $(document).ready(function(){
-    if($('#testButton').length > 0 ){
+    if($('#payout').length > 0 ){
         var button = document.querySelector('#payout');
         button.addEventListener('click',function(){
           axios.post('/payment/api/payOut',{
@@ -101,10 +101,12 @@ $(document).ready(function(){
             if(response.status == 200){
                 axios.post('/dashboard/api/removeWithdrawal',{
                     ammount:$('#ammount').val(),
-                }).then(response=>{
-                    if(response == 200){
-                        window.location.href = window.location.origin + '/dashboard/earnings#payoutComplete'
-                    }
+                }).then(function(response){
+                     if(response.status == 200){
+                        $('#payoutModal').modal('hide');
+                         window.location.href = window.location.origin + '/dashboard/earnings#payoutComplete'
+                         location.reload(); 
+                     }
                 })
             }
           })  
@@ -117,7 +119,18 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     if($('#ordersTable').length > 0 ){
+
         $('#ordersTable').DataTable();
+        
+    }
+})
+
+$(document).ready(function(){
+    
+    if($('#transactionTable').length >  0 ){
+
+        $('#transactionTable').DataTable();
+
     }
 })
 //mark as complete
@@ -405,6 +418,16 @@ $(document).ready(function(){
                 type: 'success'
             });
         }
+
+        if(window.location.hash === "#postComplete"){
+            $.notify({
+                // options
+                message: 'Your boost was posted successfully!' 
+            },{
+                // settings
+                type: 'success'
+            });
+        }
         
     
 })
@@ -616,7 +639,7 @@ $(document).ready(function () {
 });
 
 
-//faq
+//faq + submit post form
 $(document).ready(function () {
     $('#faq').on('click', '#faqButton', function () {
 
@@ -734,8 +757,8 @@ $(document).ready(function () {
                             });
                             myDropzone.processQueue();
 
-
-                            //window.location.href = window.location.origin + '/posts/' + data.slug
+                            var userSlug = $('meta[name="userSlug"]').attr('content');
+                            window.location.href = window.location.origin + '/' + userSlug + '/' + data.slug + '#postComplete'
                         }
                     });
                 }, 3000);

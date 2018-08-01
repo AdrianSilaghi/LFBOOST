@@ -100,7 +100,7 @@ a.list-group-item:hover{
 }
 #catNav .navbar-nav .dropdown-menu > :hover {
   background-color: azure;
-  color: cadetblue;
+  color: #00b22d;
 }
 
 #catNav .dropdown-toggle::after {
@@ -122,7 +122,7 @@ a.list-group-item:hover{
 }
 .dropdown-menu > :hover {
   background-color: azure;
-  color: cadetblue;
+  color: #00b22d;
 }
 .dropdown-item {
   color:rgba(0, 0, 0, 0.5);
@@ -299,13 +299,12 @@ a.list-group-item:hover{
   max-height: 310px;
 }
 .page-item.active .page-link {
-
-  background-color: cadetblue;
-  border-color: cadetblue;
+  background-color: #28a745;
+  border-color: #28a745;
 }
 
 .page-item .page-link{
-  color: cadetblue;
+  color: #28a745;
 }
 
 a:hover{
@@ -366,3 +365,4 @@ a:hover{
 	width: 100%;
 	height: 5px;
 }
+

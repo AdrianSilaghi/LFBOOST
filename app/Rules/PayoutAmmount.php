@@ -38,11 +38,16 @@ class PayoutAmmount implements Rule
         $maxAmmount = $user->availalbeWithdrawal;
 
         if(!empty($value)){
-            if($value <= $maxAmmount){
-                return true;
-            }else{
+            if($value <= 10){
                 return false;
-            }
+            }else{
+
+                if($value <= $maxAmmount){
+                    return true;
+                }else{
+                    return false;
+                }
+        }
         }
     }
 
