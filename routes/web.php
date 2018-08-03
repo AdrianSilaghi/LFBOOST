@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Mail;
 
 Route::get('/contactsupport/api/getFirstQuestions','ContactSupportController@getFirstQuestions')->middleware('auth');
 
-
+Auth::routes();
 
 Route::get('/', 'PagesController@commingOutSoon')->name('index');
 Route::get('/privacy-policy','PagesController@privacy')->name('privacy');
@@ -73,15 +73,13 @@ Route::post('/order/api/newOrder','OrdersController@newOrder')->middleware('auth
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('/home/create', 'HomeController@create')->name('home.create')->middleware('auth');
-Route::get('/home/posts', 'HomeController@posts')->name('home.posts')->middleware('auth');
-Route::get('/home/posts/{post}/edit', 'HomeController@edit')->name('home.edit')->middleware('auth');
 
 Route::post('avatar','UsersController@update_avatar')->name('users.avatar');
 
 Route::resource('posts', 'PostsController');
-Route::resource('/home/categories', 'CategoriesController')->middleware('auth');
+//Route::resource('/home/categories', 'CategoriesController')->middleware('auth');
 Route::resource('/home/users', 'UsersController')->middleware('auth');
-Route::resource('/home/realms', 'RealmsController')->middleware('auth');
+//Route::resource('/home/realms', 'RealmsController')->middleware('auth');
 Route::get('/{slug}','UsersController@show')->name('show.user.slug');
 
 Auth::routes();
@@ -90,6 +88,7 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('/settings', 'PagesController@settings')->name('settings')->middleware('auth');
 Route::get('/settings/account', 'PagesController@account')->name('account')->middleware('auth');
 Route::get('/settings/security', 'PagesController@security')->name('security')->middleware('auth');
+Route::get('/settings/payment', 'PagesController@payment')->name('payment')->middleware('auth');
 
 Route::get('/api/findCatName','HomeController@findCatName')->name('findCatName');
 Route::get('/api/findAchivName','HomeController@findAchivName')->name('findAchivName');
@@ -108,6 +107,8 @@ Route::get('/api/change-password', 'UpdatePasswordController@index')->name('pass
 Route::post('/api/change-password', 'UpdatePasswordController@update')->name('password.update');
 
 Route::post('/api/change-email', 'UpdateEmailController@update')->name('email.update');
+
+Route::post('/settings/payment','UsersController@updatePaypalEmail')->name('updatePaypalEmail')->middleware('auth');
 
 Route::get('/api/testcreate',function(){
     return view('posts.testcreat');

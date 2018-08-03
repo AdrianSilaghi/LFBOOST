@@ -6,7 +6,7 @@
         <div class="card-body">
                 <form class="form-horizontal" method="POST" action="{{route('email.update')}}">
                     {{ csrf_field() }}
-                    <h1 class="display-4" style="font-size:1.5rem">Update your email</h1>
+                    <h1 class="display-4" style="font-size:1.5rem">Update your E-mail</h1>
                     <hr>
                     <div class="form-group{{ $errors->has('old') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Current E-mail</label>
@@ -20,7 +20,7 @@
                                     </span>
                                 @endif
                                 <small id="shortDescHelpBlock" class="form-text text-muted">
-                                        Your current password.
+                                        Your current email.
                                       </small>
                             </div>
                             <hr>

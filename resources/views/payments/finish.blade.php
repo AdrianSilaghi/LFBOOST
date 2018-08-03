@@ -1,6 +1,8 @@
 @extends('layouts.payments')
 @section('content')
 
+
+<meta name="priceOfPost" content="{{$post->price + 2}}">
 <div class="container" id="payUP">
         <div class="row justify-content-center">
             <div class="col-5 m-t-50">

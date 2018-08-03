@@ -226,9 +226,9 @@ $(document).ready(function () {
         }
         var x = GetURLParameter('id');
         
-        var price = GetURLParameter('price')
+        //var price = GetURLParameter('price')
         
-       
+        const price = $('meta[name="priceOfPost"]').attr('content');
         axios.get('/payment/api/token')
             .then(function (response) {
                 

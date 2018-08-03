@@ -289,7 +289,7 @@ a.list-group-item:hover{
 #PostE{
   align-items: flex-start;
   display: flex;
-  height:400px;
+  height:380px;
   width: 235px;
   max-height: fit-content;
 }
@@ -297,6 +297,11 @@ a.list-group-item:hover{
 #PostE .card{
   height:310px;
   max-height: 310px;
+}
+
+#PostE .card-body{
+
+  padding: 1.25rem 1.25rem 0rem 1.25rem;
 }
 .page-item.active .page-link {
   background-color: #28a745;
@@ -317,7 +322,7 @@ a:hover{
 }
 
 #PostE ul{
-  margin-bottom: 3px;
+  
 }
 
 .breadcrumb {
@@ -366,3 +371,6 @@ a:hover{
 	height: 5px;
 }
 
+.jumbotron {
+  background-color: transparent !important;
+}

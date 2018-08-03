@@ -7,5 +7,8 @@
                         <li class="nav-item">
                           <a class="nav-link" href="{{route('security')}}">Security</a>
                         </li>
+                        <li class="nav-item">
+                                <a class="nav-link" href="{{route('payment')}}">Payment</a>
+                        </li>
                 </ul>
         </div>

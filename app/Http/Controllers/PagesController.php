@@ -27,7 +27,25 @@ class PagesController extends Controller
     }
 
     public function dashboard(){
-        return view('dashboard.orders');
+        $user = Auth::user();
+        $lang = Language::all();
+        $abilities = Game::all();
+        $achiv = Achivements::all();
+        $userLangTa = $user->lang;
+        $userLang = $userLangTa->pluck('name');
+        $userGames = $user->game;
+        $userAchiv = $user->achivement;
+        $countries = Country::all();
+        return view('dashboard.orders')
+        ->with('user',$user)
+        ->with('language',$lang)
+        ->with('game',$abilities)
+        ->with('achivements',$achiv)
+        ->with('userLang',$userLang)
+        ->with('userLangTa',$userLangTa)
+        ->with('userGames',$userGames)
+        ->with('userAchiv',$userAchiv)
+        ->with('countries',$countries);
     }
     public function settings(){
         return view('settings.settings');
@@ -86,5 +104,10 @@ class PagesController extends Controller
     public function security(){
         $user = Auth::user();
         return view('settings.security')->with('user',$user);
+    }
+
+    public function payment(){
+        $user = Auth::user();
+        return view('settings.payment')->with('user',$user);
     }
 }

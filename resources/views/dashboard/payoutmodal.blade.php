@@ -1,5 +1,11 @@
 
 <!-- Modal -->
+@inject('auth','Auth')
+@inject('user','App\User')
+@php
+$user = auth::user();
+$paypal_email = $user->paypal_email;
+@endphp
 <div class="modal fade" id="payoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -26,10 +32,10 @@
                     <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-lg">PayPal Email:</span>
                     </div>
-                    <input type="email" id="emailInput" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required>
+                  <input type="email" id="emailInput" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" value="{{$paypal_email}}" readonly required>
                     <small class="fomr-text text-muted">
                         <hr>
-                        Please enter your PayPal Email Correctly. Double check it. Mistakes will not be refunded.
+                       This is the email which you updated in Settings->Payment.
                         <hr>
                     </small>
                 </div>

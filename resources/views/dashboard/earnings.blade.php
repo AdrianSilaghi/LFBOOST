@@ -78,7 +78,7 @@
                     @include('dashboard.payoutmodal')
                 @else
                 <button class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#payoutModal" disabled > <img src="{{asset('images/ppaccount.png')}}" style="width:60%;height:60%"> </button>
-                   <small class="form-text text-muted">Minimum withdraw is $10.</small>
+                   <small class="form-text text-muted">Minimum withdrawal is $10.</small>
                 @endif
                <hr>
         </div>

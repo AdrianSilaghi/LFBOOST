@@ -65,7 +65,7 @@
                         </ul>
                 </div>
                 <div class="card-footer">
-                    <a role="button" href="{{route('payment.finish',['id'=>$post,'price'=>$post->price+2])}}" class="btn btn-success btn-block btn-lg" style="color:white;">Order Now</a>
+                    <a role="button" href="{{route('payment.finish',['id'=>$post])}}" class="btn btn-success btn-block btn-lg" style="color:white;">Order Now</a>
                     <small id="passwordHelpBlock" class="form-text text-muted text-center">
                            You wont be charged yet.
                           </small>
