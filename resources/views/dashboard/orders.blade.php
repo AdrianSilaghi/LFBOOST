@@ -41,7 +41,7 @@ $user = Auth::user();
                         </div>
                     </a>
         </div>
-        <div class="flex-auto text-center">
+        <div class="flex-auto text-center m-r-5">
                         <a href="{{route('dashboard.getContacts')}}">
                             <div class="max-w-sm rounded overflow-hidden shadow-lg text-grey-darker hover:bg-green hover:text-white">
                                     <div class="px-6 py-4 group hover:text-white">
@@ -51,7 +51,18 @@ $user = Auth::user();
                                         </div>
                             </div>
                         </a>
-        </div>       
+        </div>
+        <div class="flex-auto text-center">
+                <a href="{{route('account')}}">
+                    <div class="max-w-sm rounded overflow-hidden shadow-lg text-grey-darker hover:bg-green hover:text-white">
+                            <div class="px-6 py-4 group hover:text-white">
+                                    <div class="font-bold text-xl mb-2 group-hover:text-white">Settings</div>
+                                    <i class="fas fa-cogs fa-7x group-hover:text-white"></i>
+                                    
+                                </div>
+                    </div>
+                </a>
+</div>              
     </div>
 
     <div class="flex-row justify-center flex-row sm:flex-col md:flex-row-reverse lg:flex-col-reverse xl:flex m-t-30">
@@ -74,7 +85,7 @@ $user = Auth::user();
                                     count($userAchiv) == 0
                                     )
                                     <li class="font-bold">
-                                            <p class="text-red-light">Update your profile!</p>
+                                            <p class="text-red-dark">Update your profile!</p>
                                         </li>
                                     @else
                                     <li class="text-3x green font-bold">
@@ -82,53 +93,43 @@ $user = Auth::user();
                                         </li>
                                         @endif
                                     @if($user->description == null)
-                                        <li class="font-medium">
+                                        <li class="font-medium text-orange-dark">
                                             Please update your description.
                                         </li>
                                     @endif
                                     @if($user->short_description == null)
-                                        <li class="font-medium">
+                                        <li class="font-medium text-orange-dark">
                                             Please update your one line description.
                                         </li>
                                     @endif
                                     @if($user->firstname == null | $user->lastname == null)
-                                        <li class="font-medium">
+                                        <li class="font-medium text-orange-dark">
                                             Please update your First and Last name.
                                         </li>
                                     @endif
                                     @if($user->paypal_email == null)
-                                        <li class="font-medium">
+                                        <li class="font-medium text-orange-dark">
                                            Please update your PayPal E-mail.
                                         </li>
                                     @endif
                                     @if(count($userLangTa)==0)
-                                    <li class="font-medium">
+                                    <li class="font-medium text-green-dark">
                                        Please add up to four languages in your profile.
                                     </li>
                                     @endif
                                     @if(count($userGames)==0)
-                                        <li class="font-medium">
+                                        <li class="font-medium text-green-dark">
                                         Please add the games you are playing or you offer services in!
                                         </li>
                                     @endif
                                     @if(count($userAchiv)==0)
-                                        <li class="font-medium">
+                                        <li class="font-medium text-green-dark">
                                         Please select notable achivements that you gained over the years playing the specific game!
                                         </li>
                                     @endif
                                 </ul>
                         </div>
                 </div>
-    </div>
-    <div class="flex-row justify-center flex-row sm:flex-col md:flex-row-reverse lg:flex-col-reverse xl:flex m-t-30">
-                <div class="flex-auto text-center max-w-sm rounded overflow-hidden shadow-lg text-grey-darker hover:bg-green hover:text-white">
-                    <a href="{{route('account')}}" class="text-grey-darker hover:bg-green hover:text-white">
-                        <div class="px-6 py-4 group hover:text-white">
-                                <div class="font-bold text-xl mb-2 group-hover:text-white">Settings</div>
-                                <i class="fas fa-cogs fa-7x group-hover:text-white"></i>
-                                
-                                </div>
-                            </a>
     </div>
             
     </div>
