@@ -13,7 +13,13 @@
 use Illuminate\Support\Facades\Mail;
 
 
+
+Route::fallback(function(){
+    return response()->view('errors.404', [], 404);
+});
+
 Route::get('/contactsupport/api/getFirstQuestions','ContactSupportController@getFirstQuestions')->middleware('auth');
+
 
 
 Route::get('/', 'PagesController@commingOutSoon')->name('index');
@@ -133,5 +139,4 @@ Route::post('/api/validatePost','PostsController@validatePost')->name('validateP
 Route::get('/{user}/{post}','PostsController@showWithName')->name('showWithName')->middleware('auth');
 
 Route::post('/api/addReview','ReviewsController@store')->name('addReview')->middleware('auth');
-
 
