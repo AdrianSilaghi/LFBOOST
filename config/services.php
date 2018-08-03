@@ -15,8 +15,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
+        'domain' => env('lfboost.com'),
+        'secret' => env('a0dfb68abb61394711c66c8303802c1d-a5d1a068-03d7a24a'),
     ],
 
     'ses' => [

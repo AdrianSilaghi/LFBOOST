@@ -18,7 +18,7 @@ class ReviewsController extends Controller
     public function store(Request $request){
         
         $this->validate($request,[
-            'comment'=>'required|min:5|max:55|regex:/^[a-zA-Z\s]*$/',
+            'comment'=>'required|min:5|max:55|regex:/^[a-zA-Z\s\w\#!.?-]*$/',
             'raiting'=>'required|max:5'
         ]);
 

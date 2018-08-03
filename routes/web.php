@@ -13,9 +13,17 @@
 use Illuminate\Support\Facades\Mail;
 Auth::routes();
 
+Route::get('/contactsupport/api/getFirstQuestions','ContactSupportController@getFirstQuestions')->middleware('auth');
 
 
 Route::get('/', 'PagesController@commingOutSoon')->name('index');
+Route::get('/privacy-policy','PagesController@privacy')->name('privacy');
+Route::get('/tos','PagesController@tos')->name('tos');
+Route::get('/howtofindabooster','PagesController@booster')->name('howToFind');
+Route::get('/trustsafety','PagesController@trustsafety')->name('trustsafety');
+Route::post('/contactsupport/api/send', 'EmailController@send')->middleware('auth');
+
+Route::get('/contact', 'PagesController@contact')->name('getContactForm');
 
 Route::get('/become_a_seller','PagesController@becomeSeller')->name('becomeSeller');
 Route::get('/dashboard', 'PagesController@dashboard')->name('dashboard')->middleware('auth');

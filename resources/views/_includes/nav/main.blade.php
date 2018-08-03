@@ -2,7 +2,7 @@
   <div class="container justify-content-center" id="notification">
     @guest
     <a class="navbar-brand m-b-5" href="{{route('home')}}">
-            <img src="{{asset('images/logos/logoGood.png')}}" alt="">
+            <img src="{{asset('images/logos/logoGood.png')}}" alt="Logo of LFBOOST">
           </a>
     @else
     <a class="navbar-brand m-b-5" href="{{route('home')}}">

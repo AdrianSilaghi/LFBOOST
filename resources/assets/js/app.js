@@ -66,23 +66,24 @@ const app = new Vue({
 //deliver modal
 $(document).ready(function(){
     if($('#deliverModal').length > 0 ){
-        var myDropzone = Dropzone.forElement('.dropzone');
+        var deliverZone = Dropzone.forElement('.dropzone');
         var button = document.querySelector('#deliverOrder');
         var transaction_id = $('#transaction_id').val();
         button.addEventListener('click',function(){
 
-            myDropzone.on("sending", function (file, xhr, formData) {
+            deliverZone.on("sending", function (file, xhr, formData) {
 
                 formData.append("transaction_id", transaction_id);
 
             });
-            myDropzone.processQueue();
+            deliverZone.processQueue();
             axios.post('/order/api/markasdelivered',{
                 transaction_id:transaction_id,
             }).then(function(response){
                 if(response.status){
                     $('#deliverModal').modal('hide');
-                    //location.reload(false);
+                    window.location.href = window.location.href + '#markAsDelivered'
+                    location.reload(false);
                 }
             })
 
@@ -114,6 +115,23 @@ $(document).ready(function(){
     }
 })
 
+//contact form
+$(document).ready(function(){
+    if($('#issues').length > 0 ) {
+        var button = document.querySelector('#submitContact');
+        button.addEventListener('click',function(){
+            axios.post('/contactsupport/api/send',{
+                issue: $('#issue').val(),
+                subject: $('#subject').val(),
+                message: $('#message').val(),
+            }).then(function(response){
+                if(response.status == 200){
+                    window.location.href = window.location.origin + '/dashboard#contactSuccess'
+                }
+            })
+        })
+    }
+})
 
 //table pagination
 
@@ -156,11 +174,14 @@ $(document).ready(function(){
                     axios.post('/dasbhoard/api/addPendingMoney',{
                         transaction_id:transaction_id,
                     }).then(function(response){
-                        console.log(response);
+                        if(response.status == 200 ){
+                        $('#exampleModal').modal('hide')
+                        window.location.href = window.location.href + '#markAsComplete'
+                        location.reload();
+                        }
                     })
 
-                    $('#exampleModal').modal('hide');
-                    //location.reload(false);
+                    
                 }
             })
         }       
@@ -177,9 +198,10 @@ $(document).ready(function(){
             axios.post('/order/api/markasactive',{
                 transaction_id:transaction_id,
             }).then(function(response){
-                
-                    location.reload(false);
-                
+
+                    
+                    window.location.href = window.location.href + '#markAsActive'
+                    location.reload();
             })
         })
     }
@@ -423,6 +445,43 @@ $(document).ready(function(){
             $.notify({
                 // options
                 message: 'Your boost was posted successfully!' 
+            },{
+                // settings
+                type: 'success'
+            });
+        }
+        if(window.location.hash === "#contactSuccess"){
+            $.notify({
+                // options
+                message: 'Your request was sent successfully , we will get back to you in 24-48h.' 
+            },{
+                // settings
+                type: 'success'
+            });
+        }
+
+        if(window.location.hash === "#markAsComplete"){
+            $.notify({
+                // options
+                message: 'The order has been marked as complete thanks for choosing us!' 
+            },{
+                // settings
+                type: 'success'
+            });
+        }
+        if(window.location.hash === "#markAsActive"){
+            $.notify({
+                // options
+                message: 'The order has been marked as active!' 
+            },{
+                // settings
+                type: 'success'
+            });
+        }
+        if(window.location.hash === "#markAsDelivered"){
+            $.notify({
+                // options
+                message: 'The order has been marked as delivered! Waiting for the buyer to confirm it!' 
             },{
                 // settings
                 type: 'success'

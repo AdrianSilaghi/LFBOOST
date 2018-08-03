@@ -59,6 +59,26 @@ class PagesController extends Controller
         return view('dashboard.earnings');
     }
 
+    public function privacy(){
+
+        return view('privacy-policy');
+    }
+
+    public function contact(){
+        return view('contact');
+    }
+
+    public function booster()
+    {
+        return view('howtofindabooster');
+    }
+    public function trustsafety(){
+        return view('trustsafety');
+    }
+    public function tos(){
+
+        return view('tos');
+    }
     public function inbox(){
 
         return view('dashboard.inbox');
