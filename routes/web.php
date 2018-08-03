@@ -13,11 +13,6 @@
 use Illuminate\Support\Facades\Mail;
 
 
-
-Route::fallback(function(){
-    return response()->view('errors.404', [], 404);
-});
-
 Route::get('/contactsupport/api/getFirstQuestions','ContactSupportController@getFirstQuestions')->middleware('auth');
 
 
