@@ -11,7 +11,7 @@
 |
 */
 use Illuminate\Support\Facades\Mail;
-Auth::routes();
+
 
 Route::get('/contactsupport/api/getFirstQuestions','ContactSupportController@getFirstQuestions')->middleware('auth');
 
