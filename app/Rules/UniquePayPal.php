@@ -28,10 +28,11 @@ class UniquePayPal implements Rule
     public function passes($attribute, $value)
     {
         $user = Auth::user();
-        if(User::where('paypal_email',$value)==true){
-            return false;
-        }else{
+        $paypalEmails = User::where('paypal_email',$value)->get();
+        if(count($paypalEmails) == 0){
             return true;
+        }else{
+            return false;
         }
     }
 

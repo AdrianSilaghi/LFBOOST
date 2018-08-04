@@ -108,7 +108,6 @@ class UsersController extends Controller
      */
 
     public function updatePaypalEmail(Request $request){
-        
         $this->validate($request,[
             'email'=>['required',new UniquePayPal]
         ]);
@@ -116,7 +115,7 @@ class UsersController extends Controller
         $user = Auth::user();
         $user->paypal_email = $request->input('email');
         $user->save();
-
+        $request->session()->flash('success','Your PayPal E-mail has been updated');    
         return back();
     }
 
