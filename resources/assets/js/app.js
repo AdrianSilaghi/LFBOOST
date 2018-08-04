@@ -20,9 +20,7 @@ Vue.component('notification', require('./components/Notification.vue'));
 Vue.component('chat', require('./components/Chat.vue'));
 Vue.component('chat-composer', require('./components/ChatComposer.vue'));
 
-$(document).ready(function(){
-    const userId = $('meta[name="userId"]').attr('content');
-    if(!userId){
+
      
 const chat = new Vue({
     el: '#chat',
@@ -67,8 +65,6 @@ const app = new Vue({
     }
 });
 
-}
-})
 
 //validate register
 
