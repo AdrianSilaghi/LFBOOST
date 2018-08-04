@@ -900,7 +900,7 @@ $(document).ready(function () {
             //console.log(title,category,subcat,priceDescription,price,deliveryTime,postDescription,q,a,requirements);
         });
 
-
+    if($('#smartwizard').length > 0 ){
     $('#smartwizard').smartWizard({
         transitionEffect: 'fade',
         toolbarSettings: {
@@ -917,7 +917,7 @@ $(document).ready(function () {
 
         }
     });
-
+    }
 
 
 });
