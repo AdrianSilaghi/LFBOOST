@@ -12,13 +12,12 @@
 */
 use Illuminate\Support\Facades\Mail;
 
-
 Route::get('/contactsupport/api/getFirstQuestions','ContactSupportController@getFirstQuestions')->middleware('auth');
 
 Auth::routes();
 
 
-
+Route::get('/sitemap/posts','SiteMapController@posts');
 Route::get('/', 'PagesController@commingOutSoon')->name('index');
 Route::get('/privacy-policy','PagesController@privacy')->name('privacy');
 Route::get('/tos','PagesController@tos')->name('tos');

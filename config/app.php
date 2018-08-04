@@ -169,6 +169,8 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         \Torann\GeoIP\GeoIPServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+        Watson\Sitemap\SitemapServiceProvider::class,
+        Spatie\Sitemap\SitemapServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -244,6 +246,7 @@ return [
         'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
         // or
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
+        'Sitemap' => Watson\Sitemap\Facades\Sitemap::class,
 
     ],
 
