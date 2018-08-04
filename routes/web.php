@@ -126,16 +126,16 @@ Route::get('/api/getPostSlug','HomeController@findPostByNmae')->name('findPostBy
 Route::get('/api/flashme','PostsController@addedNewBosot')->middleware('auth');
 Route::post('/api/addImage','PostsController@addImage')->middleware('auth');
 
-Route::get('/categories/{cateogry}','CategoriesController@showSpecificCat')->name('showSpecificCat')->middleware('auth');
-Route::get('/categories/{category}/{subcategory}','CategoriesController@showPostByCat')->name('showPostByCat')->middleware('auth');
+Route::get('/categories/{cateogry}','CategoriesController@showSpecificCat')->name('showSpecificCat');
+Route::get('/categories/{category}/{subcategory}','CategoriesController@showPostByCat')->name('showPostByCat');
 
-Route::get('/categories/{category}/{subcategory}/price','CategoriesController@showPostByPrice')->name('showPostByPrice')->middleware('auth');
-Route::get('/categories/{category}/{subcategory}/hot','CategoriesController@showPostByViews')->name('showPostByViews')->middleware('auth');
-Route::get('/categories/{category}/{subcategory}/date','CategoriesController@showPostsByDate')->name('showPostsByDate')->middleware('auth');
+Route::get('/categories/{category}/{subcategory}/price','CategoriesController@showPostByPrice')->name('showPostByPrice');
+Route::get('/categories/{category}/{subcategory}/hot','CategoriesController@showPostByViews')->name('showPostByViews');
+Route::get('/categories/{category}/{subcategory}/date','CategoriesController@showPostsByDate')->name('showPostsByDate');
 
 Route::post('/api/validatePost','PostsController@validatePost')->name('validatePost')->middleware('auth');
 
-Route::get('/{user}/{post}','PostsController@showWithName')->name('showWithName')->middleware('auth');
+Route::get('/{user}/{post}','PostsController@showWithName')->name('showWithName');
 
 Route::post('/api/addReview','ReviewsController@store')->name('addReview')->middleware('auth');
 
