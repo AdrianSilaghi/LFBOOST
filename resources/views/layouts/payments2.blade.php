@@ -11,7 +11,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
    {{ csrf_field() }}
-    <title>LFBOOST</title>
+    <title>LFBOOST | Looking for a boost? | Marketplace for boosting services | Fortnite , World of Warcraft , League of Legends and much more!</title>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-49588686-3"></script>
