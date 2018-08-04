@@ -32,7 +32,7 @@
                             <a href="{{route('showPostByCat',[$categories->name,$sc->name])}}">
                                 <h5 class="card-header text-center">{{$sc->name}}</h5>
                                 <div class="card-body d-flex justify-content-center">
-                        <img class="card-img" src="https://lfboost.com/images/lol/{{$sc->img}}"  style="width:128px;height:128px;" alt="Card image">
+                        <img class="card-img text-muted" src="https://lfboost.com/images/lol/{{$sc->img}}"  style="width:128px;height:128px;" alt="Card image">
                         </div>  
                         <div class="card-footer text-center">
                         <span id="desc" class="text-muted">{{$sc->description}}</span>
