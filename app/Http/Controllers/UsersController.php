@@ -11,7 +11,7 @@ use Image;
 use Auth;
 use \Spatie\Tags\HasTags;
 use \Spatie\Tags\Tag;
-use App\Rules\UniquePaypal;
+use App\Rules\UniquePayPal;
 
 class UsersController extends Controller
 {
@@ -110,7 +110,7 @@ class UsersController extends Controller
     public function updatePaypalEmail(Request $request){
         
         $this->validate($request,[
-            'email'=>['required',new UniquePaypal]
+            'email'=>['required',new UniquePayPal]
         ]);
 
         $user = Auth::user();

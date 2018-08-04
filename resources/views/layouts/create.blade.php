@@ -7,8 +7,8 @@
     <meta name="userId" content="{{ Auth::check() ? Auth::user()->id : '' }}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>LFBOOST</title>
+    <meta name="theme-color" content="green">
+    <title>LFBOOST Creat New Boost</title>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-49588686-3"></script>

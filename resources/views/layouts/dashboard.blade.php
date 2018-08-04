@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="userId" content="{{ Auth::check() ? Auth::user()->id : '' }}">
-
+    <meta name="theme-color" content="green">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{ csrf_field() }}
-    <title>LFBOOST</title>
+    <title>LFBOOST Dashboard</title>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-49588686-3"></script>
