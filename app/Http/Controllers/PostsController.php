@@ -13,7 +13,7 @@ use Image;
 use App\Question;
 use \Spatie\Tags\Tag;
 use App\User;
-
+use SEO;
 class PostsController extends Controller
 {
     use Viewable;
@@ -163,6 +163,9 @@ class PostsController extends Controller
         $tags = $post->tags()->get();
         $reviews = $post->review;
         
+        SEO::setTitle($post->title);
+        SEO::setDescription($post->body);
+
         
         if(count($reviews)==0){
             $avg = 0;
