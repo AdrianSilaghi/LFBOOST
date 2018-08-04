@@ -27,18 +27,14 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{{asset('css/select2.css')}}">
     <link rel="stylesheet" href="{{asset('css/algolia.css')}}">
     <link rel="stylesheet" href="{{asset('css/smart_wizard.css')}}">
     <link rel="stylesheet" href="{{asset('css/smart_wizard_theme_arrows.css')}}">
     <link rel="stylesheet" href="{{asset('css/dropzone.css')}}">
-    <link rel="stylesheet" href="{{asset('css/parsley.css')}}">
     <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/bootstrap-tagsinput.css')}}">
     <link rel="stylesheet" href="{{asset('css/fontawesome-stars.css')}}">
-    <link rel="stylesheet" href="{{asset('css/log.css')}}">
-    <link rel="stylesheet" href="{{asset('css/animate.min.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>

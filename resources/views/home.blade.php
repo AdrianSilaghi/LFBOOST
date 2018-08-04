@@ -133,7 +133,7 @@
                                                 <div class="card-body">
                                                   <ul class="list-inline">
                                                       <li class="list-inline-item">
-                                                            <img src="https://lfboost.com/uploads/avatars/{{$poo->user->avatar}}" style="width:25px; height:25px;border-radius:50%;"> 
+                                                            <img src="https://lfboost.com/uploads/avatars/{{$poo->user->avatar}}" alt="{{$poo->user->name}} avatar" style="width:25px; height:25px;border-radius:50%;"> 
                                                       </li>
                                                       <li class="list-inline-item">
                                                             <a href="{{route('show.user.slug',[$poo->user->slug])}}"><p class="h6">{{$poo->user->name}}</p></a>

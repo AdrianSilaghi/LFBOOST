@@ -63,14 +63,7 @@
     <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
     <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
     
-    <script src="{{asset('js/select2.js')}}"></script>
     <script src="{{asset('js/algolia.js')}}"></script>
-    <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
-    <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
-    <script src="{{asset('js/dropzone.js')}}"></script>
-    <script src="{{asset('js/jquery.smartWizard.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
-    <script src="{{asset('js/bootstrap-tagsinput.js')}}"></script>
     <script src="{{asset('js/jquery.barrating.min.js')}}"></script>
     <script src="{{asset('js/bootstrap-notify.min.js')}}"></script>
     <script src="{{asset('js/datatables.min.js')}}"></script>
