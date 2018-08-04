@@ -32,30 +32,9 @@
       <a class="nav-link" href="{{route('becomeSeller')}}">Become a seller</a>
           
 
-          <a class="nav-link m-r-10" href="" data-toggle="modal" data-target=".bd-example-modal-lg">Sign In</a>
-
-            <div class="modal  bd-example-modal-lg" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                    <div class="modal-content">
-                        @include('_includes.login')
-                    </div>
-                
-            </div>
-            </div>
-
-          
-              
+          <a class="nav-link m-r-10" href="/login">Sign In</a>       
                   
-            <button type="button" class="btn btn-outline-success m-r-10" data-toggle="modal" data-target="#join">Join</button>
-
-            <div class="modal bd-example-modal-lg" id="join" role="dialog" aria-labelledby="myLargeModalLabel1" aria-hidden="true">
-            <div class="modal-dialog">
-                    <div class="modal-content">
-                        @include('_includes.signup')
-                    </div>
-                
-            </div>
-        </div>        
+            <a role="button" href="/register" class="btn btn-outline-success m-r-10">Join</a>    
                      
                  
             
@@ -87,11 +66,12 @@
             <hr></hr>
             <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();
             document.getElementById('logout-form').submit();"> <span><i class="fas fa-sign-out-alt"></i></span> Log Out</a>
+            @include('_includes.forms.logout') 
           </div>
         </li>
       </ul>
         @endguest
-        @include('_includes.forms.logout')
+        
     </div>
   </nav>
 </div>

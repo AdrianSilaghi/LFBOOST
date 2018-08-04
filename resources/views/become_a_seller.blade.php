@@ -137,17 +137,8 @@
             <hr>
             <h4 class="text-muted m-t-20 m-b-20">Sign up and create your first Boost today!</h4>
             <hr>
-            <button type="button" class="btn btn-outline-success btn-lg" data-toggle="modal" data-target="#join1">Join</button>
+            <a role="button" class="btn btn-outline-success btn-lg" href="/register">Join</a>
 
-            <div class="modal bd-example-modal-lg" id="join1" role="dialog" aria-labelledby="myLargeModalLabel1" aria-hidden="true">
-            <div class="modal-dialog">
-                    <div class="modal-content" style="width:400px;">
-                        @include('_includes.signupseller')
-                    </div>
-                
-            </div>
-            </div 
-        </div>
-    </div>
+
 </div>
 @endsection

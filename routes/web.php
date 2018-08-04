@@ -17,6 +17,8 @@ Route::get('/contactsupport/api/getFirstQuestions','ContactSupportController@get
 
 Auth::routes();
 
+
+
 Route::get('/', 'PagesController@commingOutSoon')->name('index');
 Route::get('/privacy-policy','PagesController@privacy')->name('privacy');
 Route::get('/tos','PagesController@tos')->name('tos');
@@ -48,6 +50,8 @@ Route::post('/order/api/markasactive','OrdersController@markOrderAsActive')->mid
 Route::post('/order/api/markasdelivered','OrdersController@markOrderAsDelivered')->middleware('auth');
 Route::post('/order/api/addProof','OrdersController@addProof')->middleware('auth');
 
+
+Route::post('/register/api/validate','UsersController@validateForm');
 Route::post('/dashboard/api/validatePayout','PaymentsController@validatePayout')->middleware('auth');
 Route::post('/dashboard/api/removeWithdrawal','PendingmoneyController@removeWithdrawal')->middleware('auth');
 Route::post('/payment/api/payOut','PaymentsController@payout')->middleware('auth');

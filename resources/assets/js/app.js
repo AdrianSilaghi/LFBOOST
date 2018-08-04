@@ -20,6 +20,10 @@ Vue.component('notification', require('./components/Notification.vue'));
 Vue.component('chat', require('./components/Chat.vue'));
 Vue.component('chat-composer', require('./components/ChatComposer.vue'));
 
+$(document).ready(function(){
+    const userId = $('meta[name="userId"]').attr('content');
+    if(!userId){
+     
 const chat = new Vue({
     el: '#chat',
     data: {
@@ -62,6 +66,55 @@ const app = new Vue({
                
     }
 });
+
+}
+})
+
+//validate register
+
+$(document).ready(function(){
+    if($('#registerValidation').length > 0 ){
+        document.querySelector('#registerValidation').addEventListener('change', function (e) {
+            axios.post('/register/api/validate', {
+                'name': document.querySelector('#name').value,
+                'email': document.querySelector('#email').value,
+                'password': document.querySelector('#password').value,
+                'password_confrimation':document.querySelector('#password_confirmation').value
+            })
+                .then((response) => {
+                    clearErrors();
+
+                        console.log(response);
+
+
+                })
+                .catch((error) => {
+                    const errors = error.response.data.errors
+                    const firstItem = Object.keys(errors)[0]
+                    const firstItemDOM = document.getElementById(firstItem)
+                    const firstErrorMessage = errors[firstItem][0]
+
+                    console.log(errors)
+                    clearErrors();
+
+                    firstItemDOM.insertAdjacentHTML('afterend', `<div class="text-danger">${firstErrorMessage}</div>`)
+                    // highlight the form control with the error
+                    firstItemDOM.classList.add('border', 'border-danger')
+                });
+
+            function clearErrors() {
+                // remove all error messages
+                const errorMessages = document.querySelectorAll('.text-danger')
+                errorMessages.forEach((element) => element.textContent = '')
+
+                const formControls = document.querySelectorAll(['input','.form-control', '.custom-select', '.ckeditor'])
+                formControls.forEach((element) => element.classList.remove('border', 'border-danger'))
+            }
+
+        });
+    }
+})
+
 
 
 //show more comments

@@ -9,10 +9,10 @@
                           <p class="lead m-t-10">The first freelance marketplace for boosting services has arrived!</p>
                           <ul class="list-inline">
                             <li class="list-inline-item">
-                                <button type="button" class="btn btn-primary btn-lg" id="hireButton">Hire a booster</button>
+                                <a href="/register" role="button" class="btn btn-primary btn-lg" id="hireButton">Hire a booster</a>
                             </li>
                             <li class="list-inline-item">
-                                <button type="button" class="btn btn-primary btn-lg" id="boosterButton">Apply as a booster</button>
+                                <a href="/register" role="button" class="btn btn-primary btn-lg" id="boosterButton">Apply as a booster</a>
                             </li>
                           </ul>
                         </div>
