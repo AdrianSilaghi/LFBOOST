@@ -63,6 +63,29 @@ const app = new Vue({
     }
 });
 
+
+//show more comments
+
+$(document).ready(function(){
+    if($('#comments').length > 0 ){
+        
+      $('#comments').ready(function(){
+          $('#comments').children().slice(0,6).show();
+          var x = $('#comments').children()
+          $("#loadMore").on('click', function (e) {
+            e.preventDefault();
+            $(".card:hidden").slice(0, 4).slideDown();
+            if ($(".card:hidden").length == 0) {
+                $("#load").fadeOut('slow');
+            }
+            $('html,body').animate({
+                scrollTop: $(this).offset().top
+            }, 1500);
+        });
+      })
+       
+    }
+});
 //deliver modal
 $(document).ready(function(){
     if($('#deliverModal').length > 0 ){

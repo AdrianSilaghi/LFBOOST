@@ -178,7 +178,7 @@
                                         @endif
 
                     
-                                             <ul class="list-inline">
+                                             <ul class="list-inline"  id="priceList">
                                                 <li class="list-inline-item">
                                                         @php
                                                         $reviews = $poo->review;

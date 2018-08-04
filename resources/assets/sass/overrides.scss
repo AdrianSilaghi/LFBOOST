@@ -69,7 +69,7 @@ a.list-group-item:hover{
     -webkit-text-decoration-skip: objects;
   }
   
-.navbar{
+#catNav .navbar{
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 //Navbar Categories
@@ -289,7 +289,7 @@ a.list-group-item:hover{
 #PostE{
   align-items: flex-start;
   display: flex;
-  height:380px;
+  height:300px;
   width: 235px;
   max-height: fit-content;
 }
@@ -322,7 +322,11 @@ a:hover{
 }
 
 #PostE ul{
-  
+  margin-top:0rem;
+}
+
+ul#priceList{
+  margin-top: 1rem;
 }
 
 .breadcrumb {
@@ -373,4 +377,8 @@ a:hover{
 
 .jumbotron {
   background-color: transparent !important;
+}
+
+#comments .card{
+  display: none;
 }

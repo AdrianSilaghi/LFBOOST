@@ -10986,7 +10986,7 @@ a {
   -webkit-text-decoration-skip: objects;
 }
 
-.navbar {
+#catNav .navbar {
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -11207,7 +11207,7 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 380px;
+  height: 300px;
   width: 235px;
   max-height: -webkit-fit-content;
   max-height: -moz-fit-content;
@@ -11240,6 +11240,14 @@ a:hover {
 #PostB .card {
   height: 310px;
   max-height: 310px;
+}
+
+#PostE ul {
+  margin-top: 0rem;
+}
+
+ul#priceList {
+  margin-top: 1rem;
 }
 
 .breadcrumb {
@@ -11291,5 +11299,9 @@ a:hover {
 
 .jumbotron {
   background-color: transparent !important;
+}
+
+#comments .card {
+  display: none;
 }
 

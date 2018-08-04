@@ -163,6 +163,7 @@ class PostsController extends Controller
         $tags = $post->tags()->get();
         $reviews = $post->review;
         
+        
         if(count($reviews)==0){
             $avg = 0;
             $countReviews = 0;
@@ -181,7 +182,13 @@ class PostsController extends Controller
             $countReviews = count($a);
         }
         $post->addView();
-        return view('posts.show')->with('post',$post)->with('user',$users)->with('qa',$qPost)->with('tags',$tags)->with('raiting',$avg)->with('countReviews',$countReviews);
+        return view('posts.show')->with('post',$post)
+                                 ->with('user',$users)
+                                 ->with('qa',$qPost)
+                                 ->with('tags',$tags)
+                                 ->with('raiting',$avg)
+                                 ->with('countReviews',$countReviews)
+                                 ->with('reviews',$reviews);
     }
     /**
      * Show the form for editing the specified resource.

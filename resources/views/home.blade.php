@@ -1,7 +1,8 @@
 @extends('layouts.home')
 @section('content')
-<div class="d-flex">
-    <div class="col">
+
+<div class="flex-row  flex-row sm:flex-col md:flex-row-reverse lg:flex-col-reverse xl:flex m-t-10">
+    <div class="flex-auto">
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                       <div class="carousel-item active">
@@ -14,10 +15,9 @@
                   </div>    
     </div>
 </div>
-
-<div class="d-flex">
-        <div class="col"></div>
-        <div class="col">
+<div class="flex-no-wrap sm:flex-wrap md:flex-wrap-reverse lg:flex-no-wrap xl:flex-wrap ">
+<div class="flex flex-row sm:flex-col md:flex-row-reverse lg:flex-col-reverse xl:flex m-t-10">
+        <div class="flex-auto">
             <div class="card">
                 <div class="card-body" style="padding:1rem;">
                        <h1 class="display-4" style="font-size:1.8rem;margin-bottom:0rem;">Newest arrivals</h1>
@@ -26,9 +26,9 @@
             </div>
                 @if(count($posts) > 0 )
                     @foreach($posts->chunk(4) as $post)
-                    <div class="d-inline-flex flex-fill" id="mainPage">
+                    <div class="flex-row  flex-row sm:flex-col md:flex-row-reverse lg:flex-col-reverse xl:flex m-t-10" id="mainPage">
                         @foreach($post as $poo)
-                                <div class="d-sm-inline-flex flex-wrap flex-fill flex-column m-r-5 m-l-5 m-t-10" id="PostE">
+                                <div class="flex-initial sm:flex-col m-r-5 m-l-5 m-t-10" id="PostE">
                                         <div class="card">
                                                 <img class="card-img-top" src="{{asset("uploads/posts/$poo->image")}}" alt="Card image cap">
                                                 <div class="card-body">
@@ -55,7 +55,7 @@
                                                     @endif
             
                                 
-                                                         <ul class="list-inline">
+                                                         <ul class="list-inline" id="priceList">
                                                             <li class="list-inline-item">
                                                             
                                                                     @php
@@ -112,13 +112,12 @@
                     
                 @endif
         </div>
-        <div class="col"></div>
 </div>
-
-<div class="d-flex">
-        <div class="col"></div>
-        <div class="col m-t-25">
-            <div class="card">
+</div>  
+<div class="flex-no-wrap sm:flex-wrap md:flex-wrap-reverse lg:flex-no-wrap xl:flex-wrap ">
+<div class="flex-row  flex-row sm:flex-col md:flex-row-reverse lg:flex-col-reverse xl:flex m-t-10">
+        <div class="flex-auto">
+            <div class="card m-t-10">
                 <div class="card-body" style="padding:1rem;">
                        <h1 class="display-4" style="font-size:1.8rem;margin-bottom:0rem;">Popular ones</h1>
                        
@@ -126,9 +125,9 @@
             </div>
                 @if(count($popular) > 0 )
                     @foreach($popular->chunk(4) as $post)
-                    <div class="d-inline-flex flex-fill" id="mainPage">
+                    <div class="flex-row  flex-row sm:flex-col md:flex-row-reverse lg:flex-col-reverse xl:flex m-t-10" id="mainPage">
                         @foreach($post as $poo)
-                                <div class="d-sm-inline-flex flex-wrap flex-fill flex-column m-r-5 m-l-5 m-t-10" id="PostE">
+                                <div class="flex-initial sm:flex-col m-r-5 m-l-5 m-t-10" id="PostE">
                                         <div class="card">
                                                 <img class="card-img-top" src="{{asset("uploads/posts/$poo->image")}}" alt="Card image cap">
                                                 <div class="card-body">
@@ -155,7 +154,7 @@
                                                     @endif
             
                                 
-                                                         <ul class="list-inline">
+                                                         <ul class="list-inline"  id="priceList">
                                                             <li class="list-inline-item">
                                                              
                                                             @php
@@ -212,6 +211,7 @@
                     
                 @endif
         </div>
-        <div class="col"></div>
+        
+</div>
 </div>
 @endsection
