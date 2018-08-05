@@ -65,11 +65,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
+        $position = geoip()->getLocation($data['ip']);
         $user =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'country' => $position->country,
         ]);
 
         $verifyUser = VerifyUser::create([

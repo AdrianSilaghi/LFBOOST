@@ -54,6 +54,7 @@
                   </span>
                   @endif
                 </div>
+              <input type="hidden" name=" ip" value="{{request()->ip()}}">
               <div class="flex items-center justify-between">
                 <button class="bg-green hover:bg-green-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                   Sign Up
