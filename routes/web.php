@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Mail;
 Route::get('/contactsupport/api/getFirstQuestions','ContactSupportController@getFirstQuestions')->middleware('auth');
 
 Auth::routes();
+Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
 
 Route::post('/api/validatePrice','PostsController@validatePriceDescription')->middleware('auth');
 Route::post('/api/validatePost','PostsController@validatePostDescription')->middleware('auth');

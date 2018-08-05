@@ -50,6 +50,10 @@ class User extends Authenticatable
         ];
     }
 
+    public function verifyuser(){
+        return $this->hasOne('App\VerifyUser');
+    }
+
     public function transactions(){
         return $this->hasMany(Transaction::class);
     }
