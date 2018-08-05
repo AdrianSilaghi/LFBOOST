@@ -4,9 +4,5 @@
 
 <hr>
 
-@foreach($data as $da)
-    {{$da}}
-
-@endforeach
-
+{{$data}}
 @endsection
