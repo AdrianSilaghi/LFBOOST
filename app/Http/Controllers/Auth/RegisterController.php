@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Mail\VerifyMail;
 use App\VerifyUser;
+use \Torann\GeoIP\Facades\GeoIP;
 
 class RegisterController extends Controller
 {

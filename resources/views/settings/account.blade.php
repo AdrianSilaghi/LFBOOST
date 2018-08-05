@@ -28,28 +28,6 @@
                     
                     <form class="form-horizontal" method="POST" action="{!! action('UsersController@update', ['id' => Auth::user()->id]) !!}">
                             {{ csrf_field() }}
-                            <label for="sdescription" class="col-sm control-label">Country</label>
-                                    <small id="shortDescHelpBlock" class="form-text text-muted">
-                                            The country you are living in.
-                                          </small>
-                                          <hr>
-                            <div class="row">
-                                <div class="col">
-                                        <div class="form-group {{ $errors->has('language') ? ' has-error' : '' }}">
-                                                <select class="custom-select" id="country" name="country">
-                                                    <option value="">Country</option>
-                                                @if(!is_null($user->country))
-                                                <option value="" selected> {{$user->country}}</option>
-                                                @endif
-                                                @foreach($countries as $country)
-                                                <option value="{{$country->name}}">{{$country->name}}</option>
-                                                @endforeach
-                                                </select>
-                                            </div>
-                                </div>
-                            </div>
-                                    
-                            <hr>
                             <div class="form-group{{ $errors->has('sdescription') ? ' has-error' : '' }}">
                                     
                                     <label for="sdescription" class="col-sm control-label">Short Description</label>

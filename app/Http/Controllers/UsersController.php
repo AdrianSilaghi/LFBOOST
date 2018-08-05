@@ -130,8 +130,7 @@ class UsersController extends Controller
         //create a new post
         $user = User::find($id);
         $user->short_description = $request->input('sdescription');
-        $user->description = $request->input('description'); 
-        $user->country = $request->input('country');
+        $user->description = $request->input('description');
         $user->save();
         
         
