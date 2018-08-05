@@ -138,17 +138,17 @@ $(document).ready(function(){
 //deliver modal
 $(document).ready(function(){
     if($('#deliverModal').length > 0 ){
-        var deliverZone = Dropzone.forElement('.dropzone');
+        var MyDropzone = Dropzone.forElement('.dropzone');
         var button = document.querySelector('#deliverOrder');
         var transaction_id = $('#transaction_id').val();
         button.addEventListener('click',function(){
 
-            deliverZone.on("sending", function (file, xhr, formData) {
+            MyDropzone.on("sending", function (file, xhr, formData) {
 
                 formData.append("transaction_id", transaction_id);
 
             });
-            deliverZone.processQueue();
+            MyDropzone.processQueue();
             axios.post('/order/api/markasdelivered',{
                 transaction_id:transaction_id,
             }).then(function(response){
