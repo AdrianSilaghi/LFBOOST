@@ -1,4 +1,4 @@
-@extends('layouts.dashboardid')
+@extends('layouts.dashboard')
 @section('content')
 @inject('carbon','Carbon\Carbon')
 @php
