@@ -109,6 +109,7 @@ class PostsController extends Controller
     public function validatePostDescription(Request $request){
         $this->validate($request,[
             'post_description'=>'min:120|max:1200'
+            
         ]);
     }
 

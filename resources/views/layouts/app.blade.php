@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="theme-color" content="green">
-    <title>LFBOOST</title>
+    <title>Looking For Boost</title>
    
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
