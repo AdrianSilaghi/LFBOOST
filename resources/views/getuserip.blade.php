@@ -3,6 +3,7 @@
 {{$ip}}
 
 <hr>
-{{$data}}
-
+@foreach($position as $po)
+{{$po}}
+@endforeach
 @endsection

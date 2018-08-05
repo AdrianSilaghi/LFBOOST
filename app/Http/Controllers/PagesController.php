@@ -17,9 +17,10 @@ use Torann\GeoIP\Facades\GeoIP;
 class PagesController extends Controller
 {
     public function getUserIp(){
+
         $ip = Request::ip();
-        $datax = Location::get($ip);
-        return view('getuserip')->with('ip',$ip)->with('data',$datax);
+        $position = Location::get('86.126.210.192');
+        return view('getuserip')->with('ip',$ip)->with('position',$position);
     }
 
     public function commingOutSoon(){
