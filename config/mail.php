@@ -57,7 +57,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'contact@lfboost.com'),
-        'name' => env('MAIL_FROM_NAME', ''),
+        'name' => env('MAIL_FROM_NAME', 'LFBOOST'),
     ],
 
     /*
