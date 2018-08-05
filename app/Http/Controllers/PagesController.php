@@ -17,8 +17,8 @@ use Torann\GeoIP\Facades\GeoIP;
 class PagesController extends Controller
 {
     public function getUserIp(){
-        $ip = Request::ip();
-        $data = geoip($ip);
+        $ips = Request::ip();
+        $data = geoip()->getLocation($ip);
         return view('getuserip')->with('ip',$ip)->with('data',$data);
     }
 
