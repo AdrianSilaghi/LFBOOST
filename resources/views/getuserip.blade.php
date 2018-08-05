@@ -3,12 +3,8 @@
 {{$ip}}
 
 <hr>
+@foreach($data as $dat)
+{{$dat}}
+@endforeach
 
-@php
-$x=0;
-foreach($data as $dat){
-   return $x = $dat;
-}
-@endphp
-{{$x}}
 @endsection
