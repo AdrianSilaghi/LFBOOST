@@ -16,6 +16,8 @@ Route::get('/contactsupport/api/getFirstQuestions','ContactSupportController@get
 
 Auth::routes();
 
+Route::post('/api/validatePrice','PostsController@validatePriceDescription')->middleware('auth');
+Route::post('/api/validatePost','PostsController@validatePostDescription')->middleware('auth');
 
 Route::get('/sitemap/posts','SiteMapController@posts');
 Route::get('/', 'PagesController@commingOutSoon')->name('index');

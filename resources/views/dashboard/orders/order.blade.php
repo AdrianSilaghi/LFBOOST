@@ -1,13 +1,14 @@
 @extends('layouts.dashboard')
 @section('content')
 @inject('carbon','Carbon\Carbon')
+
 @php
 $createdAt = $order->createdAt;
 $days = $order->delivery_time;
 $dueOn = $carbon->parse($createdAt)->addDays($days);
 $deliveredAt = $carbon->parse($order->deliveredAt);
-
 @endphp
+
 @if($order->buyer_id == auth()->user()->id)
 <div class="container">
     <div class="row">

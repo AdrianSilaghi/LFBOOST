@@ -123,10 +123,12 @@
                                     <div class="d-flex align-items-end">
                                         
                                         <div class="col-md-9"> 
-                                            <label class="h4 text-muted"  for="priceDescription">Description</label>
+                                            <label class="h4 text-muted"  for="priceDescription">Price Description</label>
                                             <hr>
-                                            <textarea class="form-control" id="price_description" name="priceDescription" rows="3" style="resize:none;" type="text" placeholder="Describe the details of your offering"></textarea>
-                                        </div>
+                                            <div id="priceDesc">
+                                            <textarea class="form-control" id="priceDescription" name="priceDescription" rows="3" style="resize:none;" type="text" placeholder="Describe the details of your offering"></textarea>
+                                            </div>
+                                            </div>
                                         <div class="col">
                                                 <small id="shortDescHelpBlock" class="form-text text-muted">
                                                         Summarize what this boost offers buyers, and why you included these items in your boost.
@@ -185,7 +187,7 @@
                                         <div class="form-group">
                                                 <label class="h4 text-muted" for="description">Describe your boost</label>
                                                 <hr>
-                                                <textarea class="form-control" id="body" name="postDescription" rows="5" style="resize:none;"></textarea>
+                                                <textarea class="form-control" id="postDescription" name="postDescription" rows="5" style="resize:none;"></textarea>
                                                 <small id="shortDescHelpBlock" class="form-text text-muted">
                                                         Min 120.
                                                 </small>
@@ -248,7 +250,12 @@
                                 </div>
                                 <div class="d-flex">
                                     <div class="col" id="uploadForm">
-                                    <form action="{{url('/order/api/addProof')}}" class="dropzone">
+                                            <div class="form-group">
+                                                    <label class="h5 text-muted" for="">Upload a photo that describes or is related to your Boosting Service</label>
+                                                    <small class="form-text text-muted">Files must be in : JPEG, PNG, JPG formats and have a maximum size of 2mb.</small>
+                                                    <hr>
+                                            </div>
+                                    <form action="{{url('/api/addImage')}}" class="dropzone">
                                     {{ csrf_field() }}
                                     </form>
                                        

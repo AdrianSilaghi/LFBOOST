@@ -106,18 +106,30 @@ class PostsController extends Controller
         
     
     }
+    public function validatePostDescription(Request $request){
+        $this->validate($request,[
+            'post_description'=>'min:120|max:1200'
+        ]);
+    }
 
+    public function validatePriceDescription(Request $request){
+        
+        $this->validate($request,[
+            'price_description'=>'min:20|max:120'
+        ]);
+
+        return response(200);
+    }
     public function validatePost(Request $request){
          
         $this->validate($request,[
             'title'=>'required|min:15|max:55|regex:/^[a-zA-Z\s]*$/',
             'categories'=>'required',
             'subcategories' => 'required',
-            'price_description'=>'required|min:20|max:120|regex:/^[a-zA-Z\s\w\#!.?\-\']*$/i',
+            'price_description'=>'required|min:20|max:120',
             'price'=>'required|min:5|max:995|integer|',
-            'delivery_time'=>'required|min:5|max:30|integer',
-            'body'=>'required|min:120|max:1200|regex:/^[a-zA-Z\s\w\#!.?-\']*$/i',
-            'requirements'=>'required|min:10|regex:/^[a-zA-Z\s\w\#!.?-\']*$/i',
+            'delivery_time'=>'required|max:30|integer',
+            'requirements'=>'required|min:10|regex:/^[a-zA-Z\s\w\#!.,?\-\']*$/i',
         ]);
     }
 
@@ -131,8 +143,8 @@ class PostsController extends Controller
         if($request->hasFile('file')){
             $image = $request->file('file');
             $filename = time() . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->save( public_path('/uploads/posts/' .'big'.$filename));    
             Image::make($image)->resize(286,180)->save( public_path('/uploads/posts/' . $filename));
-
         $post = Post::find($request->id);
         $post->image = $filename;
         $post->save();  

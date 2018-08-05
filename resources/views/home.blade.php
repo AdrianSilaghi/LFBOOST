@@ -128,8 +128,8 @@
                     <div class="flex-row  flex-row sm:flex-col md:flex-row-reverse lg:flex-col-reverse xl:flex m-t-10" id="mainPage">
                         @foreach($post as $poo)
                                 <div class="flex-initial sm:flex-col m-r-5 m-l-5 m-t-10" id="PostE">
-                                        <div class="card">
-                                                <img class="card-img-top" src="{{asset("uploads/posts/$poo->image")}}" alt="Card image cap">
+                                        <div class="card">   
+                                            <img  src="{{asset("uploads/posts/$poo->image")}}" alt="Card image cap">
                                                 <div class="card-body">
                                                   <ul class="list-inline">
                                                       <li class="list-inline-item">

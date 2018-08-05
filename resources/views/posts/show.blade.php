@@ -1,9 +1,8 @@
 @extends('layouts.app')
-
 @section('content')
 
-@inject('USER','App\User');
-@inject('carbon','Carbon\Carbon');
+@inject('USER','App\User')
+@inject('carbon','Carbon\Carbon')
 
 <div class="container m-t-20">
     <div class="row justify-content-center">
@@ -31,6 +30,7 @@
                         </nav>
                 </small>
                 <hr>
+                <img class="card-img-top" src="{{asset("uploads/posts/big$post->image")}}" alt="Card image cap">
                 </div>
             </div>
             {{-- body --}}
@@ -39,7 +39,7 @@
                     <h5>About this boost</h5>
                     <hr>
                     <p class="card-text">
-                        {{$post->body}}
+                        {!!$post->body!!}
                     </p>
                     <hr>
                 </div>
@@ -153,7 +153,7 @@
                         <hr>
                     <div class="row">
                            <div class="col-9">     
-                                <p class="card-text">{{$post->price_description}}</p>
+                                <p class="card-text">{!!$post->price_description!!}</p>
                             <ul class="list-inline">
                                 <li class="list-inline-item text-muted"><i class="far fa-clock"></i></li>
                                 <li class="list-inline-item text-muted" style="font-weight:700;">{{$post->price}} Days Delivery</li>

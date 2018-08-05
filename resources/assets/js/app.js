@@ -138,17 +138,17 @@ $(document).ready(function(){
 //deliver modal
 $(document).ready(function(){
     if($('#deliverModal').length > 0 ){
-        var MyDropzone = Dropzone.forElement('.dropzone');
+        var deliverZone = Dropzone.forElement('.dropzone');
         var button = document.querySelector('#deliverOrder');
         var transaction_id = $('#transaction_id').val();
         button.addEventListener('click',function(){
 
-            MyDropzone.on("sending", function (file, xhr, formData) {
+            deliverZone.on("sending", function (file, xhr, formData) {
 
                 formData.append("transaction_id", transaction_id);
 
             });
-            MyDropzone.processQueue();
+            deliverZone.processQueue();
             axios.post('/order/api/markasdelivered',{
                 transaction_id:transaction_id,
             }).then(function(response){
@@ -814,13 +814,13 @@ $(document).ready(function () {
     var btnFinish = $('<button></button>').text('Finish')
         .addClass('btn btn-outline-primary')
         .on('click', function () {
+            var postDescription = CKEDITOR.instances.postDescription.getData();
             var title = $('#title').val();
             var category = $('#categories').val();
             var subcat = $('#subcategories').val();
-            var priceDescription = $('#price_description').val();
+            var priceDescription = CKEDITOR.instances.priceDescription.getData();
             var price = $('#price').val();
             var deliveryTime = $('#delivery_time').val();
-            var postDescription = $('#body').val();
             //var q = $('#question').val();
             //var a = $('#answer').val();
             var requirements = $('#requirements').val();
@@ -889,7 +889,7 @@ $(document).ready(function () {
                             myDropzone.processQueue();
 
                             var userSlug = $('meta[name="userSlug"]').attr('content');
-                            window.location.href = window.location.origin + '/' + userSlug + '/' + data.slug + '#postComplete'
+                            //window.location.href = window.location.origin + '/' + userSlug + '/' + data.slug + '#postComplete'
                         }
                     });
                 }, 3000);
@@ -924,15 +924,69 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     if (document.querySelector('#smartwizard') !== null) {
+        function clearconsole() {
+            console.log(window.console);
+            if (window.console) {
+                console.clear();
+            }
+        }
+        CKEDITOR.replace( 'postDescription' ).on('change',function(evt){
+            function clearErrors() {
+                // remove all error messages
+                const errorMessages = document.querySelectorAll('.text-danger')
+                errorMessages.forEach((element) => element.textContent = '')
+            }
+            var post_description = evt.editor.getData().replace(/<[^>]*>|\s/g, '')
+            axios.post('/api/validatePost',{
+                'post':post_description,
+            }).then((response)=>{
+                clearErrors();
+            }).catch((error)=>{
+                const errors = error.response.data.errors
+                const firstItem = Object.keys(errors)[0]
+                const firstItemDOM = document.getElementById('cke_postDescription');
+                const firstErrorMessage = errors[firstItem][0]
 
-        var container = document.getElementById('price_description');
-        var editor = new Quill(container, {
-            theme: 'snow'
+                clearErrors();
+                
+                firstItemDOM.insertAdjacentHTML('afterend', `<div class="text-danger">${firstErrorMessage}</div>`)
+                // highlight the form control with the error
+
+    
+                
+            })
+        })
+        
+        CKEDITOR.replace('priceDescription',{
+            height:130,
+            removePlugins :'format',
+        }).on( 'change', function( evt ) {
+            function clearErrors() {
+                // remove all error messages
+                const errorMessages = document.querySelectorAll('.text-danger')
+                errorMessages.forEach((element) => element.textContent = '')
+            }
+            var price_description = evt.editor.getData().replace(/<[^>]*>|\s/g, '')
+            axios.post('/api/validatePrice',{
+                'price_description':price_description,
+            }).then((response)=>{
+                clearErrors();
+            }).catch((error)=>{
+                const errors = error.response.data.errors
+                const firstItem = Object.keys(errors)[0]
+                const firstItemDOM = document.getElementById('cke_priceDescription');
+                const firstErrorMessage = errors[firstItem][0]
+
+                clearErrors();
+                
+                firstItemDOM.insertAdjacentHTML('afterend', `<div class="text-danger">${firstErrorMessage}</div>`)
+                // highlight the form control with the error
+
+    
+                
+            })
         });
-        var container2 = document.getElementById('body');
-        var editor2 = new Quill(container2, {
-            theme: 'snow'
-        });
+
         document.querySelector('#smartwizard').addEventListener('change', function (e) {
             function clearconsole() {
                 console.log(window.console);
@@ -941,14 +995,13 @@ $(document).ready(function () {
                 }
             }
 
+            
             axios.post('/api/validatePost', {
                 'title': document.querySelector('#title').value,
                 'categories': document.querySelector('#categories').value,
                 'subcategories': document.querySelector('#subcategories').value,
-                'price_description': document.querySelector('#price_description').value,
                 'price': document.querySelector('#price').value,
                 'delivery_time': document.querySelector('#delivery_time').value,
-                'body': document.querySelector('#body').value,
                 'requirements': document.querySelector('#requirements').value,
             })
                 .then((response) => {
@@ -962,7 +1015,7 @@ $(document).ready(function () {
                     const firstItem = Object.keys(errors)[0]
                     const firstItemDOM = document.getElementById(firstItem)
                     const firstErrorMessage = errors[firstItem][0]
-
+                    
                     clearErrors();
 
                     firstItemDOM.insertAdjacentHTML('afterend', `<div class="text-danger">${firstErrorMessage}</div>`)

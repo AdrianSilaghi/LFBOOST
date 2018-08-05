@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('slug');
             $table->string('cat_name');
             $table->string('subcat_name');
-            $table->integer('cat_it');
+            $table->integer('category_id');
             $table->integer('subcat_id');
             $table->string('title');
             $table->mediumText('body');
@@ -27,6 +27,7 @@ class CreatePostsTable extends Migration
             $table->integer('price');
             $table->integer('delivery_time');
             $table->string('requirements');
+            $table->string('username');
             $table->string('image')->nullable()->default('default.png');
             $table->timestamps();
         });
