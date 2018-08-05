@@ -4,5 +4,9 @@
 
 <hr>
 
-{{$data}}
+@foreach($data as $dat)
+
+{{$dat}}
+
+@endforeach
 @endsection
