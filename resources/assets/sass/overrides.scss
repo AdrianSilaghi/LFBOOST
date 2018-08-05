@@ -77,15 +77,7 @@ a.list-group-item:hover{
   height: 25px;
 }
 
-.bg-light{
-  background-color: transparent !important;
-}
-.card-footer{
-  background-color: transparent !important;
-}
-.card-header{
-  background-color: transparent !important;
-}
+
 
 #catNav .dropdown:hover>.dropdown-menu{
   display: block;
@@ -391,4 +383,15 @@ ul#priceList{
 
 #comments .card{
   display: none;
+}
+
+.bg-light{
+  background-color: transparent !important;
+}
+
+.card-footer{
+  background-color: transparent !important;
+}
+.card-header{
+  background-color: transparent !important;
 }
