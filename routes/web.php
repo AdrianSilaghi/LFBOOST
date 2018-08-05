@@ -17,6 +17,8 @@ Route::get('/contactsupport/api/getFirstQuestions','ContactSupportController@get
 Auth::routes();
 Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
 
+Route::get('/getuserip','PagesController@getUserIp');
+
 Route::post('/api/validatePrice','PostsController@validatePriceDescription')->middleware('auth');
 Route::post('/api/validatePost','PostsController@validatePostDescription')->middleware('auth');
 

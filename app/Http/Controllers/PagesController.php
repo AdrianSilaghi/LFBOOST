@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
 use App\Post;
 use App\User;
 use Auth;
@@ -10,10 +10,17 @@ use App\Language;
 use App\Game;
 use App\Achivements;
 use App\Country;
+use Request;
 
+use Torann\GeoIP\Facades\GeoIP;
 
 class PagesController extends Controller
 {
+    public function getUserIp(){
+        $ip = Request::ip();
+        return view('getuserip')->witt('ip',$ip);
+    }
+
     public function commingOutSoon(){
         return view('outsoon');
     }
