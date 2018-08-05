@@ -18,7 +18,8 @@ class PagesController extends Controller
 {
     public function getUserIp(){
         $ip = Request::ip();
-        return view('getuserip')->witt('ip',$ip);
+        $data = geoip($ip);
+        return view('getuserip')->with('ip',$ip)->with('data',$data);
     }
 
     public function commingOutSoon(){
