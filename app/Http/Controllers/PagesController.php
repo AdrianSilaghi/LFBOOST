@@ -11,15 +11,15 @@ use App\Game;
 use App\Achivements;
 use App\Country;
 use Request;
-
+use Location;
 use Torann\GeoIP\Facades\GeoIP;
 
 class PagesController extends Controller
 {
     public function getUserIp(){
         $ip = Request::ip();
-        $data = geoip($ip);
-        return view('getuserip')->with('ip',$ip)->with('data',$data);
+        $datax = Location::get($ip);
+        return view('getuserip')->with('ip',$ip)->with('data',$datax);
     }
 
     public function commingOutSoon(){

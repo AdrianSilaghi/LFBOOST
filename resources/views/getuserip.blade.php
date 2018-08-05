@@ -3,8 +3,6 @@
 {{$ip}}
 
 <hr>
-@foreach($data as $dat)
-{{$dat}}
-@endforeach
+{{$data}}
 
 @endsection

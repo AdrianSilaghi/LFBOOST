@@ -175,7 +175,7 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
-
+        Stevebauman\Location\LocationServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -247,6 +247,7 @@ return [
         // or
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
         'Sitemap' => Watson\Sitemap\Facades\Sitemap::class,
+        'Location' => Stevebauman\Location\Facades\Location::class,
 
     ],
 
