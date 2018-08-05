@@ -18,7 +18,7 @@ class PagesController extends Controller
 {
     public function getUserIp(){
         $ip = Request::ip();
-        $data = geoip()->getLocation($ip);
+        $data = geoip($ip);
         return view('getuserip')->with('ip',$ip)->with('data',$data);
     }
 
