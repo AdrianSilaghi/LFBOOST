@@ -12,14 +12,14 @@ use App\Achivements;
 use App\Country;
 use Request;
 use Location;
-use Torann\GeoIP\Facades\GeoIP;
+use \Torann\GeoIP\Facades\GeoIP;
 
 class PagesController extends Controller
 {
     public function getUserIp(){
-
+        
         $ip = Request::ip();
-        $position = Location::get('86.126.210.192');
+        $position = geoip()->getLocation($ip);
         return view('getuserip')->with('ip',$ip)->with('position',$position);
     }
 

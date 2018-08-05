@@ -3,7 +3,5 @@
 {{$ip}}
 
 <hr>
-@foreach($position as $po)
-{{$po}}
-@endforeach
+{{$position->country}}
 @endsection
