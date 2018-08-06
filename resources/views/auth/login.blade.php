@@ -24,7 +24,7 @@
         <button class="bg-green hover:bg-green-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
           Sign In
         </button>
-        <a class="inline-block align-baseline font-bold text-sm text-green hover:text-blue-darker" href="#">
+        <a class="inline-block align-baseline font-bold text-sm text-green hover:text-blue-darker" href="{{ route('password.request') }}">
           Forgot Password?
         </a>
       </div>

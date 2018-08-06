@@ -41,70 +41,99 @@
                             <div class="card">
                                     <img class="card-img-top" src="{{asset("uploads/posts/$poo->image")}}" alt="Card image cap">
                                     <div class="card-body">
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item">
-                                                <img src="https://lfboost.com/uploads/avatars/{{$poo->user->avatar}}" style="width:25px; height:25px;border-radius:50%;"> 
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <a href="{{route('show.user.slug',[$poo->user->slug])}}"><p class="h6">{{$poo->user->name}}</p></a>
-                                            </li>
-                                        </ul>
-                                        @if(strlen($poo->title)>30)
-                                        <a href="{{route('showWithName',[$poo->user->name,$poo->slug])}}"><p style="font-size:1rem;height:35px;width:195px;">
-                                        
-                                        {{substr($poo->title,0,30)}}... 
-                                        
-                                        </p></a>
-                                        @else
-                                        <a href="{{route('showWithName',[$poo->user->name,$poo->slug])}}"><p  style="font-size:1rem;height:35px;">
-                                        
-                                            {{substr($poo->title,0,30)}}
-                                            
-                                        </p></a>
-                                        @endif
+                                            <div class="inline-flex" class="">
+                                                    <div class="flex-auto self-center">
+                                                            <img src="https://lfboost.com/uploads/avatars/{{$poo->user->avatar}}" style="width:25px; height:25px;border-radius:50%;"> 
+                                                    </div>
+                                                    <div class="flex-col self-center m-l-5" style="line-height:1;">
+                                                            <a href="{{route('show.user.slug',[$poo->user->slug])}}"><small style="font-weight:500" class="">{{$poo->user->name}}</small></a>
+                                                            @if($poo->user->level == 0 )
 
-                    
-                                                <ul class="list-inline" id="priceList">
-                                                <li class="list-inline-item">
-                                                
-                                                        @php
-                                                        $reviews = $poo->review;
+                                                            @endif
+                                                            @if($poo->user->level == 1)
+                                                            <small class="text-muted" style="display:block;font-weight:500">
+                                                             Level One Booster
+                                                            </small>
+                                                            @endif
 
-                                                        if(count($reviews)==0){
-                                                            $avg = 0;
-                                                            $countReviews = 0;
-                                                        }else{
-                                                        foreach($reviews as $r){                                                                
-                                                                $a[] = $r->raiting;
+                                                            @if($poo->user->level == 2)
+                                                            <small class="text-muted" style="display:block;font-weight:500">
+                                                             Level Two Booster
+                                                            </small>
+                                                            @endif
 
-                                                            }
-
-                                                            $avg = round(array_sum($a)/count($a),1);
-                                                            $countReviews = count($a);
+                                                            @if($poo->user->level == 3)
+                                                            <small class="text-yellow-dark" style="display:block;font-weight:500">
+                                                             Top Rated Booster
+                                                            </small>
+                                                            @endif
+                                                    </div>
+                                                </div>
+                                                <div class="inline-flex mt-1" id="titleID">
+                                                        <div class="w-full h-10">
+                                                            @if(strlen($poo->title)>30)
+                                                                <a href="{{route('showWithName',[$poo->user->name,$poo->slug])}}">
+                                                                
+                                                                <p>{{substr($poo->title,0,30)}}... </p>
                                                             
-                                                        }
-                                                    @endphp
-                                                    
-                                                    @if($avg)
-                                                    
-                                                    <small><i class="fas fa-star" style="color:#EDB867;"></i></small>
-                                                    
-                                                    <small><span style="color:#EDB867">{{$avg}}</span></small>
-                                                    <small><span class="text-muted">({{$countReviews}})</span></small>
-                                                    @endif 
+                                                                </a>
+                                                                @else
+                                                                <a href="{{route('showWithName',[$poo->user->name,$poo->slug])}}">
+                                                                
+                                                                <p>    {{substr($poo->title,0,30)}} </p>
+                                                                
+                                                                </a>
+                                                            @endif
+                                                    </div>
+                                                </div>
+                                                @php
+                                                $reviews = $poo->review;
 
-                                                </li>
-                                                <li class="list-inline-item float-right">
-                                                    <p class="card-text text-muted">
-                                                        <span style="font-size:0.75rem;">
-                                                        PRICE:
-                                                        </span>
-                                                        <span style="font-weight:500;font-size:1.1rem;">
-                                                            ${{$poo->price}}
-                                                        </span>
-                                                    </p>
-                                                </li>
-                                            </ul>
+                                                    if(count($reviews)==0){
+                                                        $avg = 0;
+                                                        $countReviews = 0;
+                                                    }else{
+                                                    foreach($reviews as $r){                                                                
+                                                            $a[] = $r->raiting;
+
+                                                        }
+
+                                                        $avg = round(array_sum($a)/count($a),1);
+                                                        $countReviews = count($a);
+                                                        
+                                                    }
+                                                @endphp
+                                                <div class="flex h-8">
+                                                    <div class="w-full">
+                                                            @if($avg)
+                                                            <small><i class="fas fa-star" style="color:#EDB867;"></i></small>
+                                                            
+                                                            <small><span style="color:#EDB867">{{$avg}}</span></small>
+                                                            <small><span class="text-muted">({{$countReviews}})</span></small>
+                                                            @endif 
+
+                                                            @if($poo->feautured == true)
+                                                            
+                                                            <small class="float-right text-green-dark">Feautured</small>
+                                                            
+                                                            @endif
+                                                    </div>
+                                                </div>
+                                                <div class="flex">
+                                                    <div class="w-1/2">
+                                                    </div>                      
+                                                    <div class="w-1/2">
+                                                   
+                                                        <p class="card-text text-muted float-right">
+                                                            <span style="font-size:0.75rem;">
+                                                            PRICE:
+                                                            </span>
+                                                            <span style="font-weight:500;font-size:1.1rem;">
+                                                                ${{$poo->price}}
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                </div>
                                         
                                     </div>
                             </div>

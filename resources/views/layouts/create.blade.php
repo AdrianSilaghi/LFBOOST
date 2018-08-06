@@ -38,8 +38,6 @@
     <link rel="stylesheet" href="{{asset('css/smart_wizard.css')}}">
     <link rel="stylesheet" href="{{asset('css/smart_wizard_theme_arrows.css')}}">
     <link rel="stylesheet" href="{{asset('css/dropzone.css')}}">
-    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/bootstrap-tagsinput.css')}}">
     <link rel="stylesheet" href="{{asset('css/fontawesome-stars.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">

@@ -11215,12 +11215,12 @@ a {
 }
 
 #PostE .card {
-  height: 310px;
-  max-height: 310px;
+  height: 285px;
+  max-height: 285px;
 }
 
 #PostE .card-body {
-  padding: 1.25rem 1.25rem 0rem 1.25rem;
+  padding: 0.25rem 1.25rem 0rem 1.25rem;
 }
 
 .page-item.active .page-link {
@@ -11238,12 +11238,16 @@ a:hover {
 }
 
 #PostB .card {
-  height: 310px;
+  height: 31f0px;
   max-height: 310px;
 }
 
 #PostE ul {
   margin-top: 0rem;
+}
+
+#PostE p {
+  line-height: 1;
 }
 
 ul#priceList {
