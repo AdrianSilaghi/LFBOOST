@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="{{asset('css/smart_wizard.css')}}">
     <link rel="stylesheet" href="{{asset('css/smart_wizard_theme_arrows.css')}}">
     <link rel="stylesheet" href="{{asset('css/dropzone.css')}}">
+    <link rel="stylesheet" href="{{asset('css/animate.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap-tagsinput.css')}}">
     <link rel="stylesheet" href="{{asset('css/fontawesome-stars.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">

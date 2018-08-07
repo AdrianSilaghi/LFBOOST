@@ -30,11 +30,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at','desc')->take(12)->get();
-        $popular = Post::orderByViewsCount()->take(12)->get();
+        $posts = Post::where('verified',true)->orderBy('created_at','desc')->take(12)->get();
+        $popular = Post::where('verified',true)->orderByViewsCount()->take(12)->get();
         
- 
-
         return view('home')->with('posts',$posts)->with('popular',$popular);
     }
     public function create()

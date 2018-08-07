@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md  navbar-light bg-light" id="catNav">
+<nav class="navbar navbar-expand-md border-grey-light border-b border-t h-12  navbar-light bg-light" id="catNav">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       Categories <span class="navbar-toggler-icon"></span>
     </button>

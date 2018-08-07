@@ -223,6 +223,12 @@ $(document).ready(function(){
 
     }
 })
+
+$(document).ready(function(){
+    if($('#myBoostsTable').length > 0 ){
+        $('#myBoostsTable').DataTable();
+    }
+})
 //mark as complete
 $(document).ready(function(){
     if($('#markasComplete').length > 0 ){
@@ -503,6 +509,16 @@ $(document).ready(function(){
             });
         }
 
+        
+        if(window.location.hash === "#removedBoost"){
+            $.notify({
+                // options
+                message: 'Your boost was deleted succesfuly.' 
+            },{
+                // settings
+                type: 'success'
+            });
+        }
         if(window.location.hash === "#payoutComplete"){
             $.notify({
                 // options
@@ -930,15 +946,15 @@ $(document).ready(function () {
                 console.clear();
             }
         }
-        CKEDITOR.replace( 'postDescription' ).on('change',function(evt){
+        CKEDITOR.replace('postDescription' ).on('change',function(evt){
             function clearErrors() {
                 // remove all error messages
                 const errorMessages = document.querySelectorAll('.text-danger')
                 errorMessages.forEach((element) => element.textContent = '')
             }
             var post_description = evt.editor.getData().replace(/<[^>]*>|\s/g, '')
-            axios.post('/api/validatePost',{
-                'post':post_description,
+            axios.post('/api/validatePostDescription',{
+                'post_description':post_description,
             }).then((response)=>{
                 clearErrors();
             }).catch((error)=>{
@@ -1041,3 +1057,222 @@ $(document).ready(function () {
 
 });
 
+
+
+$(document).ready(function () {
+    if (document.querySelector('#editBoostDiv') !== null) {
+        function clearconsole() {
+            console.log(window.console);
+            if (window.console) {
+                console.clear();
+            }
+        }
+        CKEDITOR.replace( 'postDescription' ).on('change',function(evt){
+            function clearErrors() {
+                // remove all error messages
+                const errorMessages = document.querySelectorAll('.text-danger')
+                errorMessages.forEach((element) => element.textContent = '')
+            }
+            var post_description = evt.editor.getData().replace(/<[^>]*>|\s/g, '')
+            axios.post('/api/validatePostDescription',{
+                'post_description':post_description,
+            }).then((response)=>{
+                clearErrors();
+            }).catch((error)=>{
+                const errors = error.response.data.errors
+                const firstItem = Object.keys(errors)[0]
+                const firstItemDOM = document.getElementById('cke_postDescription');
+                const firstErrorMessage = errors[firstItem][0]
+
+                clearErrors();
+                
+                firstItemDOM.insertAdjacentHTML('afterend', `<div class="text-danger">${firstErrorMessage}</div>`)
+                // highlight the form control with the error
+
+    
+                
+            })
+        })
+        
+        CKEDITOR.replace('priceDescription',{
+            height:130,
+            removePlugins :'format',
+        }).on( 'change', function( evt ) {
+            function clearErrors() {
+                // remove all error messages
+                const errorMessages = document.querySelectorAll('.text-danger')
+                errorMessages.forEach((element) => element.textContent = '')
+            }
+            var price_description = evt.editor.getData().replace(/<[^>]*>|\s/g, '')
+            axios.post('/api/validatePrice',{
+                'price_description':price_description,
+            }).then((response)=>{
+                clearErrors();
+            }).catch((error)=>{
+                const errors = error.response.data.errors
+                const firstItem = Object.keys(errors)[0]
+                const firstItemDOM = document.getElementById('cke_priceDescription');
+                const firstErrorMessage = errors[firstItem][0]
+
+                clearErrors();
+                
+                firstItemDOM.insertAdjacentHTML('afterend', `<div class="text-danger">${firstErrorMessage}</div>`)
+                // highlight the form control with the error
+
+    
+                
+            })
+        });
+
+        document.querySelector('#editBoostDiv').addEventListener('change', function (e) {
+            function clearconsole() {
+                console.log(window.console);
+                if (window.console) {
+                    console.clear();
+                }
+            }
+
+            
+            axios.post('/api/validatePost', {
+                'title': document.querySelector('#title').value,
+                'categories': document.querySelector('#categories').value,
+                'subcategories': document.querySelector('#subcategories').value,
+                'price': document.querySelector('#price').value,
+                'delivery_time': document.querySelector('#delivery_time').value,
+                'requirements': document.querySelector('#requirements').value,
+            })
+                .then((response) => {
+                    clearErrors();
+
+
+
+                })
+                .catch((error) => {
+                    const errors = error.response.data.errors
+                    const firstItem = Object.keys(errors)[0]
+                    const firstItemDOM = document.getElementById(firstItem)
+                    const firstErrorMessage = errors[firstItem][0]
+                    
+                    clearErrors();
+
+                    firstItemDOM.insertAdjacentHTML('afterend', `<div class="text-danger">${firstErrorMessage}</div>`)
+                    // highlight the form control with the error
+                    firstItemDOM.classList.add('border', 'border-danger')
+                });
+
+            function clearErrors() {
+                // remove all error messages
+                const errorMessages = document.querySelectorAll('.text-danger')
+                errorMessages.forEach((element) => element.textContent = '')
+
+                const formControls = document.querySelectorAll(['.form-control', '.custom-select', '.ckeditor'])
+                formControls.forEach((element) => element.classList.remove('border', 'border-danger'))
+            }
+
+        });
+    }
+    else {
+
+    }
+
+
+});
+
+//update post
+
+$(document).ready(function(){
+    if($('#editBoostDiv').length > 0 ){
+        $('#faqUpdate').on('click', '#faqButton', function () {
+
+            var faqQ = '<input name="question" id="question" class="form-control m-b-20 m-t-20" placeholder="Add a Question:" id="exampleFormControlTextarea1" style="resize:none;"><hr><textarea name="answer" class="form-control" rows="4" style="resize:none;" id="answer" placeholder="Add an Answer:"></textarea><button type="button" class="btn btn-outline-success btn-sm float-right m-l-10 m-t-10" id="faqADD">Add</button><button type="button" class="btn btn-outline-warning btn-sm float-right m-t-10" id="faqRemove">Cancel</button>';
+            $('#faqQA').append($(faqQ));
+        });
+        $('#faqUpdate').on('click', '#faqRemove', function () {
+    
+    
+            $('#faqQA').html(" ");
+        });
+    
+        var i = 0;
+        $('#faqUpdate').on('click', '#faqADD', function () {
+    
+            i++;
+            var q = $('#question').val();
+            var a = $('#answer').val();
+            var newFaq = '<div id="r' + i + '"class="card m-b-20"><div class="card-body"><lable class="h6 text-muted">Question:</lable><input class="form-control m-t-10" id="questionVal' + i + '" type="text" value="" readonly><lable class="h6 text-muted">Answer:</lable><input class="form-control" type="text" id="answerVal' + i + '" value=""readonly></div><button type="button" class="btn btn-outline-danger btn-sm m-l-20 m-b-20 text-center" id="faqRemoveWhole" style="width:30px;height:30px;float:center;">x</button></div>';
+    
+    
+    
+            $('#faqDone').prepend($(newFaq));
+            $('#questionVal' + i).val(q);
+            $('#answerVal' + i).val(a);
+    
+        });
+    
+    
+    
+    
+    
+        $('#faqDone').on('click', '#faqRemoveWhole', function () {
+            var test = $('#faqRemoveWhole').parent();
+            test.remove();
+        });
+
+        var button = document.querySelector('#submitChanges');
+        button.addEventListener('click',function(){
+            var postId = $('meta[name="postID"]').attr('content');
+            var postDescription = CKEDITOR.instances.postDescription.getData();
+            var title = $('#title').val();
+            var category = $('#categories').val();
+            var subcat = $('#subcategories').val();
+            var priceDescription = CKEDITOR.instances.priceDescription.getData();
+            var price = $('#price').val();
+            var deliveryTime = $('#delivery_time').val();
+            var requirements = $('#requirements').val();
+    
+            var q = [];
+            var b = [];
+            for (var a = 0; a < i + 1; a++) {
+    
+                q[a] = $('#questionVal' + a).val();
+                b[a] = $('#answerVal' + a).val();
+    
+            }
+            q.shift();
+            b.shift();
+    
+    
+    
+    
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+    
+    
+                    type: 'post',
+                    url: '/api/boost/savechanges',
+                    data: {
+                        'postId':postId,
+                        'title': title,
+                        'categories': category,
+                        'subcategories': subcat,
+                        'price_description': priceDescription,
+                        'price': price,
+                        'delivery_time': deliveryTime,
+                        'requirements': requirements,
+                        'body': postDescription,
+                        'question': q,
+                        'answer': b,
+    
+                    },
+                    success: function () {
+    
+                    }
+    
+                });
+        })
+       
+    }
+})
+            

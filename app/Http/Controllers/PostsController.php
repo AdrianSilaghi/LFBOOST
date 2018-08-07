@@ -14,6 +14,10 @@ use App\Question;
 use \Spatie\Tags\Tag;
 use App\User;
 use SEO;
+use Auth;
+use Session; 
+use Illuminate\Support\Facades\URL;
+
 class PostsController extends Controller
 {
     use Viewable;
@@ -106,11 +110,21 @@ class PostsController extends Controller
         
     
     }
+
+    public function detachQuestions(Request $request){
+        $question = Question::find($request->qa);
+        $post = Post::find($request->postId);
+
+        $post->question()->detach($question);
+        
+        return back();
+    }
+
     public function validatePostDescription(Request $request){
         $this->validate($request,[
             'post_description'=>'min:120|max:1200'
-            
         ]);
+        return response(200);
     }
 
     public function validatePriceDescription(Request $request){
@@ -127,7 +141,6 @@ class PostsController extends Controller
             'title'=>'required|min:15|max:55|regex:/^[a-zA-Z\s]*$/',
             'categories'=>'required',
             'subcategories' => 'required',
-            'price_description'=>'required|min:20|max:120',
             'price'=>'required|min:5|max:995|integer|',
             'delivery_time'=>'required|max:30|integer',
             'requirements'=>'required|min:10|regex:/^[a-zA-Z\s\w\#!.,?\-\']*$/i',
@@ -259,13 +272,75 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $post = Post::find($id);
+        $post = Post::find($request->id);
         $post->delete();
 
-        return redirect('/posts')->with('success','Post Removed');
+        $url = URL::route('myBoosts') . '#removedBoost';
+        return redirect($url);
+    }
+
+    public function myBoosts(){
+        $user = Auth::user(); 
+
+        $posts = Post::where('user_id',$user->id)->get();
+        return view('dashboard.boosts')->with('posts',$posts);
+    }
+
+    public function editPost(Request $request){
+        
+        $category = Category::all();
+        $subcat = SubCategory::all();
+       
+        $post = Post::where('id',$request->id)->where('user_id',auth()->user()->id)->first();
+        $qPost = $post->question;
+        return view('dashboard.editpost')->with('post',$post)->with('categories',$category)->with('subCat',$subcat)->with('qa',$qPost);
     }
 
 
+    public function updateBoost(Request $request){
+        
+        
+        $cat_id = $request->input('categories');
+        $subCat_id= $request->input('subcategories');
+        
+        //create a new post
+        $post = Post::find($request->input('postId'));
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->category_id = $request->input('categories');
+        $post->subcat_id = $request->input('subcategories');
+        $post->cat_name = Category::where('id',$cat_id)->value('name');
+        $post->subcat_name = SubCategory::where('id',$subCat_id)->value('name');
+        $post->price = $request->input('price');
+        $post->price_description = $request->input('price_description');
+        $post->delivery_time = $request->input('delivery_time');
+        $post->requirements = $request->input('requirements');
+
+        $questions = $request->input('question');
+        $answers = $request->input('answer');
+
+        $tags = $request->input('tags');
+
+        $post->save();
+
+
+        $post->attachTags($tags);
+
+        for($i=0;$i<count($questions);$i++){
+            $quest = new Question;
+            $quest->question = $questions[$i];
+            $quest->answer =$answers[$i];
+            $quest->save();
+
+            $post->question()->attach($quest);
+        }
+        
+
+       
+       
+        $request->session()->flash('success','Your boost has been posted!');
+        return back();
+    }
 }

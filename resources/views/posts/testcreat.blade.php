@@ -242,11 +242,6 @@
                                                 <textarea name="requirements" class="form-control" id="requirements" style="resize:none;"  rows="5"></textarea>
                                                 </div>
                                         </div>
-                                        <div class="col">
-                                            <small class="form-text text-muted">Indicate what you need before you can start working. <br> 
-                                            (e.g Provide me with the following information: Game ID, etc)
-                                            </small>
-                                        </div>
                                 </div>
                                 <div class="d-flex">
                                     <div class="col" id="uploadForm">

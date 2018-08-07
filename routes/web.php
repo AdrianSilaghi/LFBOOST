@@ -18,9 +18,14 @@ Auth::routes();
 Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
 
 Route::get('/getuserip','PagesController@getUserIp');
+Route::get('/boosts/api/destroy', 'PostsController@destroy')->middleware('auth')->name('destroy');
 
 Route::post('/api/validatePrice','PostsController@validatePriceDescription')->middleware('auth');
-Route::post('/api/validatePost','PostsController@validatePostDescription')->middleware('auth');
+Route::post('/api/validatePostDescription','PostsController@validatePostDescription')->middleware('auth');
+
+Route::get('/api/detachQuestions','PostsController@detachQuestions')->middleware('auth')->name('detachQuestions');
+
+Route::post('/api/boost/savechanges','PostsController@updateBoost')->middleware('auth')->name('updateBoost');
 
 Route::get('/sitemap/posts','SiteMapController@posts');
 Route::get('/', 'PagesController@commingOutSoon')->name('index');
@@ -39,6 +44,9 @@ Route::get('/dashboard/inbox','ChatController@index')->name('dashboard.getContac
 Route::get('/dashboard/inbox/{id}','ChatController@show')->name('dashboard.showChat')->middleware('auth');
 Route::post('/dashboard/inbox/getChat/{id}','ChatController@getChat')->middleware('auth');
 Route::post('/dahsboard/inbox/sendChat','ChatController@sendChat')->middleware('auth');
+Route::get('/dashboard/boosts','PostsController@myBoosts')->middleware('auth')->name('myBoosts');
+
+Route::get('/dashboard/editboost','PostsController@editPost')->middleware('auth')->name('editBoost');
 
 Route::post('/dashboard/api/addContact','ContactsController@store')->middleware('auth');
 Route::post('/dashbaord/api/checkIfContact','ContactsController@checkIfContacts')->middleware('auth');

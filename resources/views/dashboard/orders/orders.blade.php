@@ -33,7 +33,6 @@
                         </li>
                       </ul>
                       <hr>
-                    
                 @include('orderstable')
         </div>
     </div>    

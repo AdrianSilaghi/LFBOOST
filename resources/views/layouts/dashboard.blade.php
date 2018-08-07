@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{asset('css/select2.css')}}">
     <link rel="stylesheet" href="{{asset('css/algolia.css')}}">
+    <link rel="stylesheet" href="{{asset('css/animate.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/smart_wizard.css')}}">
     <link rel="stylesheet" href="{{asset('css/smart_wizard_theme_arrows.css')}}">
     <link rel="stylesheet" href="{{asset('css/dropzone.css')}}">
@@ -63,6 +64,7 @@
     <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
     <script src="{{asset('js/dropzone.js')}}"></script>
     <script src="{{asset('js/algolia.js')}}"></script>
+    <script src="{{asset('ck/ckeditor.js')}}"></script>
     <script src="{{asset('js/jquery.barrating.min.js')}}"></script>
     <script src="{{asset('js/bootstrap-notify.min.js')}}"></script>
     <script src="{{asset('js/datatables.min.js')}}"></script>

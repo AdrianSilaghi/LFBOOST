@@ -50,9 +50,6 @@ class User extends Authenticatable
         ];
     }
 
-    public function verifyuser(){
-        return $this->hasOne('App\VerifyUser');
-    }
 
     public function transactions(){
         return $this->hasMany(Transaction::class);
@@ -106,6 +103,10 @@ class User extends Authenticatable
     public function isOnline(){
 
         return Cache::has('user-is-online-'. $this->id);
+    }
+
+        public function verifyuser(){
+        return $this->hasOne('App\VerifyUser');
     }
 }
 

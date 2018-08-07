@@ -60,7 +60,7 @@ class CategoriesController extends Controller
     public function showPostByCat($category,$subcategory){
        
   
-        $posts = Post::where('subcat_name',$subcategory)->where('cat_name',$category)->paginate(20);
+        $posts = Post::where('subcat_name',$subcategory)->where('cat_name',$category)->where('verified',true)->paginate(20);
         $subcat = SubCategory::where('name',$subcategory)->first();
         return view('posts.index')->with('posts',$posts)->with('subcat',$subcat)->with('categories',$category);
         
@@ -70,21 +70,21 @@ class CategoriesController extends Controller
    public function showPostByPrice($category,$subcategory){
 
         $subcat = SubCategory::where('name',$subcategory)->first();
-        $posts = Post::where('subcat_name',$subcategory)->where('cat_name',$category)->orderBy('price','desc')->paginate(20);
+        $posts = Post::where('subcat_name',$subcategory)->where('cat_name',$category)->where('verified',true)->orderBy('price','desc')->paginate(20);
         return view('posts.index')->with('posts',$posts)->with('categories',$category)->with('subcat',$subcat);
    }
 
    public function showPostByViews($category,$subcategory){
 
     $subcat = SubCategory::where('name',$subcategory)->first();
-    $posts = Post::where('subcat_name',$subcategory)->where('cat_name',$category)->orderByViewsCount()->paginate(20);
+    $posts = Post::where('subcat_name',$subcategory)->where('cat_name',$category)->where('verified',true)->orderByViewsCount()->paginate(20);
     return view('posts.index')->with('posts',$posts)->with('categories',$category)->with('subcat',$subcat);
     }
 
     public function showPostsByDate($category,$subcategory){
 
         $subcat = SubCategory::where('name',$subcategory)->first();
-        $posts = Post::where('subcat_name',$subcategory)->where('cat_name',$category)->orderBy('created_at','desc')->paginate(20);
+        $posts = Post::where('subcat_name',$subcategory)->where('cat_name',$category)->where('verified',true)->orderBy('created_at','desc')->paginate(20);
         return view('posts.index')->with('posts',$posts)->with('categories',$category)->with('subcat',$subcat);
         }
 }
