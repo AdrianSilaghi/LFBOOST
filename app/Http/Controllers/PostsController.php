@@ -327,23 +327,16 @@ class PostsController extends Controller
 
 
         $post->attachTags($tags);
-        if(count($questions) == 0 ){
-
-        }else{
-        for($i=0;$i<count($questions);$i++){
-            $quest = new Question;
-            $quest->question = $questions[$i];
-            $quest->answer =$answers[$i];
-            $quest->save();
-
-            $post->question()->attach($quest);
-        }
-    }
-        
-
-       
-       
-        $request->session()->flash('success','Your boost has been posted!');
-        return back();
+        if(is_array($questions)){
+            for($i=0;$i<count($questions);$i++){
+                $quest = new Question;
+                $quest->question = $questions[$i];
+                $quest->answer =$answers[$i];
+                $quest->save();
+    
+                $post->question()->attach($quest);
+            }
+        };
+        return response(200);
     }
 }
