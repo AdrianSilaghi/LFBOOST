@@ -1266,8 +1266,14 @@ $(document).ready(function(){
                         'answer': b,
     
                     },
-                    success: function () {
-    
+                    success: function (response) {
+                        $.notify({
+                            // options
+                            message: 'Boost Updated' 
+                        },{
+                            // settings
+                            type: 'success'
+                        });
                     }
     
                 });
