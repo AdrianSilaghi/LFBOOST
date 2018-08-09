@@ -48,7 +48,7 @@ $recentlyViewedPosts = $recentlyViewed->groupBy('post_id')->where('user_id',auth
                             <a href="{{route('showSpecificCat','Fortnite')}}" class="border-2 border-green py-1 px-1 text-sm rounded text-green hover:bg-green hover:text-white">Fortnite</a>
                     </div>
             </div>
-            
+
             @if($recentlyViewedPosts != null)
             <div class="h-auto w-full border border-grey-dark">
                     <div class="px-3 py-3">
@@ -120,14 +120,18 @@ $recentlyViewedPosts = $recentlyViewed->groupBy('post_id')->where('user_id',auth
                                                 <div class="card">
                                                         <img class="card-img-top" src="{{asset("uploads/posts/$poo->image")}}" alt="Card image cap">
                                                         <div class="card-body">
-                                                            <div class="inline-flex" class="">
+                                                            
+                                                            <div class="inline-flex" class="w-full">
                                                                 <div class="flex-auto self-center">
                                                                         <img src="https://lfboost.com/uploads/avatars/{{$poo->user->avatar}}" style="width:25px; height:25px;border-radius:50%;"> 
                                                                 </div>
                                                                 <div class="flex-col self-center m-l-5" style="line-height:1;">
+                                                                    
                                                                         <a href="{{route('show.user.slug',[$poo->user->slug])}}"><small style="font-weight:500" class="">{{$poo->user->name}}</small></a>
                                                                         @if($poo->user->level == 0 )
-        
+                                                                        <small class="text-muted" style="display:block;font-weight:500">
+                                                                                Basic Seller
+                                                                        </small>
                                                                         @endif
                                                                         @if($poo->user->level == 1)
                                                                         <small class="text-muted" style="display:block;font-weight:500">
@@ -247,6 +251,7 @@ $recentlyViewedPosts = $recentlyViewed->groupBy('post_id')->where('user_id',auth
                                         <div class="card">
                                                 <img class="card-img-top" src="{{asset("uploads/posts/$poo->image")}}" alt="Card image cap">
                                                 <div class="card-body">
+                                                    
                                                     <div class="inline-flex" class="">
                                                         <div class="flex-auto self-center">
                                                                 <img src="https://lfboost.com/uploads/avatars/{{$poo->user->avatar}}" style="width:25px; height:25px;border-radius:50%;"> 
@@ -254,7 +259,9 @@ $recentlyViewedPosts = $recentlyViewed->groupBy('post_id')->where('user_id',auth
                                                         <div class="flex-col self-center m-l-5" style="line-height:1;">
                                                                 <a href="{{route('show.user.slug',[$poo->user->slug])}}"><small style="font-weight:500" class="">{{$poo->user->name}}</small></a>
                                                                 @if($poo->user->level == 0 )
-
+                                                                <small class="text-muted" style="display:block;font-weight:500">
+                                                                        Basic Seller
+                                                                </small>
                                                                 @endif
                                                                 @if($poo->user->level == 1)
                                                                 <small class="text-muted" style="display:block;font-weight:500">
@@ -381,7 +388,9 @@ $recentlyViewedPosts = $recentlyViewed->groupBy('post_id')->where('user_id',auth
                                                                 <div class="flex-col self-center m-l-5" style="line-height:1;">
                                                                         <a href="{{route('show.user.slug',[$poo->user->slug])}}"><small style="font-weight:500" class="">{{$poo->user->name}}</small></a>
                                                                         @if($poo->user->level == 0 )
-        
+                                                                        <small class="text-muted" style="display:block;font-weight:500">
+                                                                                Basic Seller
+                                                                        </small>
                                                                         @endif
                                                                         @if($poo->user->level == 1)
                                                                         <small class="text-muted" style="display:block;font-weight:500">
