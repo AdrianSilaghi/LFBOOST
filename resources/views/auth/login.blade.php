@@ -8,18 +8,34 @@
             Log In to LFBOOST
           </p>
       <div class="mb-4">
-        <label class="block text-grey-darker text-sm font-bold mb-2" for="username">
+          <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                    
+        <label class="block text-grey-darker text-sm font-bold mb-2" for="email">
           E-mail
         </label>
-        <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="E-mail">
+        <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" autocomplete="email" type="email" placeholder="E-mail">
+        @if ($errors->has('email'))
+        <span class="help-block">
+            <p class="text-red text-xs italic">{{ $errors->first('email') }}</p>
+        </span>
+        @endif
+
+      </div>
       </div>
       <div class="mb-6">
+          <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
         <label class="block text-grey-darker text-sm font-bold mb-2" for="password">
           Password
         </label>
-        <input class="appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline" name="password" id="password" type="password" placeholder="********">
-        
+        <input class="appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline" name="password" id="password" autocomplete="current-password" type="password" placeholder="********">
+        @if ($errors->has('password'))
+        <span class="help-block">
+            <p class="text-red text-xs italic">{{ $errors->first('password') }}</p>
+        </span>
+        @endif
       </div>
+      </div>
+      
       <div class="flex items-center justify-between">
         <button class="bg-green hover:bg-green-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
           Sign In
