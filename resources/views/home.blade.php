@@ -48,6 +48,7 @@ $recentlyViewedPosts = $recentlyViewed->groupBy('post_id')->where('user_id',auth
                             <a href="{{route('showSpecificCat','Fortnite')}}" class="border-2 border-green py-1 px-1 text-sm rounded text-green hover:bg-green hover:text-white">Fortnite</a>
                     </div>
             </div>
+            
             @if($recentlyViewedPosts != null)
             <div class="h-auto w-full border border-grey-dark">
                     <div class="px-3 py-3">
