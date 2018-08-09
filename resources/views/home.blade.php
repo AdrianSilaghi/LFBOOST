@@ -1,7 +1,91 @@
 @extends('layouts.home')
 @section('content')
+@inject('post','App\Post')
+@inject('recentlyViewed','App\RecentlyViewed')
+@php
+$recentlyViewedPosts = $recentlyViewed->groupBy('post_id')->where('user_id',auth()->user()->id)->orderBy('created_at','desc')->take(5)->get();
+@endphp
 
-<div class="flex-row  flex-row sm:flex-col md:flex-row-reverse lg:flex-col-reverse xl:flex m-t-10">
+
+<div class="relative flex" >
+
+    <div class="w-1/4 relative mr-2 m-t-20">
+        <div class="sticky pin-t py-3">
+            <div class="h-auto w-full border border-grey-dark mb-3">
+                    <div class="px-3 py-3">
+                       <p class="font-semibold text-grey-darkest "> Hello, {{auth()->user()->name}}</p>
+                        <p class="mt-2 text-sm">Helpful links:</p>
+                        <ul class="list-reset mt-2">
+                        <li class="text-sm">
+                            <a href="{{route('howToFind')}}" class="text-green hover:text-green-light" >
+                                Buying
+                            </a>
+                        </li>
+                        <li class="text-sm">
+                                <a href="{{route('becomeSeller')}}" class="text-green hover:text-green-light">
+                                    Selling
+                                </a>
+                        </li>
+                        <li class="text-sm">
+                                <a href="{{route('trustsafety')}}" class="text-green hover:text-green-light">
+                                    Trust & Safety
+                                </a>
+                            </li>    
+                    </ul>
+                    </div>
+            </div>
+            <div class="h-auto w-full border border-grey-dark mb-3">
+                    <div class="px-3 py-3">
+                            <p class="font-semibold text-grey-darkest">Popular Games</p>
+                    </div>
+                    <div class="px-3 py-1 mb-1">
+                            <a href="{{route('showSpecificCat','World of Warcraft')}}" class="border-2 border-green py-1 px-1 text-sm rounded text-green hover:bg-green hover:text-white">World of Warcraft</a>
+                    </div>
+                    <div class="px-3 py-1 mb-1">
+                            <a href="{{route('showSpecificCat','League of Legends')}}" class="border-2 border-green py-1 px-1 text-sm rounded text-green hover:bg-green hover:text-white">League of Legends</a>
+                    </div>
+                    <div class="px-3 py-1 mb-1">
+                            <a href="{{route('showSpecificCat','Fortnite')}}" class="border-2 border-green py-1 px-1 text-sm rounded text-green hover:bg-green hover:text-white">Fortnite</a>
+                    </div>
+            </div>
+            @if($recentlyViewedPosts != null)
+            <div class="h-auto w-full border border-grey-dark">
+                    <div class="px-3 py-3">
+                        <p class="font-semibold text-grey-darkest">Recently Viewed</p>
+                    </div>
+                    
+                    @foreach($recentlyViewedPosts as $un)
+                    @php
+                    $boost = $post->find($un->post_id);
+                    $boostName = $boost->title;
+                    @endphp
+                    
+                    <a href="{{route('showWithName',[$boost->user->name,$boost->slug])}}" class="text-grey-darkest hover:text-green"> 
+                    <div class="flex px-3 mb-2">
+                        <div class="flex-1">
+                                <img src="{{asset("uploads/posts/$boost->image")}}" width="85px" height="60px" alt="{{$boost->title}}">
+                        </div>
+                        <div class="flex-1 ml-1">
+                                @if(strlen($boostName)>25)
+                                <p class=" text-sm leading-tight">{{substr($boostName,0,30)}}...</p>
+                                @else
+                                <p class=" text-sm leading-tight">{{$boostName}}</p>
+                                @endif
+                        </div>
+                    </div>
+                    </a>
+
+                    @endforeach
+                    
+
+                    
+            </div>
+            @endif
+        </div>
+    </div>
+
+    <div class="w-auto">
+<div class="flex-row  flex-row sm:flex-col md:flex-row-reverse lg:flex-col-reverse xl:flex m-t-20">
     <div class="flex-auto">
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
@@ -15,14 +99,14 @@
                   </div>    
     </div>
 </div>
+
 <div class="flex-no-wrap sm:flex-wrap md:flex-wrap-reverse lg:flex-no-wrap xl:flex-wrap ">
         <div class="flex flex-row sm:flex-col md:flex-row-reverse lg:flex-col-reverse xl:flex m-t-10">
                 <div class="flex-auto">
-                    <div class="card">
-                        <div class="card-body" style="padding:1rem;">
-                               <h1 class="display-4" style="font-size:1.8rem;margin-bottom:0rem;">Feautured</h1>
-                               
-                        </div>
+                    <div class="w-full border border-grey-darkest">
+                       <div class="px-3 py-2">
+                            <p class="text-xl font-semibold font-sans text-grey-darkest">Feautured</p>
+                       </div>
                     </div>
                         @if(count($posts) > 0 )
                         @php
@@ -149,12 +233,11 @@
 <div class="flex-no-wrap sm:flex-wrap md:flex-wrap-reverse lg:flex-no-wrap xl:flex-wrap ">
 <div class="flex flex-row sm:flex-col md:flex-row-reverse lg:flex-col-reverse xl:flex m-t-10">
         <div class="flex-auto">
-            <div class="card">
-                <div class="card-body" style="padding:1rem;">
-                       <h1 class="display-4" style="font-size:1.8rem;margin-bottom:0rem;">Newest arrivals</h1>
-                       
-                </div>
-            </div>
+                <div class="w-full border border-grey-darkest">
+                        <div class="px-3 py-2 ">
+                             <p class="text-xl font-semibold font-sans text-grey-darkest">Newest Arrivals</p>
+                        </div>
+                     </div>
                 @if(count($posts) > 0 )
                     @foreach($posts->chunk(4) as $post)
                     <div class="flex-row  flex-row sm:flex-col md:flex-row-reverse lg:flex-col-reverse xl:flex m-t-10" id="mainPage">
@@ -277,12 +360,11 @@
 <div class="flex-no-wrap sm:flex-wrap md:flex-wrap-reverse lg:flex-no-wrap xl:flex-wrap ">
 <div class="flex-row  flex-row sm:flex-col md:flex-row-reverse lg:flex-col-reverse xl:flex m-t-10">
         <div class="flex-auto">
-            <div class="card m-t-10">
-                <div class="card-body" style="padding:1rem;">
-                       <h1 class="display-4" style="font-size:1.8rem;margin-bottom:0rem;">Popular ones</h1>
-                       
-                </div>
-            </div>
+                <div class="w-full border border-grey-darkest">
+                        <div class="px-3 py-2 ">
+                             <p class="text-xl font-semibold font-sans text-grey-darkest">Popular Ones</p>
+                        </div>
+                     </div>
                 @if(count($popular) > 0 )
                     @foreach($popular->chunk(4) as $post)
                     <div class="flex-row  flex-row sm:flex-col md:flex-row-reverse lg:flex-col-reverse xl:flex m-t-10" id="mainPage">
@@ -400,6 +482,9 @@
                 @endif
         </div>
         
+
 </div>
 </div>
+</div>
+</div>  
 @endsection

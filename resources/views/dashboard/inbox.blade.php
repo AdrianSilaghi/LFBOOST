@@ -4,9 +4,27 @@
 
 @if(count($contacts))
 <div class="contianer">
-    <div class="row">
+        <div class="flex">
+                
+                        @forelse($contacts as $contact)
+                        <div class="w-1/6 mr-2 max-w-sm rounded overflow-hidden border border-grey shadow-md mt-4 hover:text-green hover:font-bold">
+                        <a href="{{route('dashboard.showChat',['id'=>$contact->id])}}">
+                                        <div class="px-3 py-3 text-center">
+                                                <p class="text-grey-darker text-base">
+                                                        {{$contact->name}}
+                                                </p>
+                                        </div>
+                                </a>
+                        </div>
+                        @empty
 
-            <div class="col-sm-lg m-t-20"  id="contacts">
+                        @endforelse
+                
+        </div>
+    {{-- <div class="row">
+        
+
+        <div class="col-sm-lg m-t-20"  id="contacts">
                     <div class="card" style="width:300px;">
                                 <div class="card-header">
                                                 <h5 class="form-text text-muted">Contacts:</h5>
@@ -26,7 +44,7 @@
                 </div>
         </div>
         </div>
-    </div>
+    </div> --}}
 
 </div>
 @else

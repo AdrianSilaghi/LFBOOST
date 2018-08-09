@@ -4,6 +4,8 @@
 @inject('USER','App\User')
 @inject('carbon','Carbon\Carbon')
 
+
+
 <div class="container m-t-20">
     <div class="row justify-content-center">
         <div class="col-6">

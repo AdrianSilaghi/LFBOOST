@@ -108,5 +108,9 @@ class User extends Authenticatable
         public function verifyuser(){
         return $this->hasOne('App\VerifyUser');
     }
+
+    public function recentlyviewed(){
+        return $this->hasMany(RecentlyViewed::class);
+    }
 }
 

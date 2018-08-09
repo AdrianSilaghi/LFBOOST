@@ -47,16 +47,14 @@
 
 <body>
     <div id="app">
+
         @include('_includes.nav.main')
         @include('_includes.nav.side_menu')
         @include('_includes.messages')
         <div class="container">
-            <div class="row justify-content-center">
-                
-                
+           <div class="row">
                 @yield('content')
-                
-        </div>
+           </div>
         </div>
         @include('_includes.nav.footer')
     </div>

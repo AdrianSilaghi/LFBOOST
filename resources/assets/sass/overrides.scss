@@ -404,3 +404,9 @@ ul#priceList{
 #catNav .navbar {
   border: #495057 1px;
 }
+
+div.sticky {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 10;
+}

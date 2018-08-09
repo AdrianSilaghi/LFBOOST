@@ -431,7 +431,7 @@ $(document).ready(function () {
                 }, function (createErr, instance) {
                     button.addEventListener('click', function () {
                         instance.requestPaymentMethod(function (err, payload) {
-                            
+                            $.LoadingOverlay("show");
                             axios.post('/payment/api/process', {
                                 payload,
                                 postId:x,
@@ -453,6 +453,7 @@ $(document).ready(function () {
                                        }).then(function(response){
                                            if(response.data == 1 ){
                                             function RedirectToDashboard() {
+                                                
                                                 setTimeout(function () {
                                                     window.location.href = window.location.origin + '/dashboard#paymentcomplete'
                                                 }, 3000);                                            
@@ -464,6 +465,7 @@ $(document).ready(function () {
                                                 user_id: userone,
                                                 contact_id: usertwo,
                                             }).then(function(){
+                                                
                                                 function RedirectToDashboard() {
                                                     setTimeout(function () {
                                                         window.location.href = window.location.origin + '/dashboard#paymentcomplete'

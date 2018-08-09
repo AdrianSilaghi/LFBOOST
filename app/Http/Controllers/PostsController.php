@@ -17,6 +17,7 @@ use SEO;
 use Auth;
 use Session; 
 use Illuminate\Support\Facades\URL;
+use App\RecentlyViewed;
 
 class PostsController extends Controller
 {
@@ -34,7 +35,7 @@ class PostsController extends Controller
     }
 
 
-    public function index()
+    public function index(Request $request)
     {
         $post = Post::paginate(20);
         $category = Category::all();
@@ -182,7 +183,7 @@ class PostsController extends Controller
         return view('posts.show')->with('post',$post);  
     }
 
-    public function showWithName($user,$slug){
+    public function showWithName(Request $request,$user,$slug){
         $post = Post::where('slug',$slug)->first();
         $users = User::where('name',$user)->first();
         $qPost = $post->question;
@@ -211,13 +212,20 @@ class PostsController extends Controller
             $countReviews = count($a);
         }
         $post->addView();
+
+        $recentlyViewed = new RecentlyViewed;
+        $recentlyViewed->user_id  = Auth::user()->id;
+        $recentlyViewed->post_id = $post->id;
+        $recentlyViewed->save();
+
         return view('posts.show')->with('post',$post)
                                  ->with('user',$users)
                                  ->with('qa',$qPost)
                                  ->with('tags',$tags)
                                  ->with('raiting',$avg)
                                  ->with('countReviews',$countReviews)
-                                 ->with('reviews',$reviews);
+                                 ->with('reviews',$reviews)
+                                 ->with('request',$request);
     }
     /**
      * Show the form for editing the specified resource.

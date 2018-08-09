@@ -1,4 +1,4 @@
-<div class="container">
+<div class="w-4/5  ml-auto mr-auto">
 <nav class="navbar navbar-expand-md navbar-light bg-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       Menu<span class="navbar-toggler-icon"></span>
@@ -54,9 +54,9 @@
         <li class="nav-item dropdown mr-2">
             
        
-          <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle text-sm" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img src="https://lfboost.com/uploads/avatars/{{Auth::user()->avatar}}" style="width:32px; height:32px; position:aboslute;left: 10px; border-radius:50%">    
-              Hey {{Auth::user()->name}}
+              {{Auth::user()->name}}
           </a>
           
           <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="topBarDropDown">
