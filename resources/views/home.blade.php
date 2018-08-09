@@ -152,6 +152,7 @@ $recentlyViewedPosts = $recentlyViewed->groupBy('post_id')->where('user_id',auth
                                                                         @endif
                                                                 </div>
                                                             </div>
+                                                            <br>
                                                             <div class="inline-flex mt-2">
                                                                     <div class="w-full h-10">
                                                                         @if(strlen($poo->title)>30)
@@ -412,6 +413,7 @@ $recentlyViewedPosts = $recentlyViewed->groupBy('post_id')->where('user_id',auth
                                                                         @endif
                                                                 </div>
                                                             </div>
+                                                            <br>
                                                             <div class="inline-flex mt-2">
                                                                     <div class="w-full h-10">
                                                                         @if(strlen($poo->title)>30)

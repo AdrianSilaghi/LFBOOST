@@ -71,6 +71,7 @@
                                                             @endif
                                                     </div>
                                                 </div>
+                                                <br>
                                                 <div class="inline-flex mt-1" id="titleID">
                                                         <div class="w-full h-10">
                                                             @if(strlen($poo->title)>30)
