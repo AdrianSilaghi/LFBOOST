@@ -282,6 +282,7 @@ $recentlyViewedPosts = $recentlyViewed->groupBy('post_id')->where('user_id',auth
                                                                 @endif
                                                         </div>
                                                     </div>
+                                                    <br>
                                                     <div class="inline-flex mt-2">
                                                             <div class="w-full h-10">
                                                                 @if(strlen($poo->title)>30)
@@ -388,9 +389,9 @@ $recentlyViewedPosts = $recentlyViewed->groupBy('post_id')->where('user_id',auth
                                                                 <div class="flex-col self-center m-l-5" style="line-height:1;">
                                                                         <a href="{{route('show.user.slug',[$poo->user->slug])}}"><small style="font-weight:500" class="">{{$poo->user->name}}</small></a>
                                                                         @if($poo->user->level == 0 )
-                                                                        <small class="text-muted" style="display:block;font-weight:500">
-                                                                                Basic Seller
-                                                                        </small>
+         <small class="text-muted" style="display:block;font-weight:500">
+                                                                        Basic Seller
+                                                                </small>
                                                                         @endif
                                                                         @if($poo->user->level == 1)
                                                                         <small class="text-muted" style="display:block;font-weight:500">

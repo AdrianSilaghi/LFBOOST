@@ -41,7 +41,7 @@
                             <div class="card">
                                     <img class="card-img-top" src="{{asset("uploads/posts/$poo->image")}}" alt="Card image cap">
                                     <div class="card-body">
-                                            <div class="inline-flex" class="">
+                                            <div class="inline-flex">
                                                     <div class="flex-auto self-center">
                                                             <img src="https://lfboost.com/uploads/avatars/{{$poo->user->avatar}}" style="width:25px; height:25px;border-radius:50%;"> 
                                                     </div>
