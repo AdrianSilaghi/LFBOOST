@@ -25,7 +25,7 @@
         <div class="col-4">
             <div class="card">
                 <div class="card-header text-center" style="color:white;background-color:#00b22d;">
-                        Seller Ratings
+                       <p class="text-grey-darker"> Seller Ratings</p>
                 </div>
                 <div class="card-body">
                     <div class="card-text">
@@ -37,7 +37,7 @@
         <div class="col-4">
                 <div class="card">
                     <div class="card-header text-center" style="color:white;background-color:#00b22d;">
-                            Buyer feedback
+                            <p class="text-grey-darker"> Buyer feedback</p>
                     </div>
                     <div class="card-body">
                         <div class="card-text">

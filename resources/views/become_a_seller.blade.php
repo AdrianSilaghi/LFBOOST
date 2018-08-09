@@ -11,7 +11,7 @@
                         </div>
                       </div>
                       <hr>
-            <h2 style="font-weight:bold; ">How it works</h2>
+            <h2 style="font-weight:bold;" class="text-grey-darker">How it works</h2>
             <hr>
             <div class="row m-t-50">
                 <div class="col">
