@@ -11,10 +11,12 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class User extends Authenticatable
 {
+
+    
     use LaratrustUserTrait;
     use Notifiable;
     use \Spatie\Tags\HasTags;
-
+    use SoftDeletes;
     use Sluggable;
 
     /**

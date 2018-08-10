@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.home')
 
 @section('content')
 <div class="flex flex-col sm:flex-col md:flex-row-reverse lg:flex-col xl:flex items-start" style="justify-content:flex-start !important;">

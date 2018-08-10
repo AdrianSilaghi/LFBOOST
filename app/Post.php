@@ -15,7 +15,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 class Post extends Model
 {
     use \Spatie\Tags\HasTags;
-    use Viewable,Searchable,Sluggable;
+    use Viewable,Searchable,Sluggable,SoftDeletes;
     public $table = 'posts';
 
     public $fillable = [
@@ -31,6 +31,11 @@ class Post extends Model
 
     public $timestamps = true;
 
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
     
     public function user(){
         return $this->belongsTo('App\User');

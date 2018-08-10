@@ -37,11 +37,49 @@ class HomeController extends Controller
     }
     public function create()
     {
+        $user = Auth::user();
+        $userLevel = $user->level;
+        $numberOfPosts = count($user->posts);
+
+
+
+
         $category = Category::all();
         $realm = Realm::all();
         $post = Post::all();
         $subcat = SubCategory::all();
-        return view('posts.testcreat')->with('categories',$category)->with('realms',$realm)->with('subCat',$subcat);
+        
+        if(auth()->user()->level == 0){
+            if($numberOfPosts >= 5 ){
+                return back()->with('warning','You can only create 5 posts.');
+            }else{
+                return view('posts.testcreat')->with('categories',$category)->with('realms',$realm)->with('subCat',$subcat);
+            };
+        };
+
+        if(auth()->user()->level == 1){
+            if($numberOfPosts >= 7 ){
+                return back()->with('warning','You can only create 7 posts.');
+            }else{
+                return view('posts.testcreat')->with('categories',$category)->with('realms',$realm)->with('subCat',$subcat);
+            }
+        }
+
+        if(auth()->user()->level == 2){
+            if($numberOfPosts >= 10 ){
+                return back()->with('warning','You can only create 10 posts.');
+            }else{
+                return view('posts.testcreat')->with('categories',$category)->with('realms',$realm)->with('subCat',$subcat);
+            }
+        }
+        
+        if(auth()->user()->level == 3){
+            if($numberOfPosts >= 15 ){
+                return back()->with('warning','You can only create 15 posts.');
+            }else{
+                return view('posts.testcreat')->with('categories',$category)->with('realms',$realm)->with('subCat',$subcat);
+            }
+        }
     }
 
     public function posts()
