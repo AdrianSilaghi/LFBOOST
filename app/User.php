@@ -8,6 +8,7 @@ use Laratrust\Traits\LaratrustUserTrait;
 use \Spatie\Tags\HasTags;
 use Cache;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
