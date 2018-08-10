@@ -831,7 +831,7 @@ $(document).ready(function () {
 
     var btnFinish = $('<button></button>').text('Finish')
         .addClass('btn btn-outline-primary')
-        .on('click', function () {
+        .one('click', function () {
             var postDescription = CKEDITOR.instances.postDescription.getData();
             var title = $('#title').val();
             var category = $('#categories').val();
