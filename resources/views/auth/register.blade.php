@@ -21,12 +21,13 @@
                  @endif
             
             </div>
-              <div class="mb-4" {{ $errors->has('password') ? ' has-error' : '' }}>
+              <div class="mb-4" {{ $errors->has('email') ? ' has-error' : '' }}>
                 <label class="block text-grey-darker text-sm font-bold mb-2" for="e-mail">
                   E-mail
                 </label>
+                <p class="text-red text-xs italic">NOTE: Please DO NOT use @hotmail, @outlook emails ,you will NOT recive a confirmation email, due to microsoft SendScore.</p>
                 <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" autocomplete="email" type="email" placeholder="E-mail">
-                @if ($errors->has('name'))
+                @if ($errors->has('email'))
                 <span class="help-block">
                         <p class="text-red text-xs italic">{{ $errors->first('email') }}</p>
                 </span>
