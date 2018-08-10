@@ -18,6 +18,7 @@ use Auth;
 use Session; 
 use Illuminate\Support\Facades\URL;
 use App\RecentlyViewed;
+use App\Rules\TitleValidation;
 
 class PostsController extends Controller
 {
@@ -139,7 +140,7 @@ class PostsController extends Controller
     public function validatePost(Request $request){
          
         $this->validate($request,[
-            'title'=>'required|min:15|max:55|regex:/^[a-zA-Z\s]*$/',
+            'title'=>['required', new TitleValidation],
             'categories'=>'required',
             'subcategories' => 'required',
             'price'=>'required|min:5|max:995|integer|',
