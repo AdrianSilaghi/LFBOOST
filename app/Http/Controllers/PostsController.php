@@ -286,6 +286,11 @@ class PostsController extends Controller
         $post = Post::find($request->id);
         $post->delete();
 
+        $recentlyViewed = RecentlyViewed::where('post_id',$request->id)->get();
+        foreach($recentlyViewed as $rc){
+            $rc->delete();
+        }
+
         $url = URL::route('myBoosts') . '#removedBoost';
         return redirect($url);
     }
