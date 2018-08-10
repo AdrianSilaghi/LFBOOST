@@ -148,7 +148,7 @@
                       </span>
                     </div>
             </div>
-            @foreach($user->posts->chunk(3    ) as $post)
+            @foreach($user->posts->where('verified',true)->chunk(3) as $post)
             <div class="d-inline-flex flex-fill m-t-20">
                 @foreach($post as $poo)
                         <div class="d-sm-inline-flex flex-wrap flex-fill flex-column m-r-5" id="PostE">
