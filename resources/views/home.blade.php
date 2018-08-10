@@ -57,7 +57,7 @@ $recentlyViewedPosts = $recentlyViewed->groupBy('post_id')->where('user_id',auth
                     
                     @foreach($recentlyViewedPosts as $un)
                     @php
-                    $boost = $post->find($un->post_id);
+                    $boost = $post->where('id',$un->post_id)->where('verified',true)->first();
                     $boostName = $boost->title;
                     @endphp
                     

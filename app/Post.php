@@ -18,7 +18,8 @@ class Post extends Model
     use Viewable,Searchable,Sluggable;
     public $table = 'posts';
 
-    public $fillable = ['title',
+    public $fillable = [
+    'title',
     'body',
     'price_description',
     'price',
