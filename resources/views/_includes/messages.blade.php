@@ -6,3 +6,10 @@
 	      </div>
 
 @endif
+@if (session('warning'))
+<div role="alert">
+  <div class="bg-yellow-lightest border-t border-b border-yellow-dark text-yellow-dark px-4 py-3" role="alert">
+	<p class="font-bold">Warning</p>
+	<p class="text-sm">{{ session('warning') }}</p>
+  </div>
+@endif
