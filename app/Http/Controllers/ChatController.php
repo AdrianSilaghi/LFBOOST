@@ -17,7 +17,6 @@ class ChatController extends Controller
     public function index()
     {
         $contacts = Auth::user()->contacts();
-        $data = $request->session()->all();
         return view('dashboard.inbox')->withContacts($contacts);
     }
 

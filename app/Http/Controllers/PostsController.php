@@ -94,7 +94,7 @@ class PostsController extends Controller
 
 
         $post->attachTags($tags);
-
+        if(is_array($questions)){
         for($i=0;$i<count($questions);$i++){
             $quest = new Question;
             $quest->question = $questions[$i];
@@ -103,7 +103,7 @@ class PostsController extends Controller
 
             $post->question()->attach($quest);
         }
-        
+    }
 
        
        
