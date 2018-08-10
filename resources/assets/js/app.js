@@ -907,7 +907,7 @@ $(document).ready(function () {
                             myDropzone.processQueue();
 
                             var userSlug = $('meta[name="userSlug"]').attr('content');
-                            //window.location.href = window.location.origin + '/' + userSlug + '/' + data.slug + '#postComplete'
+                            window.location.href = window.location.origin + '/' + userSlug + '/' + data.slug + '#postComplete'
                         }
                     });
                 }, 3000);
