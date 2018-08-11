@@ -27,6 +27,9 @@
             <td>
                 {{$post->verified}}
             </td>
+            <td>
+                
+            </td>
           </tr>
           @endforeach
         </tbody>
