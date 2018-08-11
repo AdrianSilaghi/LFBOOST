@@ -10,7 +10,7 @@ use App\Realm;
 use App\SubCategory;
 use Laravel\Scout\Searchable;
 use Cviebrock\EloquentSluggable\Sluggable;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {

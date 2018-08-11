@@ -18,7 +18,7 @@
       @php
       $seller = $user->where('id',$order->seller_id)->first();
       $buyer = $user->where('id',$order->buyer_id)->first();
-      $postInfo = $post->where('id',$order->post_id)->first();
+      $postInfo = $post->withTrashed()->where('id',$order->post_id)->first();
       $createdAt= $post->created_at;
       $days = $order->delivery_time;
       $dueOn = $carbon->parse($createdAt);

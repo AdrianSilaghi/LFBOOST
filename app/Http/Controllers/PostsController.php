@@ -19,7 +19,7 @@ use Session;
 use Illuminate\Support\Facades\URL;
 use App\RecentlyViewed;
 use App\Rules\TitleValidation;
-use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class PostsController extends Controller
 {

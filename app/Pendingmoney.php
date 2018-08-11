@@ -9,6 +9,7 @@ class Pendingmoney extends Model
 {
 
     use SoftDeletes;
+
     public $table = 'pendingmoney';
     public $primaryKey ='id';
 

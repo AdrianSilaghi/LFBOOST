@@ -106,10 +106,10 @@ class OrdersController extends Controller
     }
 
     public function speicifOrder(Request $request){
-        $order = Order::where('transaction_id',$request->input('orderID'))->first();
-        $seller = User::where('id',$order->seller_id)->first();
-        $boost = Post::where('id',$order->post_id)->first();
-        $buyer = User::where('id',$order->buyer_id)->first();
+        $order = Order::withTrashed()->where('transaction_id',$request->input('orderID'))->first();
+        $seller = User::withTrashed()->where('id',$order->seller_id)->first();
+        $boost = Post::withTrashed()->where('id',$order->post_id)->first();
+        $buyer = User::withTrashed()->where('id',$order->buyer_id)->first();
         $price = $boost->price;
         $priceforSeller = $price * ((100-20)/100);
         return view('dashboard.orders.order')->with('order',$order)->with('seller',$seller)->with('boost',$boost)->with('buyer',$buyer)->with('priceforSeller',$priceforSeller);
@@ -118,7 +118,7 @@ class OrdersController extends Controller
     }
 
     public function markOrderAsComplete(Request $request){
-        $order = Order::where('transaction_id',$request->input('transaction_id'))->first();
+        $order = Order::withTrashed()->where('transaction_id',$request->input('transaction_id'))->first();
         $order->pending = false;
         $order->progress = false;
         $order->completed = true;
@@ -129,7 +129,7 @@ class OrdersController extends Controller
     }
 
     public function markOrderAsActive(Request $request){
-        $order = Order::where('transaction_id',$request->input('transaction_id'))->first();
+        $order = Order::withTrashed()->where('transaction_id',$request->input('transaction_id'))->first();
         $order->pending = false;
         $order->progress = true;
         $order->completed = false;
@@ -140,7 +140,7 @@ class OrdersController extends Controller
     }
 
     public function markOrderAsDelivered(Request $request){
-        $order = Order::where('transaction_id',$request->input('transaction_id'))->first();
+        $order = Order::withTrashed()->where('transaction_id',$request->input('transaction_id'))->first();
         $order->pending = true;
         $order->progress = false;
         $order->completed = false;
