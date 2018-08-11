@@ -12,6 +12,12 @@
 */
 use Illuminate\Support\Facades\Mail;
 
+Route::get('/controlpanel','PagesController@controlPanel')->middleware('auth')->name('controlPanel');
+Route::get('/controlpanel/users','PagesController@manageUsers')->middleware('auth')->name('manageUsers');
+Route::get('/controlpanel/orders','PagesController@manageOrders')->middleware('auth')->name('manageOrders');
+Route::get('/controlpanel/posts','PagesController@managePosts')->middleware('auth')->name('managePosts');
+
+
 Route::get('/contactsupport/api/getFirstQuestions','ContactSupportController@getFirstQuestions')->middleware('auth');
 
 Auth::routes();

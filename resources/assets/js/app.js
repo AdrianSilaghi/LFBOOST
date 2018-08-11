@@ -229,6 +229,12 @@ $(document).ready(function(){
         $('#myBoostsTable').DataTable();
     }
 })
+
+$(document).ready(function(){
+    if($('#managePosts').length > 0 ){
+        $('#managePosts').DataTable();
+    }
+})
 //mark as complete
 $(document).ready(function(){
     if($('#markasComplete').length > 0 ){

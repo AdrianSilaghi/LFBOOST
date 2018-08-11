@@ -119,4 +119,38 @@ class PagesController extends Controller
         $user = Auth::user();
         return view('settings.payment')->with('user',$user);
     }
+
+    public function controlPanel(){
+        if(auth()->user()->is_admin){
+            return view('control.controlpanel');
+        }else{
+            return back()->with('warning','You are not an admin.');
+        };
+    }
+    public function manageUsers(){
+        if(auth()->user()->is_admin){
+            return view('control.manageusers');
+        }else{
+            return back()->with('warning','You are not an admin.');
+        };
+    }
+    public function manageOrders(){
+
+
+
+        if(auth()->user()->is_admin){
+            return view('control.manageorders');
+        }else{
+            return back()->with('warning','You are not an admin.');
+        };
+    }
+    public function managePosts(){
+        $posts = Post::withTrashed()->get();
+        
+        if(auth()->user()->is_admin){
+            return view('control.manageposts')->with('posts',$posts);
+        }else{
+            return back()->with('warning','You are not an admin.');
+        };
+    }
 }
