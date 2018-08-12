@@ -145,7 +145,7 @@ class PagesController extends Controller
         };
     }
     public function managePosts(){
-        $posts = Post::withTrashed()->get();
+        $posts = Post::withTrashed()->orderBy('created_at','desc')->get();
         
         if(auth()->user()->is_admin){
             return view('control.manageposts')->with('posts',$posts);

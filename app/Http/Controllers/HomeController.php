@@ -129,4 +129,12 @@ class HomeController extends Controller
         return response()->json($data);
 
     }
+
+    public function showReviewPost(Request $request){
+        
+        $post = Post::where('id',$request->id)->first();
+
+        return view('control.specificPost')->with('post',$post);
+
+    }
 }

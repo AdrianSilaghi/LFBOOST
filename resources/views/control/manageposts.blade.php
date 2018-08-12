@@ -3,6 +3,14 @@
 @section('content')
 
 <div class="container">
+    <div class="flex">
+            <div class="flex">
+                    <div class="py-2 px-2">
+                        <p class="text-grey-darkest text-3xl">Manage Posts</p>
+                    </div>
+            </div>
+    </div>
+    <div class="flex-1">
     <table class="table" id="managePosts">
         <thead>
           <tr>
@@ -25,15 +33,20 @@
                 {{$post->user->name}}
             </td>
             <td>
-                {{$post->verified}}
+                @if($post->verified)
+                <button class="btn btn-success btn-sm" disabled>Verified</button>
+                @else
+                <button class="btn btn-warning btn-sm" disabled>Needs Approval</button>
+                @endif
             </td>
             <td>
-                
+            <a role="button" href="{{route('showReviewPost',['id'=>$post->id])}}" class="btn btn-info btn-sm" href="">Review Post</a>
             </td>
           </tr>
           @endforeach
         </tbody>
       </table>
+    </div>
 </div>
 
 @endsection

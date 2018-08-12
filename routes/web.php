@@ -17,6 +17,7 @@ Route::get('/controlpanel/users','PagesController@manageUsers')->middleware('aut
 Route::get('/controlpanel/orders','PagesController@manageOrders')->middleware('auth')->name('manageOrders');
 Route::get('/controlpanel/posts','PagesController@managePosts')->middleware('auth')->name('managePosts');
 
+Route::get('/controlpanel/reviewpost','HomeController@showReviewPost')->middleware('auth')->name('showReviewPost');
 
 Route::get('/contactsupport/api/getFirstQuestions','ContactSupportController@getFirstQuestions')->middleware('auth');
 

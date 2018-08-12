@@ -67,5 +67,5 @@
     <script src="{{asset('js/algolia.js')}}"></script>
     <script src="{{asset('js/jquery.barrating.min.js')}}"></script>
     <script src="{{asset('js/bootstrap-notify.min.js')}}"></script>
-    <script src="{{asset('js/datatables.min.js')}}"></script>
+    <script src="{{asset('js/datatables.min.js')}}"></script> 
 </html>
