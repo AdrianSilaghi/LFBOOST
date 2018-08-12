@@ -145,10 +145,10 @@ class PagesController extends Controller
         };
     }
     public function managePosts(){
-        $posts = Post::withTrashed()->orderBy('created_at','desc')->get();
-        
+        $posts = Post::withTrashed()->where('verified',null)->orderBy('created_at','desc')->get();
+        $verifiedPosts = Post::withTrashed()->where('verified',true)->orderBy('created_at','desc')->get();
         if(auth()->user()->is_admin){
-            return view('control.manageposts')->with('posts',$posts);
+            return view('control.manageposts')->with('posts',$posts)->with('verifiedPosts',$verifiedPosts);
         }else{
             return back()->with('warning','You are not an admin.');
         };
