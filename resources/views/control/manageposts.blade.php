@@ -12,7 +12,7 @@
                     </div>
             </div>
     </div>
-    <div class="flex-1">
+    <div class="flex">
     <table class="table" id="managePosts">
         <thead>
           <tr>
@@ -72,7 +72,7 @@
                         </div>
                 </div>
         </div>
-        <div class="flex-1">
+        <div class="flex">
         <table class="table" id="managePosts">
             <thead>
               <tr>

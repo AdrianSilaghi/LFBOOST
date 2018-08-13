@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="userId" content="{{ Auth::check() ? Auth::user()->id : '' }}">
+    <meta name="userEmail" content="{{ Auth::check() ? Auth::user()->email : '' }}">
+    <meta name="userName" content="{{ Auth::check() ? Auth::user()->name : '' }}">
     
     
     <!-- CSRF Token -->
@@ -44,6 +46,7 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap-tagsinput.css')}}">
     <link rel="stylesheet" href="{{asset('css/fontawesome-stars.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    
 </head>
 
 <body>
@@ -77,5 +80,27 @@
 
 <!-- Load the PayPal Checkout component. -->
 <script src="https://js.braintreegateway.com/web/3.34.1/js/paypal-checkout.min.js"></script>
+<script>
+        const userID = $('meta[name="userId"]').attr('content');
+        const userName = $('meta[name="userName"]').attr('content');
+        const userEmail = $('meta[name="userEmail"]').attr('content');
+        (function(d, w, c) {
+            w.ChatraID = 'YSqFEXrb3nTuExGf4';
+            var s = d.createElement('script');
+            w[c] = w[c] || function() {
+                (w[c].q = w[c].q || []).push(arguments);
+            };
+            s.async = true;
+            s.src = 'https://call.chatra.io/chatra.js';
+            if (d.head) d.head.appendChild(s);
+        })(document, window, 'Chatra');
+        window.ChatraIntegration = {
+        /* main properties */
+        name: userName,
+        email: userEmail,
+        userId: userID,
+    
+    };
+    </script>
     
 </html>

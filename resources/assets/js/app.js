@@ -66,6 +66,7 @@ const app = new Vue({
 });
 
 
+
 //validate register
 
 $(document).ready(function(){

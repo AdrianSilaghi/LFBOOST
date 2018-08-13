@@ -133,8 +133,8 @@ class HomeController extends Controller
     public function showReviewPost(Request $request){
         
         $post = Post::where('id',$request->id)->first();
-
-        return view('control.specificPost')->with('post',$post);
+        $qa = $post->question;
+        return view('control.specificPost')->with('post',$post)->with('qa',$qa);
 
     }
 }
