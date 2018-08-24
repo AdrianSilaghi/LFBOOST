@@ -11,6 +11,7 @@
 |
 */
 use Illuminate\Support\Facades\Mail;
+Auth::routes();
 
 Route::get('/controlpanel','PagesController@controlPanel')->middleware('auth')->name('controlPanel');
 Route::get('/controlpanel/users','PagesController@manageUsers')->middleware('auth')->name('manageUsers');
@@ -21,7 +22,7 @@ Route::get('/controlpanel/reviewpost','HomeController@showReviewPost')->middlewa
 
 Route::get('/contactsupport/api/getFirstQuestions','ContactSupportController@getFirstQuestions')->middleware('auth');
 
-Auth::routes();
+
 Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
 
 Route::get('/getuserip','PagesController@getUserIp');
