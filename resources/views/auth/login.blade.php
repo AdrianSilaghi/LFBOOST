@@ -3,7 +3,7 @@
 @section('content')
 <div class="w-full max-w-xs">
     <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{ route('login') }}">
-      {{ csrf_field() }}
+        {{ csrf_field() }}
         <p class="text-center text-grey text-xs">
             Log In to LFBOOST
           </p>
@@ -16,7 +16,7 @@
         <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" autocomplete="email" type="email" placeholder="E-mail">
         @if ($errors->has('email'))
         <span class="help-block">
-            <p class="text-red text-xs italic">{{ $errors->first('email') }}</p>
+            <span class="text-red text-xs italic">{{ $errors->first('email') }}</span>
         </span>
         @endif
 
@@ -30,7 +30,7 @@
         <input class="appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline" name="password" id="password" autocomplete="current-password" type="password" placeholder="********">
         @if ($errors->has('password'))
         <span class="help-block">
-            <p class="text-red text-xs italic">{{ $errors->first('password') }}</p>
+            <span class="text-red text-xs italic">{{ $errors->first('password') }}</span>
         </span>
         @endif
       </div>
