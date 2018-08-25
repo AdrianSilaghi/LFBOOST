@@ -837,7 +837,7 @@ $(document).ready(function () {
 
 
     var btnFinish = $('<button></button>').text('Finish')
-        .addClass('btn btn-outline-primary')
+        .addClass('bg-green hover:bg-green-dark text-white font-bold py-1 px-2 rounded')
         .one('click', function () {
             var postDescription = CKEDITOR.instances.postDescription.getData();
             var title = $('#title').val();
@@ -932,13 +932,14 @@ $(document).ready(function () {
             toolbarExtraButtons: [btnFinish]
         },
     });
-
+        $('.bg-green').hide();
     $("#smartwizard").on("showStep", function (e, anchorObject, stepNumber, stepDirection) {
+
         // Enable finish button only on last step
         if (stepNumber == 3) {
-            $('.btn-outline-primary').show();
+            $('.bg-green').show();
         } else {
-            $('.btn-outline-primary').hide();
+            $('.bg-green').hide();
 
         }
     });
