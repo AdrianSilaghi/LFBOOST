@@ -12,6 +12,8 @@
 Homestead.json
 Homestead.yaml
 npm-debug.log
+/public/robots.tx
+/public/sitemap.xml
 yarn-error.log
 .env
 package.json
