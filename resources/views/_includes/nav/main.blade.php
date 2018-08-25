@@ -34,7 +34,7 @@
 
           <a class="nav-link m-r-10" href="/login">Sign In</a>       
                   
-            <a role="button" href="/register" class="btn btn-outline-success m-r-10">Join</a>    
+            <a role="button" href="/register" class="bg-green hover:bg-green-dark text-white font-bold py-2 px-3 rounded">Join</a>
                      
                  
             

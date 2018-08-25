@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="w-full max-w-xs">
+<div class="w-full max-w-xs mt-4">
     <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{ route('login') }}">
         {{ csrf_field() }}
         <p class="text-center text-grey text-xs">
@@ -44,10 +44,10 @@
           Forgot Password?
         </a>
       </div>
-      <div class="form-check">
+      <div class="form-check mt-2">
         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-        <label class="form-check-label" for="remember">
+        <label class="form-check-label text-xs" for="remember">
             {{ __('Remember Me') }}
         </label>
     </div>

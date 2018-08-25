@@ -7,12 +7,12 @@
                         <div class="container">
                           <h1 class="display-3">Finding a booster, made easy.</h1>
                           <p class="lead m-t-10">The first freelance marketplace for boosting services has arrived!</p>
-                          <ul class="list-inline">
+                          <ul class="list-inline mt-4">
                             <li class="list-inline-item">
-                                <a href="/register" role="button" class="btn btn-primary btn-lg" id="hireButton">Hire a booster</a>
+                                <a href="/register" role="button" class="bg-green hover:bg-green-dark text-white font-bold py-3 px-4 rounded" id="hireButton">Hire a booster</a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="/register" role="button" class="btn btn-primary btn-lg" id="boosterButton">Apply as a booster</a>
+                                <a href="/register" role="button" class="bg-green hover:bg-green-dark text-white font-bold py-3 px-4 rounded" id="boosterButton">Apply as a booster</a>
                             </li>
                           </ul>
                         </div>
