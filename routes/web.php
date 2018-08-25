@@ -36,6 +36,7 @@ Route::get('/api/detachQuestions','PostsController@detachQuestions')->middleware
 Route::post('/api/boost/savechanges','PostsController@updateBoost')->middleware('auth')->name('updateBoost');
 
 Route::get('/sitemap/posts','SiteMapController@posts');
+
 Route::get('/', 'PagesController@index')->name('index');
 Route::get('/privacy-policy','PagesController@privacy')->name('privacy');
 Route::get('/tos','PagesController@tos')->name('tos');
