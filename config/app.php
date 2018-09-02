@@ -176,6 +176,7 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
         Stevebauman\Location\LocationServiceProvider::class,
+        Srmklive\PayPal\Providers\PayPalServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -249,6 +250,7 @@ return [
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
         'Sitemap' => Watson\Sitemap\Facades\Sitemap::class,
         'Location' => Stevebauman\Location\Facades\Location::class,
+        'PayPal' => Srmklive\PayPal\Facades\PayPal::class,
 
     ],
 

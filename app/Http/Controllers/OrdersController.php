@@ -10,18 +10,22 @@ use App\Order;
 use App\Notifications\NotifyOrderOwner;
 use Image;
 use Carbon\Carbon;
+use App\Mail\NewOrderMail;
+use Illuminate\Support\Facades\Mail;
 
 class OrdersController extends Controller
 {
-    public function _construct(){
+    public function _construct()
+    {
 
         $this->middleware('auth');
     }
 
-    public function newOrder(Request $request){
-        $post = Post::where('id',$request->input('postId'))->first();
+    public function newOrder(Request $request)
+    {
+        $post = Post::where('id', $request->input('postId'))->first();
         $authUser = Auth::user();
-       
+
         $order = New Order;
         $order->buyer_id = $authUser->id;
         $order->seller_id = $post->user_id;
@@ -32,14 +36,21 @@ class OrdersController extends Controller
         $order->save();
 
         $trans_id = $request->input('data.id');
-        $order = Order::where('transaction_id',$trans_id)->first();
-        $user = User::find($order->seller_id);
-        $user->notify(new NotifyOrderOwner($order));
-        
-        session()->flash('success','Your payment was successful , order and a new conversation were created!');
+        $order = Order::where('transaction_id', $trans_id)->first();
+        $seller = User::find($order->seller_id);
+        $seller->notify(new NotifyOrderOwner($order));
+
+        $buyer = User::find($order->buyer_id);
+
+
+        Mail::to($seller->email)->send(new NewOrderMail($seller,$order));
+        Mail::to($buyer->email)->send(new NewOrderMail($buyer,$order));
+
+        session()->flash('success', 'Your payment was successful , order and a new conversation were created!');
         return $order;
     }
-    
+
+
     public function dashboardOrders(Request $request){
         
         

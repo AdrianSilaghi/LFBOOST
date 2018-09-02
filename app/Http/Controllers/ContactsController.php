@@ -15,10 +15,9 @@ class ContactsController extends Controller
         $this->middleware('auth');
     }
 
-    public function store (Request $request){
+    public function store ($user_id,$contact_id){
 
-        $user_id = $request->user_id;
-        $contact_id = $request->contact_id;
+
 
         $contact = new Contacts;
         $contact->user_id = $user_id;
@@ -29,9 +28,7 @@ class ContactsController extends Controller
         return response(200);
     }
 
-    public function checkIfContacts (Request $request){
-        $user_id = $request->user_id;
-        $contact_id = $request->contact_id;
+    public function checkIfContacts ($user_id,$contact_id){
 
         $contact = Contacts::where(function ($query) use ($user_id,$contact_id){
             $query->where('user_id' , '=', $user_id)->where('contact_id','=',$contact_id);
@@ -44,6 +41,8 @@ class ContactsController extends Controller
         }else{
             return 2;
         }
+
+
 
     }
 

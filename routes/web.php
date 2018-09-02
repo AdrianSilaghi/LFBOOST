@@ -93,6 +93,9 @@ Route::get('/payment/finish','PaymentsController@finish')->name('payment.finish'
 Route::get('/payment/api/token','PaymentsController@token')->middleware('auth');
 Route::post('/payment/api/process','PaymentsController@payment')->middleware('auth');
 Route::post('/payment/api/getPostPrice','PaymentsController@getPostPrice')->middleware('auth');
+Route::get('/payment/api/paywithpayoal','PaymentsController@payWithPaypal')->name('payWithPaypal')->middleware('auth');
+
+Route::get('/payment/api/storePayment','PaymentsController@storePayment')->middleware('auth')->name('storePayment');
 
 Route::post('/order/api/newOrder','OrdersController@newOrder')->middleware('auth');
 

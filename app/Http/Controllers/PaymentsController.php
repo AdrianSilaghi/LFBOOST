@@ -10,6 +10,15 @@ use Braintree_Gateway;
 use Braintree_Transaction;
 use Braintree_Configuration;
 use App\Rules\PayoutAmmount;
+use Srmklive\PayPal\Services\ExpressCheckout;
+use Illuminate\Http\Response;
+use App\Notifications\NotifyOrderOwner;
+use App\Order;
+use App\Contacts;
+use App\Http\Controllers\ContactsController;
+use App\Mail\NewOrderMail;
+use Illuminate\Support\Facades\Mail;
+
 
 class PaymentsController extends Controller
 {
@@ -74,6 +83,101 @@ class PaymentsController extends Controller
           ]);
           session()->flash('success','Your payment was successful , order and a new conversation were created!');
           return response()->json($status);
+    }
+
+    public function payWithPaypal(Request $request)
+    {
+
+        $post = Post::find($request->postID);
+        $provider = new ExpressCheckout;
+
+        $noteForSeller = $request->notesForSeller;
+        $invoiceId = uniqid();
+        $data=$this->getData($post,$invoiceId,$noteForSeller);
+
+
+        $response = $provider->setExpressCheckout($data);
+
+
+        return redirect($response['paypal_link']);
+    }
+
+    protected function getData($post,$invoiceId,$noteForSeller){
+
+        $data = [];
+        $data['items'] = [
+            [
+                'name' => $post->title,
+                'price' => $post->price+2,
+                'qty' => 1
+            ],
+        ];
+
+        $data['invoice_id'] = $invoiceId;
+        $data['invoice_description'] = "Order #{$data['invoice_id']} Invoice";
+        $data['return_url'] = route('storePayment',['postId'=>$post->id,'noteForSeller'=>$noteForSeller]);
+        $data['cancel_url'] = url('/home');
+
+        $total = $post->price+2;
+
+        $data['total'] = $total;
+
+        return $data;
+    }
+
+    public function storePayment(Request $request){
+
+
+        $provider = new ExpressCheckout;
+
+        $token = $request->token;
+        $PayerID = $request->PayerID;
+        $post = Post::find($request->postId);
+        $noteForSeller = $request->noteForSeller;
+
+        $invoiceId=$request['INVNUM']??uniqid();
+
+        $data = $this->getData($post,$invoiceId,$noteForSeller);
+
+        $response = $provider->getExpressCheckoutDetails($token);
+
+        $response = $provider->doExpressCheckoutPayment($data, $token, $PayerID);
+
+
+        $authUser = Auth::user();
+
+        //creating a new order
+        $order = New Order;
+        $order->buyer_id = $authUser->id;
+        $order->seller_id = $post->user_id;
+        $order->transaction_id = $data['invoice_id'];
+        $order->delivery_time = $post->delivery_time;
+        $order->post_id = $post->id;
+        $order->notes = $noteForSeller;
+        $order->save();
+
+        $trans_id = $data['invoice_id'];
+        $order = Order::where('transaction_id',$trans_id)->first();
+        $seller = User::find($order->seller_id);
+        $seller->notify(new NotifyOrderOwner($order));
+
+        $buyer = User::find($order->buyer_id);
+
+        Mail::to($seller->email)->send(new NewOrderMail($seller,$order));
+        Mail::to($buyer->email)->send(new NewOrderMail($buyer,$order));
+
+
+        $contacts = new ContactsController;
+
+        if($contacts->checkIfContacts($post->user_id,$authUser->id) == 2)
+        {
+            $contacts->store($post->user_id,$authUser->id);
+        }
+
+
+
+
+        return redirect('dashboard')->with('status', 'Your payment was successful, order and a new conversation have been created!');
     }
 
     public function overview(Request $request){

@@ -5,7 +5,7 @@
 <meta name="priceOfPost" content="{{$post->price + 2}}">
 <div class="container" id="payUP">
         <div class="row justify-content-center">
-            <div class="col-5 m-t-50">
+            <div class="col-5 m-t-50 m-b-40">
                     <h2 class="text-muted text-center">Finish Payment</h2>
                     <hr>
                             <div class="card">
@@ -32,35 +32,34 @@
                                         </ul>
                                 </div>
                                 <div class="card-footer">
+                                    <form method="GET" action="{{route('payWithPaypal',['postID'=>$post->id])}}">
+                                        {{csrf_field()}}
                                                 <div class="input-group">
                                                                 <div class="input-group-prepend">
                                                                   <span class="input-group-text">Notes for the seller:</span>
                                                                 </div>
-                                                                <textarea class="form-control" name="notes" id="notesForSeller" rows="4" aria-label="With textarea" required></textarea>
+                                                                <textarea class="form-control" name="notesForSeller" id="notesForSeller" rows="4" aria-label="With textarea" required></textarea>
+                                                                <input name="postID" value="{{$post->id}}" hidden>
                                                 </div>
                                                 <small class="form-text text-muted">
                                                         Please provide some notes (indications) for the seller.
                                                 </small>
+
+                                        <div class="div card-header text-center">
+                                            Payment
+                                        </div>
+
+                                        <button type="submit" id="payWithPaypal" class="mt-3" >
+                                            <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" class="mb-3" alt="PayPal Logo">
+                                            <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/cc-badges-ppmcvdam.png" alt="Credit Card Badges">
+                                        </button>
+                                    </form>
                                 </div>
-                            
-            </div>
-            <div class="card m-t-10">
-                    <div class="div card-header text-center">
-                            Payment
-                    </div>
-                    <div class="card-body">
-                            <div class="col text-center">
-                                        <div id="paypal-button"></div>
-                            </div>
-                        
-                        <hr>
-                        <div id="dropin-container"></div>
-                        <button class="btn btn-outline-success float-right" id="submit-button">Make payment</button>
-                        
-                    </div>
+
             </div>
         </div>
 </div>
 </div>
+
 
 @endsection

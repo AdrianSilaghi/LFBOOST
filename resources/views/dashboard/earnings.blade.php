@@ -19,7 +19,12 @@
                 </div>
                 <div class="card-body text-center">
                     <h1 class="display-4" style="font-size:2.5rem;">
-                        ${{$user->totalearnings}}
+                        @if($user->totalearnings == 0)
+                            $0
+                            @else
+                            ${{$user->totalearnings}}
+                            @endif
+
                     </h1>
                 </div>
             </div>
@@ -31,7 +36,13 @@
                         </div>
                         <div class="card-body text-center">
                             <h1 class="display-4" style="font-size:2.5rem;">
+                                @if($user->totalwithdrawal == 0)
+                                    $0
+                                    @else
                                 ${{$user->totalwithdrawal}}
+                                    @endif
+
+
                             </h1>
                         </div>
                     </div>
@@ -62,7 +73,11 @@
                         </div>
                         <div class="card-body text-center">
                             <h1 class="display-4" style="font-size:2.5rem;">
-                                ${{$user->availalbeWithdrawal}}
+                                @if($user->availalbeWithdrawal == 0)
+                                    $0
+                                    @else
+                                    ${{$user->availalbeWithdrawal}}
+                                @endif
                             </h1>
                         </div>
                     </div>
