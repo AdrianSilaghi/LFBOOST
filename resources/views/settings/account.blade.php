@@ -205,11 +205,11 @@
                                     </div>
                                      <hr>
 
-                                     <label for="description" class="col-sm control-label">Games</label>
+                                     <label for="description" class="col-sm control-label">Achivements</label>
                               
                                 
                                 <small id="passwordHelpBlock" class="form-text text-muted m-b-20">
-                                        Select games that you are playing or you offer boosting services in.
+                                        Select Achivements from games that you have earned!
                                       </small>
                                 
                                 <hr>
