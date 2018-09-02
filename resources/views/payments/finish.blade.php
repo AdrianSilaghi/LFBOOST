@@ -48,12 +48,15 @@
                                         <div class="div card-header text-center">
                                             Payment
                                         </div>
-
+                                        <div class="text-center">
                                         <button type="submit" id="payWithPaypal" class="mt-3" >
                                             <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" class="mb-3" alt="PayPal Logo">
+                                            <br>
                                             <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/cc-badges-ppmcvdam.png" alt="Credit Card Badges">
                                         </button>
+                                        </div>
                                     </form>
+
                                 </div>
 
             </div>
