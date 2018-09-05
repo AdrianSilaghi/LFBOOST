@@ -341,6 +341,9 @@ class PostsController extends Controller
 
         $tags = $request->input('tags');
 
+        $post->verified = 0;
+        $post->denied = 0;
+
         $post->save();
 
 
@@ -355,6 +358,26 @@ class PostsController extends Controller
                 $post->question()->attach($quest);
             }
         };
+
         return response(200);
+    }
+    public function verifyPost(Request $request)
+    {
+        $post = Post::find($request->post_id);
+        $post->verified = 1;
+        $post->denied = 0;
+        $post->modification = $request->modification;
+        $post->save();
+
+        return response()->json('200','200');
+    }
+    public function  denyPost(Request $request)
+    {
+        $post = Post::find($request->post_id);
+        $post->verified = 0;
+        $post->denied = 1;
+        $post->modification = $request->modification;
+        $post->save();
+        return response()->json('200','200');
     }
 }

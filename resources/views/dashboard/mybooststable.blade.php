@@ -6,6 +6,7 @@
     <tr>
     <th scope="col">Boost Title</th>
     <th scope="col">Status</th>
+        <th scope="col">Moderator Comment</th>
     <th scope="col">Clicks</th>
     <th scope="col">Views</th>
     <th scope="col">Orders</th>
@@ -33,10 +34,14 @@
         <td>
             @if($post->verified == true)
             <button class="btn btn-success btn-sm" disabled>Approved</button>
-            @else
-            <button class="btn btn-warning btn-sm" disabled>Pending Approval</button>
-            @endif
+                @else
+                <button class="btn btn-warning btn-sm" disabled>Pending Approval</button>
+                    @endif
+            @if($post->denied == true)
+                    <button class="btn btn-danger btn-sm" disabled>Needs Modification</button>
+                @endif
         </td>
+            <td>{{$post->modification}}</td>
         <td>{{$clicks}}</td>
         <td>{{$views}}</td>
         <td>{{$orders}}</td>

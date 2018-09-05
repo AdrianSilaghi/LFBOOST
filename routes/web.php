@@ -112,6 +112,10 @@ Route::get('/{slug}','UsersController@show')->name('show.user.slug');
 
 Auth::routes();
 
+//control panel routes
+Route::post('/controlpanel/api/verifypost','PostsController@verifyPost')->name('verifyPost')->middleware('auth');
+Route::post('/controlpanel/api/denypost','PostsController@denyPost')->name('denyPost')->middleware('auth');
+
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('/settings', 'PagesController@settings')->name('settings')->middleware('auth');
 Route::get('/settings/account', 'PagesController@account')->name('account')->middleware('auth');

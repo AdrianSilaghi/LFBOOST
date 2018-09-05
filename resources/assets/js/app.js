@@ -292,6 +292,42 @@ $(document).ready(function(){
     }
 })
 
+//control panel verification post
+$(function(){
+
+    if($('#verifyPost').length > 0)
+    {
+        var button = document.querySelector('#verifyPost');
+        button.addEventListener('click',function () {
+            post_id = $('#post_id').val();
+            modification = $('#modification').val();
+            axios.post('/controlpanel/api/verifypost',{
+                post_id:post_id,
+                modification:modification
+            }).then(function (response) {
+
+                window.location.href =  '/controlpanel/posts#markAsVerified';
+
+            })
+        })
+
+        var button = document.querySelector('#denyPost');
+        button.addEventListener('click',function () {
+            post_id = $('#post_id').val();
+            modification = $('#modification').val();
+            axios.post('/controlpanel/api/denypost',{
+                post_id:post_id,
+                modification:modification
+            }).then(function (response) {
+
+                window.location.href =  '/controlpanel/posts#markAsDenied';
+
+            })
+        })
+    }
+    
+});
+
 
 // //payment function .... meh
 // $(document).ready(function () {
@@ -455,6 +491,17 @@ $(document).ready(function(){
                 type: 'success'
             });
         }
+
+        if(window.location.hash === "#markAsVerified"){
+            $.notify({
+                message: 'Post has been marked as verified.'
+            },{
+                type: 'success'
+            });
+        }
+
+
+
         
     
 })

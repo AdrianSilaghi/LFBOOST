@@ -1,6 +1,6 @@
 @extends('layouts.home')
 @section('content')
-<div class="container">
+<div class="container" id="verifyPage">
     <div class="flex-row">
     <div class="flex ml-auto mr-auto">
             <div class="flex-row">
@@ -58,15 +58,16 @@
 
 
     <div class="flex ml-auto mr-auto">
-        <form action="" method="post">
+        <form>
         <label class="block text-grey-darker text-sm font-bold mb-2" for="modification">
                 If Posts Needs Modifications Type Them Here.
         </label>
         <textarea class="form-control" name="modification" id="modification"></textarea>
         
         <div class="flex-row mt-2">
-            <button class="btn btn-success btn-lg">Verifiy</button>
-            <button class="btn btn-danger btn-lg">Deny</button>
+            <input id="post_id" value="{{$post->id}}" hidden>
+            <button class="btn btn-success btn-lg" type="button" id="verifyPost">Verifiy</button>
+            <button class="btn btn-danger btn-lg" type="button" id="denyPost">Deny</button>
         </div>
         </form>
     </div>
