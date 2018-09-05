@@ -111,7 +111,7 @@ $recentlyViewedPosts = $recentlyViewed->groupBy('post_id')->where('user_id',auth
                     </div>
                         @if(count($posts) > 0 )
                         @php
-                        $feautured = $posts->where('feautured',true)->take(4);
+                        $feautured = $posts->where('feautured',true)->where('verified',true)->take(4);
                         @endphp
                             @foreach($feautured->chunk(4) as $post)
                             <div class="flex-row  flex-row sm:flex-col md:flex-row-reverse lg:flex-col-reverse xl:flex m-t-10" id="mainPage">

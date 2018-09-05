@@ -215,10 +215,13 @@ class PostsController extends Controller
         }
         $post->addView();
 
-        $recentlyViewed = new RecentlyViewed;
-        $recentlyViewed->user_id  = Auth::user()->id;
-        $recentlyViewed->post_id = $post->id;
-        $recentlyViewed->save();
+        if($post->verified == 1)
+        {
+            $recentlyViewed = new RecentlyViewed;
+            $recentlyViewed->user_id  = Auth::user()->id;
+            $recentlyViewed->post_id = $post->id;
+            $recentlyViewed->save();
+        }
 
         return view('posts.show')->with('post',$post)
                                  ->with('user',$users)
