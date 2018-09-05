@@ -12,10 +12,10 @@
                 
               <a href="{{route('showSpecificCat','Fortnite')}}" class="dropdown-item m-t-10">All in Fortnite</a>
                 <hr></hr>
-                <a class="dropdown-item" href="#">Win Boost</a>
-                <a class="dropdown-item" href="#">Daily Quests</a>
-                <a class="dropdown-item" href="#">Leveling</a>
-                <a href="" class="dropdown-item">Coaching</a>
+                <a class="dropdown-item" href="{{route('showPostByCat',['Fortnite','Win Boost'])}}">Win Boost</a>
+                <a class="dropdown-item" href="{{route('showPostByCat',['Fortnite','Challanges and Quests'])}}">Challanges and Quests</a>
+                <a class="dropdown-item" href="{{route('showPostByCat',['Fortnite','Leveling'])}}">Leveling</a>
+                <a class="dropdown-item" href="{{route('showPostByCat',['Fortnite','Coaching'])}}">Coaching</a>
               </div>
             </li>
           <li class="nav-item dropdown">
@@ -28,10 +28,10 @@
                 <a href="{{route('showSpecificCat','League of Legends')}}" class="dropdown-item m-t-10">All in League of Legends</a>
                 
                 <hr>
-                <a class="dropdown-item" href="#">Solo Queue Boost</a>
-                <a class="dropdown-item" href="#">Duo Queue Boost</a>
-                <a class="dropdown-item" href="#">Full Ranked Team</a>
-                <a href="" class="dropdown-item">Smurfs</a>
+                <a class="dropdown-item" href="{{route('showPostByCat',['League of Legends','Solo Queue Boost'])}}">Solo Queue Boost</a>
+                <a class="dropdown-item" href="{{route('showPostByCat',['League of Legends','Duo Queue Boost'])}}">Duo Queue Boost</a>
+                <a class="dropdown-item" href="{{route('showPostByCat',['League of Legends','Full Ranked Team'])}}">Full Ranked Team</a>
+                <a href="{{route('showPostByCat',['League of Legends','Smurfs'])}}" class="dropdown-item">Smurfs</a>
               
               
               </div>
@@ -43,12 +43,12 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a href="{{route('showSpecificCat','World of Warcraft')}}" class="dropdown-item m-t-10">All in World of Warcraft</a>
                     <hr>
-                  <a class="dropdown-item" href="#">Arena</a>
-                  <a class="dropdown-item" href="#">Mythic+</a>
-                  <a class="dropdown-item" href="#">RBG</a>
-                  <a class="dropdown-item" href="#">PvE/Raids</a>
-                  <a class="dropdown-item" href="#">Farming</a>
-                  <a class="dropdown-item" href="#">Leveling</a>
+                  <a class="dropdown-item" href="{{route('showPostByCat',['World of Warcraft','Arena'])}}">Arena</a>
+                  <a class="dropdown-item" href="{{route('showPostByCat',['World of Warcraft','Mythic+'])}}">Mythic+</a>
+                  <a class="dropdown-item" href="{{route('showPostByCat',['World of Warcraft','RBG'])}}">RBG</a>
+                  <a class="dropdown-item" href="{{route('showPostByCat',['World of Warcraft','Raids'])}}">PvE/Raids</a>
+                  <a class="dropdown-item" href="{{route('showPostByCat',['World of Warcraft','Farming'])}}">Farming</a>
+                  <a class="dropdown-item" href="{{route('showPostByCat',['World of Warcraft','Leveling'])}}">Leveling</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -58,10 +58,10 @@
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <a href="{{route('showSpecificCat','Overwatch')}}" class="dropdown-item m-t-10">All in Overwatch</a>
                       <hr></hr>
-                    <a class="dropdown-item" href="#">Solo Queue</a>
-                    <a class="dropdown-item" href="#">Duo Queue</a>
-                    <a class="dropdown-item" href="#">Leveling</a>
-                    <a class="dropdown-item" href="#">Coaching</a>
+                    <a class="dropdown-item" href="{{route('showPostByCat',['Overwatch','Solo Queue Boost'])}}">Solo Queue</a>
+                    <a class="dropdown-item" href="{{route('showPostByCat',['Overwatch','Duo Queue Boost'])}}">Duo Queue</a>
+                    <a class="dropdown-item" href="{{route('showPostByCat',['Overwatch','Leveling'])}}">Leveling</a>
+                    <a class="dropdown-item" href="{{route('showPostByCat',['Overwatch','Coaching'])}}">Coaching</a>
                   </div>
               </li>
           <li class="nav-item dropdown">
@@ -71,9 +71,9 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a href="{{route('showSpecificCat','CS:GO')}}" class="dropdown-item m-t-10">All in CS:GO</a>
                   <hr></hr>
-                <a class="dropdown-item" href="#">Rank Boost</a>
-                <a class="dropdown-item" href="#">Coaching</a>
-                <a class="dropdown-item" href="#">Placement Matches</a>
+                <a class="dropdown-item" href="{{route('showPostByCat',['CS:GO','Rank Boost'])}}">Rank Boost</a>
+                <a class="dropdown-item" href="{{route('showPostByCat',['PUBG','Coaching'])}}">Coaching</a>
+                <a class="dropdown-item" href="{{route('showPostByCat',['PUBG','Placement Matches'])}}">Placement Matches</a>
 
               </div>
             </li>
@@ -84,9 +84,9 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a href="{{route('showSpecificCat','PUBG')}}" class="dropdown-item m-t-10">All in PUBG</a>
                     <hr></hr>
-                  <a class="dropdown-item" href="#">Duo Boost</a>
-                  <a class="dropdown-item" href="#">Squad Boost</a>
-                  <a class="dropdown-item" href="#">Coaching</a>
+                  <a class="dropdown-item" href="{{route('showPostByCat',['PUBG','Duo Boost'])}}">Duo Boost</a>
+                  <a class="dropdown-item" href="{{route('showPostByCat',['PUBG','Squad Boost'])}}">Squad Boost</a>
+                  <a class="dropdown-item" href="{{route('showPostByCat',['PUBG','Coaching'])}}">Coaching</a>
                 </div>
               </li>
           <li class="nav-item dropdown">
@@ -96,13 +96,34 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a href="{{route('showSpecificCat','DOTA')}}" class="dropdown-item m-t-10">All in DOTA</a>
                   <hr></hr>
-                <a class="dropdown-item" href="#">MMR Boost</a>
-                <a class="dropdown-item" href="#">Coaching</a>
+                <a class="dropdown-item" href="{{route('showPostByCat',['DOTA','MMR Boost'])}}">MMR Boost</a>
+                <a class="dropdown-item" href="{{route('showPostByCat',['DOTA','Coaching'])}}">Coaching</a>
               </div>
             </li>
-          <li class="nav-item">
-                <a class="nav-link" href="#">Hearthstone</a>
-              </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Rainbow Six Seige
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a href="{{route('showSpecificCat','Rainbow Six Seige')}}" class="dropdown-item m-t-10">All in Rainbow Six Seige</a>
+                  <hr></hr>
+                  <a class="dropdown-item" href="{{route('showPostByCat',['Rainbow Six Seige','Rank Boosting'])}}">Rank Boosting</a>
+                  <a class="dropdown-item" href="{{route('showPostByCat',['Rainbow Six Seige','Placement Matches'])}}">Placement Matches</a>
+                  <a class="dropdown-item" href="{{route('showPostByCat',['Rainbow Six Seige','Coaching'])}}">Coaching</a>
+                  <a class="dropdown-item" href="{{route('showPostByCat',['Rainbow Six Seige','Wins'])}}">Wins</a>
+              </div>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Hearthstone
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a href="{{route('showSpecificCat','Hearthstone')}}" class="dropdown-item m-t-10">All in Hearthstone</a>
+                  <hr></hr>
+                  <a class="dropdown-item" href="{{route('showPostByCat',['Hearthstone','Coaching'])}}">Coaching</a>
+
+              </div>
+          </li>
       </ul>
     
   </div>
