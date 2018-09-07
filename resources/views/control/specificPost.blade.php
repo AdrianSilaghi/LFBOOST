@@ -58,6 +58,7 @@
 
 
     <div class="flex ml-auto mr-auto">
+
         <form>
         <label class="block text-grey-darker text-sm font-bold mb-2" for="modification">
                 If Posts Needs Modifications Type Them Here.
@@ -66,6 +67,7 @@
         
         <div class="flex-row mt-2">
             <input id="post_id" value="{{$post->id}}" hidden>
+            <input id="user_id" value="{{$post->user->id}}" hidden>
             <button class="btn btn-success btn-lg" type="button" id="verifyPost">Verifiy</button>
             <button class="btn btn-danger btn-lg" type="button" id="denyPost">Deny</button>
         </div>

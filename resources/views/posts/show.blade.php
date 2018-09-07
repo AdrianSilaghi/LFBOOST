@@ -78,10 +78,6 @@
                     
             </div>
 
-            @foreach($tags as $tag)
-            <button class="btn btn-outline-dark btn-sm m-t-10" disabled="disabled">{{$tag->name}}</button>
-            @endforeach
-
             <div class="card m-t-20">
                 <div class="card-header">
 
@@ -146,7 +142,11 @@
 
                     <button class="btn btn-outline-success btn-block m-t-10" id="loadMore" type="button">Show More</button>
                 </div>
+
             </div>
+            @foreach($tags as $tag)
+                <button class="btn btn-outline-dark btn-sm m-t-10" disabled="disabled">{{$tag->name}}</button>
+            @endforeach
         </div>
         <div class="col-4">
             <div class="card">
@@ -221,25 +221,26 @@
                     </div>
                 </div
                 <div class="card">
-                <div class="card m-t-10">
-                        <div class="card-body" style="width:350px">
-                            <div class="row">
-                                <div class="col">
-                                    <h6 class="card-title">Description</h6>
-                                    <hr>
-                                    @if(is_null($user->description))
-                                    <p class="text-muted" style="font-size:0.80rem;"> You don't have any description.</p>
-                                    @else
-                                    <p class="card-text">
-                                        {{$user->description}}  
-                                    </p>
-                                    @endif 
+                        <div class="card m-t-10">
+                                <div class="card-body" style="width:350px">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h6 class="card-title">Description</h6>
+                                            <hr>
+                                            @if(is_null($user->description))
+                                            <p class="text-muted" style="font-size:0.80rem;"> You don't have any description.</p>
+                                            @else
+                                            <p class="card-text">
+                                                {{$user->description}}
+                                            </p>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+
                         </div>
-                        
                 </div>
-        </div>
+
         </div>
     </div>
 </div>

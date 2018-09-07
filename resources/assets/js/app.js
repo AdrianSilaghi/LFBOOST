@@ -21,16 +21,16 @@ Vue.component('chat', require('./components/Chat.vue'));
 Vue.component('chat-composer', require('./components/ChatComposer.vue'));
 
 
-     
+
 const chat = new Vue({
     el: '#chat',
     data: {
-      chats: ''
-        
+        chats: ''
+
     },
     created() {
-      const userId = $('meta[name="userId"]').attr('content');
-      const contactId = $('meta[name="contactId"]').attr('content');         
+        const userId = $('meta[name="userId"]').attr('content');
+        const contactId = $('meta[name="contactId"]').attr('content');
 
         if(contactId != undefined){
             axios.post('/dashboard/inbox/getChat/' + contactId).then((response) =>{
@@ -38,9 +38,9 @@ const chat = new Vue({
             });
 
             Echo.private('Chat.' + contactId + '.' + userId)
-            .listen('BroadcastChat',(e)=>{
-                this.chats.push(e.chat);
-            });
+                .listen('BroadcastChat',(e)=>{
+                    this.chats.push(e.chat);
+                });
         }
     },
 });
@@ -49,7 +49,7 @@ const app = new Vue({
     el: '#notification',
     data: {
         notifications: '',
-        
+
     },
     created() {
         axios.post('/notification/api/get').then(response => {
@@ -58,10 +58,10 @@ const app = new Vue({
 
         var userId = $('meta[name="userId"]').attr('content');
         Echo.private(`App.User.${userId}`)
-                .notification((notification) => {
-                    this.notifications.push(notification);
-                });
-               
+            .notification((notification) => {
+                this.notifications.push(notification);
+            });
+
     }
 });
 
@@ -81,7 +81,7 @@ $(document).ready(function(){
                 .then((response) => {
                     clearErrors();
 
-                        console.log(response);
+                    console.log(response);
 
 
                 })
@@ -118,22 +118,22 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     if($('#comments').length > 0 ){
-        
-      $('#comments').ready(function(){
-          $('#comments').children().slice(0,6).show();
-          var x = $('#comments').children()
-          $("#loadMore").on('click', function (e) {
-            e.preventDefault();
-            $(".card:hidden").slice(0, 4).slideDown();
-            if ($(".card:hidden").length == 0) {
-                $("#load").fadeOut('slow');
-            }
-            $('html,body').animate({
-                scrollTop: $(this).offset().top
-            }, 1500);
-        });
-      })
-       
+
+        $('#comments').ready(function(){
+            $('#comments').children().slice(0,6).show();
+            var x = $('#comments').children()
+            $("#loadMore").on('click', function (e) {
+                e.preventDefault();
+                $(".card:hidden").slice(0, 4).slideDown();
+                if ($(".card:hidden").length == 0) {
+                    $("#load").fadeOut('slow');
+                }
+                $('html,body').animate({
+                    scrollTop: $(this).offset().top
+                }, 1500);
+            });
+        })
+
     }
 });
 //deliver modal
@@ -168,22 +168,22 @@ $(document).ready(function(){
     if($('#payout').length > 0 ){
         var button = document.querySelector('#payout');
         button.addEventListener('click',function(){
-          axios.post('/payment/api/payOut',{
+            axios.post('/payment/api/payOut',{
                 ammount: $('#ammount').val(),
                 email: $('#emailInput').val(),
-          }).then(response=>{
-            if(response.status == 200){
-                axios.post('/dashboard/api/removeWithdrawal',{
-                    ammount:$('#ammount').val(),
-                }).then(function(response){
-                     if(response.status == 200){
-                        $('#payoutModal').modal('hide');
-                         window.location.href = window.location.origin + '/dashboard/earnings#payoutComplete'
-                         location.reload(); 
-                     }
-                })
-            }
-          })  
+            }).then(response=>{
+                if(response.status == 200){
+                    axios.post('/dashboard/api/removeWithdrawal',{
+                        ammount:$('#ammount').val(),
+                    }).then(function(response){
+                        if(response.status == 200){
+                            $('#payoutModal').modal('hide');
+                            window.location.href = window.location.origin + '/dashboard/earnings#payoutComplete'
+                            location.reload();
+                        }
+                    })
+                }
+            })
         })
     }
 })
@@ -212,12 +212,12 @@ $(document).ready(function(){
     if($('#ordersTable').length > 0 ){
 
         $('#ordersTable').DataTable();
-        
+
     }
 })
 
 $(document).ready(function(){
-    
+
     if($('#transactionTable').length >  0 ){
 
         $('#transactionTable').DataTable();
@@ -239,41 +239,41 @@ $(document).ready(function(){
 //mark as complete
 $(document).ready(function(){
     if($('#markasComplete').length > 0 ){
-    var button = document.querySelector('#markasComplete');
-    button.addEventListener('click',function(){
-        var comment = $('#commentArea').val();
-        var raiting = $('#example').val();
-        var post_id = $('#post_id').val();
-        var transaction_id = $('#transaction_id').val();
-        axios.post('/api/addReview',{
-            comment:comment,
-            raiting:raiting,
-            post_id:post_id,
-        }).then(function(response){
-            if(response.status == 200){
-                axios.post('/order/api/markascomplete',{
-                    transaction_id:transaction_id,
-            
+        var button = document.querySelector('#markasComplete');
+        button.addEventListener('click',function(){
+            var comment = $('#commentArea').val();
+            var raiting = $('#example').val();
+            var post_id = $('#post_id').val();
+            var transaction_id = $('#transaction_id').val();
+            axios.post('/api/addReview',{
+                comment:comment,
+                raiting:raiting,
+                post_id:post_id,
             }).then(function(response){
-                if(response.status==200){
-                    axios.post('/dasbhoard/api/addPendingMoney',{
+                if(response.status == 200){
+                    axios.post('/order/api/markascomplete',{
                         transaction_id:transaction_id,
+
                     }).then(function(response){
-                        if(response.status == 200 ){
-                        $('#exampleModal').modal('hide')
-                        window.location.href = window.location.href + '#markAsComplete'
-                        location.reload();
+                        if(response.status==200){
+                            axios.post('/dasbhoard/api/addPendingMoney',{
+                                transaction_id:transaction_id,
+                            }).then(function(response){
+                                if(response.status == 200 ){
+                                    $('#exampleModal').modal('hide')
+                                    window.location.href = window.location.href + '#markAsComplete'
+                                    location.reload();
+                                }
+                            })
+
+
                         }
                     })
-
-                    
                 }
-            })
-        }       
-        });
-    
+            });
 
-    })
+
+        })
     }
 
     if($('#accetButton').length > 0 ){
@@ -284,9 +284,9 @@ $(document).ready(function(){
                 transaction_id:transaction_id,
             }).then(function(response){
 
-                    
-                    window.location.href = window.location.href + '#markAsActive'
-                    location.reload();
+
+                window.location.href = window.location.href + '#markAsActive'
+                location.reload();
             })
         })
     }
@@ -300,9 +300,11 @@ $(function(){
         var button = document.querySelector('#verifyPost');
         button.addEventListener('click',function () {
             post_id = $('#post_id').val();
+            user_id = $('#user_id').val();
             modification = $('#modification').val();
             axios.post('/controlpanel/api/verifypost',{
                 post_id:post_id,
+                user_id:user_id,
                 modification:modification
             }).then(function (response) {
 
@@ -314,9 +316,11 @@ $(function(){
         var button = document.querySelector('#denyPost');
         button.addEventListener('click',function () {
             post_id = $('#post_id').val();
+            user_id = $('#user_id').val();
             modification = $('#modification').val();
             axios.post('/controlpanel/api/denypost',{
                 post_id:post_id,
+                user_id:user_id,
                 modification:modification
             }).then(function (response) {
 
@@ -325,7 +329,7 @@ $(function(){
             })
         })
     }
-    
+
 });
 
 
@@ -415,95 +419,95 @@ $(function(){
 //notifications
 $(document).ready(function(){
 
-        if(window.location.hash === "#paymentcomplete"){
-            $.notify({
-                // options
-                message: 'Your payment was successful, order and a new conversation have been created!' 
-            },{
-                // settings
-                type: 'success'
-            });
-        }
-
-        
-        if(window.location.hash === "#removedBoost"){
-            $.notify({
-                // options
-                message: 'Your boost was deleted succesfuly.' 
-            },{
-                // settings
-                type: 'success'
-            });
-        }
-        if(window.location.hash === "#payoutComplete"){
-            $.notify({
-                // options
-                message: 'Your withdrawal was successful please check your email!' 
-            },{
-                // settings
-                type: 'success'
-            });
-        }
-
-        if(window.location.hash === "#postComplete"){
-            $.notify({
-                // options
-                message: 'Your boost was posted successfully!' 
-            },{
-                // settings
-                type: 'success'
-            });
-        }
-        if(window.location.hash === "#contactSuccess"){
-            $.notify({
-                // options
-                message: 'Your request was sent successfully , we will get back to you in 24-48h.' 
-            },{
-                // settings
-                type: 'success'
-            });
-        }
-
-        if(window.location.hash === "#markAsComplete"){
-            $.notify({
-                // options
-                message: 'The order has been marked as complete thanks for choosing us!' 
-            },{
-                // settings
-                type: 'success'
-            });
-        }
-        if(window.location.hash === "#markAsActive"){
-            $.notify({
-                // options
-                message: 'The order has been marked as active!' 
-            },{
-                // settings
-                type: 'success'
-            });
-        }
-        if(window.location.hash === "#markAsDelivered"){
-            $.notify({
-                // options
-                message: 'The order has been marked as delivered! Waiting for the buyer to confirm it!' 
-            },{
-                // settings
-                type: 'success'
-            });
-        }
-
-        if(window.location.hash === "#markAsVerified"){
-            $.notify({
-                message: 'Post has been marked as verified.'
-            },{
-                type: 'success'
-            });
-        }
+    if(window.location.hash === "#paymentcomplete"){
+        $.notify({
+            // options
+            message: 'Your payment was successful, order and a new conversation have been created!'
+        },{
+            // settings
+            type: 'success'
+        });
+    }
 
 
+    if(window.location.hash === "#removedBoost"){
+        $.notify({
+            // options
+            message: 'Your boost was deleted succesfuly.'
+        },{
+            // settings
+            type: 'success'
+        });
+    }
+    if(window.location.hash === "#payoutComplete"){
+        $.notify({
+            // options
+            message: 'Your withdrawal was successful please check your email!'
+        },{
+            // settings
+            type: 'success'
+        });
+    }
 
-        
-    
+    if(window.location.hash === "#postComplete"){
+        $.notify({
+            // options
+            message: 'Your boost was posted successfully!'
+        },{
+            // settings
+            type: 'success'
+        });
+    }
+    if(window.location.hash === "#contactSuccess"){
+        $.notify({
+            // options
+            message: 'Your request was sent successfully , we will get back to you in 24-48h.'
+        },{
+            // settings
+            type: 'success'
+        });
+    }
+
+    if(window.location.hash === "#markAsComplete"){
+        $.notify({
+            // options
+            message: 'The order has been marked as complete thanks for choosing us!'
+        },{
+            // settings
+            type: 'success'
+        });
+    }
+    if(window.location.hash === "#markAsActive"){
+        $.notify({
+            // options
+            message: 'The order has been marked as active!'
+        },{
+            // settings
+            type: 'success'
+        });
+    }
+    if(window.location.hash === "#markAsDelivered"){
+        $.notify({
+            // options
+            message: 'The order has been marked as delivered! Waiting for the buyer to confirm it!'
+        },{
+            // settings
+            type: 'success'
+        });
+    }
+
+    if(window.location.hash === "#markAsVerified"){
+        $.notify({
+            message: 'Post has been marked as verified.'
+        },{
+            type: 'success'
+        });
+    }
+
+
+
+
+
 })
 
 
@@ -512,18 +516,18 @@ $(document).ready(function () {
     if($('.select-multiple').length > 0 ){
         $('.select-multiple').select2();
     }
-   
+
 });
 
 //stars plugin
 $(document).ready(function () {
     if($('#example').length > 0 ){
 
-   
-    $('#example').barrating({
-        theme: 'fontawesome-stars'
-    });
-}
+
+        $('#example').barrating({
+            theme: 'fontawesome-stars'
+        });
+    }
 });
 
 //categories
@@ -844,23 +848,23 @@ $(document).ready(function () {
         });
 
     if($('#smartwizard').length > 0 ){
-    $('#smartwizard').smartWizard({
-        transitionEffect: 'fade',
-        toolbarSettings: {
-            toolbarExtraButtons: [btnFinish]
-        },
-    });
+        $('#smartwizard').smartWizard({
+            transitionEffect: 'fade',
+            toolbarSettings: {
+                toolbarExtraButtons: [btnFinish]
+            },
+        });
         $('.bg-green').hide();
-    $("#smartwizard").on("showStep", function (e, anchorObject, stepNumber, stepDirection) {
+        $("#smartwizard").on("showStep", function (e, anchorObject, stepNumber, stepDirection) {
 
-        // Enable finish button only on last step
-        if (stepNumber == 3) {
-            $('.bg-green').show();
-        } else {
-            $('.bg-green').hide();
+            // Enable finish button only on last step
+            if (stepNumber == 3) {
+                $('.bg-green').show();
+            } else {
+                $('.bg-green').hide();
 
-        }
-    });
+            }
+        });
     }
 
 
@@ -892,15 +896,15 @@ $(document).ready(function () {
                 const firstErrorMessage = errors[firstItem][0]
 
                 clearErrors();
-                
+
                 firstItemDOM.insertAdjacentHTML('afterend', `<div class="text-danger">${firstErrorMessage}</div>`)
                 // highlight the form control with the error
 
-    
-                
+
+
             })
         })
-        
+
         CKEDITOR.replace('priceDescription',{
             height:130,
             removePlugins :'format',
@@ -922,12 +926,12 @@ $(document).ready(function () {
                 const firstErrorMessage = errors[firstItem][0]
 
                 clearErrors();
-                
+
                 firstItemDOM.insertAdjacentHTML('afterend', `<div class="text-danger">${firstErrorMessage}</div>`)
                 // highlight the form control with the error
 
-    
-                
+
+
             })
         });
 
@@ -939,7 +943,7 @@ $(document).ready(function () {
                 }
             }
 
-            
+
             axios.post('/api/validatePost', {
                 'title': document.querySelector('#title').value,
                 'categories': document.querySelector('#categories').value,
@@ -959,7 +963,7 @@ $(document).ready(function () {
                     const firstItem = Object.keys(errors)[0]
                     const firstItemDOM = document.getElementById(firstItem)
                     const firstErrorMessage = errors[firstItem][0]
-                    
+
                     clearErrors();
 
                     firstItemDOM.insertAdjacentHTML('afterend', `<div class="text-danger">${firstErrorMessage}</div>`)
@@ -1013,15 +1017,15 @@ $(document).ready(function () {
                 const firstErrorMessage = errors[firstItem][0]
 
                 clearErrors();
-                
+
                 firstItemDOM.insertAdjacentHTML('afterend', `<div class="text-danger">${firstErrorMessage}</div>`)
                 // highlight the form control with the error
 
-    
-                
+
+
             })
         })
-        
+
         CKEDITOR.replace('priceDescription',{
             height:130,
             removePlugins :'format',
@@ -1043,12 +1047,12 @@ $(document).ready(function () {
                 const firstErrorMessage = errors[firstItem][0]
 
                 clearErrors();
-                
+
                 firstItemDOM.insertAdjacentHTML('afterend', `<div class="text-danger">${firstErrorMessage}</div>`)
                 // highlight the form control with the error
 
-    
-                
+
+
             })
         });
 
@@ -1060,7 +1064,7 @@ $(document).ready(function () {
                 }
             }
 
-            
+
             axios.post('/api/validatePost', {
                 'title': document.querySelector('#title').value,
                 'categories': document.querySelector('#categories').value,
@@ -1080,7 +1084,7 @@ $(document).ready(function () {
                     const firstItem = Object.keys(errors)[0]
                     const firstItemDOM = document.getElementById(firstItem)
                     const firstErrorMessage = errors[firstItem][0]
-                    
+
                     clearErrors();
 
                     firstItemDOM.insertAdjacentHTML('afterend', `<div class="text-danger">${firstErrorMessage}</div>`)
@@ -1116,31 +1120,31 @@ $(document).ready(function(){
             $('#faqQA').append($(faqQ));
         });
         $('#faqUpdate').on('click', '#faqRemove', function () {
-    
-    
+
+
             $('#faqQA').html(" ");
         });
-    
+
         var i = 0;
         $('#faqUpdate').on('click', '#faqADD', function () {
-    
+
             i++;
             var q = $('#question').val();
             var a = $('#answer').val();
             var newFaq = '<div id="r' + i + '"class="card m-b-20"><div class="card-body"><lable class="h6 text-muted">Question:</lable><input class="form-control m-t-10" id="questionVal' + i + '" type="text" value="" readonly><lable class="h6 text-muted">Answer:</lable><input class="form-control" type="text" id="answerVal' + i + '" value=""readonly></div><button type="button" class="btn btn-outline-danger btn-sm m-l-20 m-b-20 text-center" id="faqRemoveWhole" style="width:30px;height:30px;float:center;">x</button></div>';
-    
-    
-    
+
+
+
             $('#faqDone').prepend($(newFaq));
             $('#questionVal' + i).val(q);
             $('#answerVal' + i).val(a);
-    
+
         });
-    
-    
-    
-    
-    
+
+
+
+
+
         $('#faqDone').on('click', '#faqRemoveWhole', function () {
             var test = $('#faqRemoveWhole').parent();
             test.remove();
@@ -1157,56 +1161,55 @@ $(document).ready(function(){
             var price = $('#price').val();
             var deliveryTime = $('#delivery_time').val();
             var requirements = $('#requirements').val();
-    
+
             var q = [];
             var b = [];
             for (var a = 0; a < i + 1; a++) {
-    
+
                 q[a] = $('#questionVal' + a).val();
                 b[a] = $('#answerVal' + a).val();
-    
+
             }
             q.shift();
             b.shift();
-    
-    
-    
-    
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-    
-    
-                    type: 'post',
-                    url: '/api/boost/savechanges',
-                    data: {
-                        'postId':postId,
-                        'title': title,
-                        'categories': category,
-                        'subcategories': subcat,
-                        'price_description': priceDescription,
-                        'price': price,
-                        'delivery_time': deliveryTime,
-                        'requirements': requirements,
-                        'body': postDescription,
-                        'question': q,
-                        'answer': b,
-    
-                    },
-                    success: function (response) {
-                        $.notify({
-                            // options
-                            message: 'Boost Updated' 
-                        },{
-                            // settings
-                            type: 'success'
-                        });
-                    }
-    
-                });
+
+
+
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+
+
+                type: 'post',
+                url: '/api/boost/savechanges',
+                data: {
+                    'postId':postId,
+                    'title': title,
+                    'categories': category,
+                    'subcategories': subcat,
+                    'price_description': priceDescription,
+                    'price': price,
+                    'delivery_time': deliveryTime,
+                    'requirements': requirements,
+                    'body': postDescription,
+                    'question': q,
+                    'answer': b,
+
+                },
+                success: function (response) {
+                    $.notify({
+                        // options
+                        message: 'Boost Updated'
+                    },{
+                        // settings
+                        type: 'success'
+                    });
+                }
+
+            });
         })
-       
+
     }
 })
-            

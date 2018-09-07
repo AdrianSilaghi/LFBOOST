@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\NotifyPostOwner;
 use CyrildeWit\EloquentViewable\Viewable;
 use Illuminate\Http\Request;
 use App\Post;
@@ -363,21 +364,26 @@ class PostsController extends Controller
     }
     public function verifyPost(Request $request)
     {
+        $user = User::find($request->user_id);
         $post = Post::find($request->post_id);
         $post->verified = 1;
         $post->denied = 0;
         $post->modification = $request->modification;
         $post->save();
 
+        $user->notify(new NotifyPostOwner($post,'Your post has been verified!'));
         return response()->json('200','200');
     }
     public function  denyPost(Request $request)
     {
+        $user = User::find($request->user_id);
         $post = Post::find($request->post_id);
         $post->verified = 0;
         $post->denied = 1;
         $post->modification = $request->modification;
         $post->save();
+
+        $user->notify(new NotifyPostOwner($post,'Your post has been denied , add the required modifications!'));
         return response()->json('200','200');
     }
 }
