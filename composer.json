@@ -7,6 +7,7 @@
     "require": {
         "php": "^7.2.7",
         "algolia/algoliasearch-client-php": "^1.27",
+        "artesaos/seotools": "^0.12.0",
         "braintree/braintree_php": "3.34.0",
         "components/font-awesome": "^5.0",
         "cviebrock/eloquent-sluggable": "4.5",
@@ -17,12 +18,17 @@
         "laravel/scout": "^4.0",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4",
+        "propaganistas/laravel-disposable-email": "^2.0",
         "pusher/pusher-php-server": "~3.0",
         "santigarcor/laratrust": "5.0.*",
         "spatie/laravel-backup": "^5.9",
+        "spatie/laravel-sitemap": "^5.2",
         "spatie/laravel-tags": "^2.0",
+        "srmklive/paypal": "^1.6",
+        "stevebauman/location": "^3.0",
         "torann/geoip": "^1.0",
-        "unisharp/laravel-ckeditor": "^4.7"
+        "unisharp/laravel-ckeditor": "^4.7",
+        "watson/sitemap": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
