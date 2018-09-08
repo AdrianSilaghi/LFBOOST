@@ -15,16 +15,16 @@
                                 <div class="card-body">
                                         <ul class="list-inline text-muted">
                                                 <li class="list-inline-item">Subtotal</li>
-                                                <li class="list-inline-item float-right">${{$post->price}}</li>
+                                                <li class="list-inline-item float-right">€{{$post->price}}</li>
                                         </ul>
                                         <ul class="list-inline text-muted">
                                                 <li class="list-inline-item">Service Fee <i class="fas fa-question fa-xs" data-toggle="tooltip" data-placement="top" title="This helps us operate our platform and provice 27/7 customer support for your orders."></i></li>
-                                                <li class="list-inline-item float-right">$2</li>
+                                                <li class="list-inline-item float-right">€2</li>
                                         </ul>
                                         <hr>
                                         <ul class="list-inline text-muted" style="font-weight:bold;">
                                                 <li class="list-inline-item">Total</li>
-                                        <li class="list-inline-item float-right">${{$post->price+2}}</li>
+                                        <li class="list-inline-item float-right">€{{$post->price+2}}</li>
                                         </ul>
                                         <ul class="list-inline text-muted" >
                                                 <li class="list-inline-item">Delivery Time</li>

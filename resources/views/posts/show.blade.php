@@ -171,15 +171,15 @@
                                 <p class="card-text">{!!$post->price_description!!}</p>
                             <ul class="list-inline">
                                 <li class="list-inline-item text-muted"><i class="far fa-clock"></i></li>
-                                <li class="list-inline-item text-muted" style="font-weight:700;">{{$post->price}} Days Delivery</li>
+                                <li class="list-inline-item text-muted" style="font-weight:700;">{{$post->delivery_time}} Days Delivery</li>
                             </ul>
                         </div>
                         <div class="col">
-                           <p class="card-text text-muted" style="font-size:1.4rem;">${{$post->price}}</p>     
+                           <p class="card-text text-muted" style="font-size:1.4rem;">€{{$post->price}}</p>
                         </div>
                     </div>
                     <hr>
-                <a role="button" href="{{route('payment.oveview',['id'=>$post])}}" class="btn btn-success btn-lg btn-block" style="font-weight:600;">Continue (${{$post->price}})</a>
+                <a role="button" href="{{route('payment.oveview',['id'=>$post])}}" class="btn btn-success btn-lg btn-block" style="font-weight:600;">Continue (€{{$post->price}})</a>
                 </div>
             </div>
             <div class="card m-t-20" id="profileCard">

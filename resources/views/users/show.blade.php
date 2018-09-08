@@ -250,7 +250,7 @@
                                                                 PRICE:
                                                                 </span>
                                                             <span style="font-weight:500;font-size:1.1rem;">
-                                                                    ${{$poo->price}}
+                                                                    €{{$poo->price}}
                                                                 </span>
                                                         </p>
                                                     </div>

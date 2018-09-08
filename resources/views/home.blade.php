@@ -214,7 +214,7 @@ $recentlyViewedPosts = $recentlyViewed->groupBy('post_id')->where('user_id',auth
                                                                         PRICE:
                                                                         </span>
                                                                         <span style="font-weight:500;font-size:1.1rem;">
-                                                                            ${{$poo->price}}
+                                                                            €{{$poo->price}}
                                                                         </span>
                                                                     </p>
                                                                 </div>
@@ -345,7 +345,7 @@ $recentlyViewedPosts = $recentlyViewed->groupBy('post_id')->where('user_id',auth
                                                                 PRICE:
                                                                 </span>
                                                                 <span style="font-weight:500;font-size:1.1rem;">
-                                                                    ${{$poo->price}}
+                                                                    €{{$poo->price}}
                                                                 </span>
                                                             </p>
                                                         </div>
@@ -475,7 +475,7 @@ $recentlyViewedPosts = $recentlyViewed->groupBy('post_id')->where('user_id',auth
                                                                         PRICE:
                                                                         </span>
                                                                         <span style="font-weight:500;font-size:1.1rem;">
-                                                                            ${{$poo->price}}
+                                                                            €{{$poo->price}}
                                                                         </span>
                                                                     </p>
                                                                 </div>
