@@ -95,6 +95,7 @@ class PostsController extends Controller
 
         $post->save();
 
+        $this->defaultCatPic($post->id);
 
         $post->attachTags($tags);
         if(is_array($questions)){
@@ -113,6 +114,50 @@ class PostsController extends Controller
         $request->session()->flash('success','Your boost has been posted!');
         
     
+    }
+
+    public function defaultCatPic($postId)
+    {
+        $post = Post::find($postId);
+        if ($post->category_id == 1) {
+            $post->image = 'lol.png';
+            $post->save();
+        }
+        if ($post->category_id == 2) {
+            $post->image = 'wow.png';
+            $post->save();
+        }
+        if ($post->category_id == 3) {
+            $post->image = 'fortnite.png';
+            $post->save();
+        }
+        if ($post->category_id == 4) {
+            $post->image = 'overwatch.png';
+            $post->save();
+        }
+        if ($post->category_id == 5) {
+            $post->image = 'csgo.png';
+            $post->save();
+        }
+        if ($post->category_id == 6) {
+            $post->image = 'pubg.png';
+            $post->save();
+        }
+        if ($post->category_id == 7) {
+            $post->image = 'dota.png';
+            $post->save();
+        }
+        if ($post->category_id == 8)
+        {
+            $post->image = 'hs.png';
+            $post->save();
+        }
+        if($post->category_id == 9)
+        {
+            $post->image = 'rb6s.png';
+            $post->save();
+        }
+
     }
 
     public function detachQuestions(Request $request){
@@ -167,7 +212,6 @@ class PostsController extends Controller
         $post->image = $filename;
         $post->save();  
         }
-
 
     }
 

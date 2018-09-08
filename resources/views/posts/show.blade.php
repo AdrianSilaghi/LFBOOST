@@ -3,7 +3,7 @@
 
 @inject('USER','App\User')
 @inject('carbon','Carbon\Carbon')
-
+@inject('order,'App\Order)
 
 
 <div class="container m-t-20">
@@ -22,6 +22,17 @@
                 @else
                     
                 @endif
+                    @php
+                    $numberOfOrders = $order->where('post_id',$post->id)->where('queued','1')->get();
+                    @endphp
+
+                    @if(count($numberOfOrders)>0)
+                        <small><span class="text-muted float-right">Orders in queue:{{count($numberOfOrders)}}</span></small>
+                        @else
+
+                        @endif
+
+
                     <hr>
                 <small>
                         <nav aria-label="breadcrumb">
@@ -32,8 +43,10 @@
                         </nav>
                 </small>
                 <hr>
-                <img class="card-img-top" src="{{asset("uploads/posts/big$post->image")}}" alt="Card image cap">
-                </div>
+                    <div class="text-center">
+                <img class="card-img-top" id="bigImg" src="{{asset("uploads/posts/big$post->image")}}" alt="Card image cap">
+                    </div>
+                    </div>
             </div>
             {{-- body --}}
             <div class="card m-t-20">
@@ -112,7 +125,7 @@
                         <div class="card-body">
                             <div class="flex flex-col">
                                 <div class="flex items-center">
-                                        <img class="w-10 h-10 rounded-full mr-4" src="https://lfboost.com/uploads/avatars/{{$reviewUser->avatar}}" alt="Avatar of Jonathan Reinink">
+                                        <img class="w-10 h-10 rounded-full mr-4" src="https://lfboost.com/uploads/avatars/{{$reviewUser->avatar}}" alt="Avatar of {{$reviewUser->name}}">
                                         <div class="text-sm">
                                           <p class="text-black leading-none">
                                               {{$reviewUser->name}}
@@ -178,10 +191,14 @@
                                         @else
                                         <span class="btn btn-outline-dark btn-sm">Offline</span>
                                         @endif
+                                            <a href="{{route('show.user.slug',[$user->slug])}}">
                                 <div class="text-center">
                                     <img src="{{asset("uploads/avatars/$user->avatar")}}" style="width:150px; height:150px;border-radius:50%;">
                                 </div>
+                                            </a>
+                                            <a href="{{route('show.user.slug',[$user->slug])}}">
                             <h5 class="card-title text-center m-t-15">{{$user->name}}</h5>
+                                            </a>
                             <p class="small text-muted text-center" style="">
                                     @if(is_null($user->short_description))
                                     "You don't have any short description."
