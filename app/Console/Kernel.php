@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         \App\Console\Commands\CheckForPendingCash::class,
         \App\Console\Commands\GenerateSitemap::class,
+        \App\Console\Commands\CheckForCompletionOrder::class,
     ];
 
     /**

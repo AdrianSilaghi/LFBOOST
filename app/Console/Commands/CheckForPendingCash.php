@@ -44,8 +44,10 @@ class CheckForPendingCash extends Command
      */
     public function handle()
     {
-        $pendingMoney = Pendingmoney::all();
-
+        $pendingMoney = Pendingmoney::where('completed','0')->get();
+        if(emptyArray($pendingMoney)){
+            $this->info('No jobs to do');
+        }
         foreach($pendingMoney as $pm){
             $order = Order::where('transaction_id',$pm->transaction_id)->first();
             $seller = User::find($order->seller_id);
@@ -83,6 +85,9 @@ class CheckForPendingCash extends Command
                     $seller->availalbeWithdrawal = $availalbeWithdrawal;
                     $seller->totalearnings = $sellerEarnings;
                     $seller->save();
+
+                    $pm->completed = 1;
+                    $pm->save();
 
                     $this->info('Job Done');
                 }
