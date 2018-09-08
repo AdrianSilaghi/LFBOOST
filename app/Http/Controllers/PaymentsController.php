@@ -163,8 +163,8 @@ class PaymentsController extends Controller
 
         $buyer = User::find($order->buyer_id);
 
-        Mail::to($seller->email)->send(new NewOrderMail($seller,$order));
-        Mail::to($buyer->email)->send(new NewOrderMail($buyer,$order));
+        Mail::to($seller->email)->send(new NewOrderMail($seller,$order,'You have recived a new order , please check click on the button below to accept it.','0'));
+        Mail::to($buyer->email)->send(new NewOrderMail($buyer,$order,'Thanks for choosing us, below you can access the order page to see the progress also we attached the invoice in the email check it if you would like.','1'));
 
 
         $contacts = new ContactsController;

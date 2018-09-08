@@ -171,6 +171,7 @@ return [
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         Watson\Sitemap\SitemapServiceProvider::class,
         Spatie\Sitemap\SitemapServiceProvider::class,
+        ConsoleTVs\Invoices\InvoicesServiceProvider::class,
         /*
          * Package Service Providers...
          */

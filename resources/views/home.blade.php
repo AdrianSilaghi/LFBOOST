@@ -109,6 +109,7 @@ $recentlyViewedPosts = $recentlyViewed->groupBy('post_id')->where('user_id',auth
                             <p class="text-xl font-semibold font-sans text-grey-darkest">Feautured</p>
                        </div>
                     </div>
+
                         @if(count($posts) > 0 )
                         @php
                         $feautured = $posts->where('feautured',true)->where('verified',true)->take(4);

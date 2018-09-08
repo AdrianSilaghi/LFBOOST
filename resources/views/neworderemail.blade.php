@@ -1,9 +1,10 @@
 @component('mail::message')
 
-Hello, {{$user->name}}
+Hello, <b>{{$user->name}}</b>
 
 
-<h5>You have a new order!</h5>
+<h4>{{$message}}</h4>
+
 
 
 @component('mail::button', ['url'=> 'https://lfboost.com/dashboard/order?orderID='. $order->transaction_id , 'color' => 'green'])

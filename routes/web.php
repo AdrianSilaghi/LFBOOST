@@ -13,6 +13,10 @@
 use Illuminate\Support\Facades\Mail;
 Auth::routes();
 
+
+
+Route::get('/testInvoice','OrdersController@createInvoice')->name('controlPanel');
+
 Route::get('/controlpanel','PagesController@controlPanel')->middleware('auth')->name('controlPanel');
 Route::get('/controlpanel/users','PagesController@manageUsers')->middleware('auth')->name('manageUsers');
 Route::get('/controlpanel/orders','PagesController@manageOrders')->middleware('auth')->name('manageOrders');

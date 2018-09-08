@@ -12,6 +12,7 @@ use Image;
 use Carbon\Carbon;
 use App\Mail\NewOrderMail;
 use Illuminate\Support\Facades\Mail;
+use ConsoleTVs\Invoices\Classes\Invoice;
 
 class OrdersController extends Controller
 {
@@ -43,12 +44,9 @@ class OrdersController extends Controller
         $buyer = User::find($order->buyer_id);
 
 
-        Mail::to($seller->email)->send(new NewOrderMail($seller,$order));
-        Mail::to($buyer->email)->send(new NewOrderMail($buyer,$order));
 
-        session()->flash('success', 'Your payment was successful , order and a new conversation were created!');
-        return $order;
     }
+
 
 
     public function dashboardOrders(Request $request){
@@ -117,6 +115,7 @@ class OrdersController extends Controller
     }
 
     public function speicifOrder(Request $request){
+
         $order = Order::withTrashed()->where('transaction_id',$request->input('orderID'))->first();
         $seller = User::withTrashed()->where('id',$order->seller_id)->first();
         $boost = Post::withTrashed()->where('id',$order->post_id)->first();
