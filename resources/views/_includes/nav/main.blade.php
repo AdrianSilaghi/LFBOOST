@@ -61,7 +61,7 @@
           
           <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="topBarDropDown">
             <a href="{{route('show.user.slug',[Auth::user()->slug])}}" class="dropdown-item"> <span><i class="fas fa-user-circle"></i></span> Profile</a>
-            <a class="dropdown-item" href="{{route('home')}}"> <span><i class="fas fa-tachometer-alt"></i></span> Dashboard</a>
+            <a class="dropdown-item" href="{{route('dashboard')}}"> <span><i class="fas fa-tachometer-alt"></i></span> Dashboard</a>
             <a href="{{route('account')}}"class="dropdown-item"> <span><i class="fas fa-cog"></i></span> Settings</a>
             <hr></hr>
             <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();

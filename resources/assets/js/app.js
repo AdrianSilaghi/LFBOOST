@@ -177,9 +177,9 @@ $(document).ready(function(){
                         ammount:$('#ammount').val(),
                     }).then(function(response){
                         if(response.status == 200){
-                            $('#payoutModal').modal('hide');
-                            window.location.href = window.location.origin + '/dashboard/earnings#payoutComplete'
-                            location.reload();
+                            // $('#payoutModal').modal('hide');
+                            // window.location.href = window.location.origin + '/dashboard/earnings#payoutComplete'
+                            // location.reload();
                         }
                     })
                 }

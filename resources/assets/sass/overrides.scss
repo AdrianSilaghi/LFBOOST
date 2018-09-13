@@ -102,7 +102,7 @@ a.list-group-item:hover{
 }
 #catNav .navbar-nav .dropdown-menu > :hover {
   background-color: azure;
-  color: #00b22d;
+  //color: #00b22d;
 }
 
 #catNav .dropdown-toggle::after {
@@ -319,7 +319,7 @@ a:hover{
   text-decoration: none;
 }
 #PostB .card {
-  height:31f0px;
+  height:310px;
   max-height: 310px;
 }
 
@@ -408,7 +408,7 @@ ul#priceList{
 div.sticky {
   position: -webkit-sticky; /* Safari */
   position: sticky;
-  top: 10;
+  top: 10px;
 }
 
 .breadcrumb{

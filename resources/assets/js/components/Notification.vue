@@ -8,7 +8,7 @@
             <li v-for="notification in notifications">
                 <a class="dropdown-item" href="#" v-on:click="MarkAsRead(notification)">
 
-                    <div v-if="notification.type.includes('NotifyChat')">
+                    <div v-if="notification.type.includes('NotifyChat')" v-on:click="GoToChat(notification)">
                         <p>You have a new message from {{notification.data.user.name}}</p>
                         <small class="form-text text-muted">Please check your inbox.</small>
                     </div>
@@ -52,6 +52,12 @@
             },
             GoToPosts: function (notification) {
                 window.location.href = window.location.origin + '/dashboard/boosts';
+            },
+            GoToChat: function (notification) {
+                var data = {
+                    id: notification.data.user.id
+                }
+                window.location.href = window.location.origin + '/dashboard/inbox/' + data.id;
             }
         }
     }

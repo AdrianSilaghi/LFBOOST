@@ -10,6 +10,7 @@ use Braintree_Gateway;
 use Braintree_Transaction;
 use Braintree_Configuration;
 use App\Rules\PayoutAmmount;
+use Illuminate\Queue\RedisQueue;
 use Srmklive\PayPal\Services\ExpressCheckout;
 use Illuminate\Http\Response;
 use App\Notifications\NotifyOrderOwner;
@@ -18,7 +19,9 @@ use App\Contacts;
 use App\Http\Controllers\ContactsController;
 use App\Mail\NewOrderMail;
 use Illuminate\Support\Facades\Mail;
-
+use App\Withdrawalmoney;
+use Srmklive\PayPal\Services\AdaptivePayments;
+use App\Mail\NotifyPayoutRequest;
 
 class PaymentsController extends Controller
 {
@@ -245,17 +248,52 @@ class PaymentsController extends Controller
     }
 
 
-    public function payout(Request $request){
+
+    public function payoutWithPaypal(Request $request)
+    {
+
+//        $email = $request->email;
+//        $amount = $request->ammount;
+//
+//        $provider = new AdaptivePayments;
+//
+//        $data = [
+//            'receivers'  => [
+//                [
+//                    'email' => $email,
+//                    'amount' => $amount,
+//                    'primary' => false,
+//                ],
+//            ],
+//            'payer' => 'EACHRECEIVER', // (Optional) Describes who pays PayPal fees. Allowed values are: 'SENDER', 'PRIMARYRECEIVER', 'EACHRECEIVER' (Default), 'SECONDARYONLY'
+//            'return_url' => url(route('dashboard')),
+//            'cancel_url' => url('payment/cancel'),
+//        ];
+//
+//
+//        $response = $provider->createPayRequest($data);
+//
+//
+//        $redirect_url = $provider->getRedirectUrl('approved', $response['payKey']);
+//
+//
+//        Mail::to('silaghi.adrian95@gmail.com')->send(new NotifyPayoutRequest($redirect_url));
+//
+//        return $redirect_url;
+
+
+
+
 
         $this->validate($request,[
             'ammount'=> ['required',new PayoutAmmount],
             'email'=>'required|email'
         ]);
-        
+
         $email = $request->email;
         $ammount = $request->ammount;
-        
-        
+
+
         $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
               'AY44Io5lRKKKUS64t6TZapX2AMAc8ul_Mo9WPs8VFjd5ABWX_cb7mo0RppjZEvQvYdqFkBhssXKjJ4kc',
@@ -264,13 +302,13 @@ class PaymentsController extends Controller
           );
 
         $payouts = new \PayPal\Api\Payout();
-    
+
 
         $senderBatchHeader = new \PayPal\Api\PayoutSenderBatchHeader();
 
         $senderBatchHeader->setSenderBatchId(uniqid())
             ->setEmailSubject("You have a payment");
-        
+
             $senderItem1 = new \PayPal\Api\PayoutItem(
                 array(
                     "recipient_type" => "EMAIL",
@@ -281,25 +319,26 @@ class PaymentsController extends Controller
                         "value" => $ammount,
                         "currency" => "USD"
                     )
-            
+
                 )
             );
 
         $payouts->setSenderBatchHeader($senderBatchHeader)
                 ->addItem($senderItem1);
-        
 
-        $request = clone $payouts;
-        
+
+        //$request = clone $payouts;
+
         try {
             $output = $payouts->create(null,$apiContext);
         } catch (Exception $ex) {
             return $ex;
             exit(1);
         }
-        
+
         return $output;
     }
+
 
 
 }

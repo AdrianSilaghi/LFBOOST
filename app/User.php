@@ -63,7 +63,7 @@ class User extends Authenticatable
     }
 
     public function withdrawalmoney(){
-        return $this->belongsToMany(withdrawalmoney::class)->withPivot('withdrawalmoney_id','user_id');
+        return $this->belongsToMany(Withdrawalmoney::class)->withPivot('withdrawalmoney_id','user_id');
     }
 
     public function contactsOfMine(){
