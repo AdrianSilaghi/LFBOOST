@@ -6,22 +6,22 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\User;
 use Auth;
-use Braintree_Gateway;
-use Braintree_Transaction;
-use Braintree_Configuration;
+//use Braintree_Gateway;
+//use Braintree_Transaction;
+//use Braintree_Configuration;
 use App\Rules\PayoutAmmount;
-use Illuminate\Queue\RedisQueue;
+//use Illuminate\Queue\RedisQueue;
 use Srmklive\PayPal\Services\ExpressCheckout;
-use Illuminate\Http\Response;
+//use Illuminate\Http\Response;
 use App\Notifications\NotifyOrderOwner;
 use App\Order;
-use App\Contacts;
-use App\Http\Controllers\ContactsController;
+//use App\Contacts;
+//use App\Http\Controllers\ContactsController;
 use App\Mail\NewOrderMail;
 use Illuminate\Support\Facades\Mail;
-use App\Withdrawalmoney;
-use Srmklive\PayPal\Services\AdaptivePayments;
-use App\Mail\NotifyPayoutRequest;
+//use App\Withdrawalmoney;
+//use Srmklive\PayPal\Services\AdaptivePayments;
+//use App\Mail\NotifyPayoutRequest;
 
 class PaymentsController extends Controller
 {
@@ -31,29 +31,29 @@ class PaymentsController extends Controller
      
     }
 
-    public function token(){
-
-        $gateway = new Braintree_Gateway([
-            'environment' => 'sandbox',
-            'merchantId' => '3hgxcsq8jcm8z29w',
-            'publicKey' => '82kpz468m9nhxn7n',
-            'privateKey' => '58555425302a97c454014bb20d295b57'
-          ]);
-          
-          $aCustomerId = $gateway->customer()->create([
-            'firstName' => auth()->user()->firstname,
-            'lastName' => auth()->user()->lastname,
-            'email' => auth()->user()->email,
-
-        ]);
-        $aCustomerId->customer->id;
-
-        $clientToken = $gateway->clientToken()->generate([
-    
-        ]);
-
-        return response()->json($clientToken);
-    }
+//    public function token(){
+//
+//        $gateway = new Braintree_Gateway([
+//            'environment' => 'sandbox',
+//            'merchantId' => '3hgxcsq8jcm8z29w',
+//            'publicKey' => '82kpz468m9nhxn7n',
+//            'privateKey' => '58555425302a97c454014bb20d295b57'
+//          ]);
+//
+//          $aCustomerId = $gateway->customer()->create([
+//            'firstName' => auth()->user()->firstname,
+//            'lastName' => auth()->user()->lastname,
+//            'email' => auth()->user()->email,
+//
+//        ]);
+//        $aCustomerId->customer->id;
+//
+//        $clientToken = $gateway->clientToken()->generate([
+//
+//        ]);
+//
+//        return response()->json($clientToken);
+//    }
 
     public function getPostPrice(Request $request){
         $post = Post::where('id',$request->input('postId'))->first();
@@ -62,31 +62,31 @@ class PaymentsController extends Controller
         
         return response()->json($price);
     }
-    public function payment(Request $request){
-
-       
-        $gateway = new Braintree_Gateway([
-            'environment' => 'sandbox',
-            'merchantId' => '3hgxcsq8jcm8z29w',
-            'publicKey' => '82kpz468m9nhxn7n',
-            'privateKey' => '58555425302a97c454014bb20d295b57'
-          ]);
-
-          $payload = $request->input('payload',false);
-          $nonce = $payload['nonce'];
-            
-          $post = Post::where('id',$request->input('postId'))->first();
-
-          $status = Braintree_Transaction::sale([
-          'amount' => $post->price+2,
-          'paymentMethodNonce' => $nonce,
-          'options' => [
-              'submitForSettlement' => True
-          ]
-          ]);
-          session()->flash('success','Your payment was successful , order and a new conversation were created!');
-          return response()->json($status);
-    }
+//    public function payment(Request $request){
+//
+//
+//        $gateway = new Braintree_Gateway([
+//            'environment' => 'sandbox',
+//            'merchantId' => '3hgxcsq8jcm8z29w',
+//            'publicKey' => '82kpz468m9nhxn7n',
+//            'privateKey' => '58555425302a97c454014bb20d295b57'
+//          ]);
+//
+//          $payload = $request->input('payload',false);
+//          $nonce = $payload['nonce'];
+//
+//          $post = Post::where('id',$request->input('postId'))->first();
+//
+//          $status = Braintree_Transaction::sale([
+//          'amount' => $post->price+2,
+//          'paymentMethodNonce' => $nonce,
+//          'options' => [
+//              'submitForSettlement' => True
+//          ]
+//          ]);
+//          session()->flash('success','Your payment was successful , order and a new conversation were created!');
+//          return response()->json($status);
+//    }
 
     public function payWithPaypal(Request $request)
     {

@@ -45,4 +45,4 @@ $categories = $categories->all();
     </div>
 </div>
 
-<p class="text-center text-sm">Made with <i  class="fas fa-heart text-red-dark"></i> by Silaghi Adrian.</p>
+<p class="text-center text-sm">Made and mantained with  <i  class="fas fa-heart text-red-dark"></i> by S.A.F.I.</p>
