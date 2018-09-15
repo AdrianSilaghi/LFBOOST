@@ -49,6 +49,7 @@
                   <a class="dropdown-item" href="{{route('showPostByCat',['World of Warcraft','Raids'])}}">PvE/Raids</a>
                   <a class="dropdown-item" href="{{route('showPostByCat',['World of Warcraft','Farming'])}}">Farming</a>
                   <a class="dropdown-item" href="{{route('showPostByCat',['World of Warcraft','Leveling'])}}">Leveling</a>
+                  <a class="dropdown-item" href="{{route('showPostByCat',['World of Warcraft','Coaching'])}}">Coaching</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

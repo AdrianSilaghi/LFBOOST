@@ -108,7 +108,7 @@ class User extends Authenticatable
         return Cache::has('user-is-online-'. $this->id);
     }
 
-        public function verifyuser(){
+    public function verifyuser(){
         return $this->hasOne('App\VerifyUser');
     }
 
