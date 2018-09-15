@@ -5,7 +5,11 @@
             <i class="far fa-bell m-r-5"></i>{{ notifications.length }}
         </button>
         <div class="dropdown-menu">
-            <li v-for="notification in notifications">
+            <div class="text-center" v-if="notifications.length > 0">
+            <button class="bg-green hover:bg-green-dark text-white py-1 px-2 rounded" v-on:click="MarkAllAsRead(notifications)">Clear all</button>
+            </div>
+                <li v-for="notification in notifications">
+
                 <a class="dropdown-item" href="#" v-on:click="MarkAsRead(notification)">
 
                     <div v-if="notification.type.includes('NotifyChat')" v-on:click="GoToChat(notification)">
@@ -58,6 +62,23 @@
                     id: notification.data.user.id
                 }
                 window.location.href = window.location.origin + '/dashboard/inbox/' + data.id;
+            },
+            MarkAllAsRead: function(notifications)
+            {
+
+
+                  for(var i = 0;i< notifications.length; i++)
+                  {
+                      var notification = notifications[i];
+                      var data = {
+                          id: notification.id
+                      };
+                      axios.post('/notification/api/read', data).then(response => {
+
+                      });
+                      location.reload();
+                  }
+
             }
         }
     }
