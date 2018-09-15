@@ -25,7 +25,7 @@ class TitleValidation implements Rule
      */
     public function passes($attribute, $value)
     {
-        if(preg_match("/^((\b[a-zA-Z0-9]{2,40}\b)\s*){3,}$/", $value)){
+        if(preg_match("/^((\b[a-zA-Z0-9-+]{2,40}\b)\s*){3,}$/", $value)){
             return true;
         }else{
             return false;
