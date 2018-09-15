@@ -184,7 +184,7 @@ $recentlyViewedPosts = $recentlyViewed->groupBy('post_id')->where('user_id',auth
                                                                     }
 
                                                                     $avg = round(array_sum($a)/count($a),1);
-                                                                    $countReviews = count($a);
+                                                                    $countReviews = count($reviews);
                                                                     
                                                                 }
                                                             @endphp
@@ -315,7 +315,7 @@ $recentlyViewedPosts = $recentlyViewed->groupBy('post_id')->where('user_id',auth
                                                             }
 
                                                             $avg = round(array_sum($a)/count($a),1);
-                                                            $countReviews = count($a);
+                                                            $countReviews = count($reviews);
                                                             
                                                         }
                                                     @endphp
@@ -445,7 +445,7 @@ $recentlyViewedPosts = $recentlyViewed->groupBy('post_id')->where('user_id',auth
                                                                     }
 
                                                                     $avg = round(array_sum($a)/count($a),1);
-                                                                    $countReviews = count($a);
+                                                                    $countReviews = count($reviews);
                                                                     
                                                                 }
                                                             @endphp
