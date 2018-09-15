@@ -16,11 +16,13 @@ class NotifyPayoutRequest extends Mailable
      *
      * @return void
      */
+    public $user;
+    public $ammount;
 
-    public $url;
-    public function __construct($url)
+    public function __construct($user,$ammount)
     {
-        $this->url = $url;
+        $this->user = $user;
+        $this->ammount = $ammount;
     }
 
     /**
@@ -34,7 +36,8 @@ class NotifyPayoutRequest extends Mailable
             ->subject('Payout Request IMPORTANT')
             ->to('silaghi.adrian95@gmail.com')
             ->with([
-                'url'=>$this->url,
+                'user'=>$this->user,
+                'ammount'=>$this->ammount,
             ]);
     }
 }

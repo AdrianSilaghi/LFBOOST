@@ -21,7 +21,7 @@ use App\Mail\NewOrderMail;
 use Illuminate\Support\Facades\Mail;
 //use App\Withdrawalmoney;
 //use Srmklive\PayPal\Services\AdaptivePayments;
-//use App\Mail\NotifyPayoutRequest;
+use App\Mail\NotifyPayoutRequest;
 
 class PaymentsController extends Controller
 {
@@ -277,68 +277,76 @@ class PaymentsController extends Controller
 //        $redirect_url = $provider->getRedirectUrl('approved', $response['payKey']);
 //
 //
-//        Mail::to('silaghi.adrian95@gmail.com')->send(new NotifyPayoutRequest($redirect_url));
+//
 //
 //        return $redirect_url;
 
 
-
-
-
-        $this->validate($request,[
-            'ammount'=> ['required',new PayoutAmmount],
-            'email'=>'required|email'
+//
+//        $this->validate($request,[
+//            'ammount'=> ['required',new PayoutAmmount],
+//            'email'=>'required|email'
+//        ]);
+//
+//        $email = $request->email;
+//        $ammount = $request->ammount;
+//
+//
+//        $apiContext = new \PayPal\Rest\ApiContext(
+//            new \PayPal\Auth\OAuthTokenCredential(
+//              'AY44Io5lRKKKUS64t6TZapX2AMAc8ul_Mo9WPs8VFjd5ABWX_cb7mo0RppjZEvQvYdqFkBhssXKjJ4kc',
+//              'ENmpQcK5gqBGdECmDjGjlz4xNV1LpwLYSqSpTktoVsEY2vZGefmwO6v-O6bl_d7X5WdxPdWmWCKg0E0x'
+//            )
+//          );
+//
+//        $payouts = new \PayPal\Api\Payout();
+//
+//
+//        $senderBatchHeader = new \PayPal\Api\PayoutSenderBatchHeader();
+//
+//        $senderBatchHeader->setSenderBatchId(uniqid())
+//            ->setEmailSubject("You have a payment");
+//
+//            $senderItem1 = new \PayPal\Api\PayoutItem(
+//                array(
+//                    "recipient_type" => "EMAIL",
+//                    "receiver" => $email,
+//                    "note" => "Thank you.",
+//                    "sender_item_id" => uniqid(),
+//                    "amount" => array(
+//                        "value" => $ammount,
+//                        "currency" => "USD"
+//                    )
+//
+//                )
+//            );
+//
+//        $payouts->setSenderBatchHeader($senderBatchHeader)
+//                ->addItem($senderItem1);
+//
+//
+//        //$request = clone $payouts;
+//
+//        try {
+//            $output = $payouts->create(null,$apiContext);
+//        } catch (Exception $ex) {
+//            return $ex;
+//            exit(1);
+//        }
+//
+//        return $output;
+//    }
+        $this->validate($request, [
+            'ammount' => ['required', new PayoutAmmount],
+            'email' => 'required|email'
         ]);
 
         $email = $request->email;
         $ammount = $request->ammount;
 
+        $user = User::where('paypal_email', $email)->first();
+        Mail::to('silaghi.adrian95@gmail.com')->send(new NotifyPayoutRequest($user, $ammount));
 
-        $apiContext = new \PayPal\Rest\ApiContext(
-            new \PayPal\Auth\OAuthTokenCredential(
-              'AY44Io5lRKKKUS64t6TZapX2AMAc8ul_Mo9WPs8VFjd5ABWX_cb7mo0RppjZEvQvYdqFkBhssXKjJ4kc',
-              'ENmpQcK5gqBGdECmDjGjlz4xNV1LpwLYSqSpTktoVsEY2vZGefmwO6v-O6bl_d7X5WdxPdWmWCKg0E0x'
-            )
-          );
-
-        $payouts = new \PayPal\Api\Payout();
-
-
-        $senderBatchHeader = new \PayPal\Api\PayoutSenderBatchHeader();
-
-        $senderBatchHeader->setSenderBatchId(uniqid())
-            ->setEmailSubject("You have a payment");
-
-            $senderItem1 = new \PayPal\Api\PayoutItem(
-                array(
-                    "recipient_type" => "EMAIL",
-                    "receiver" => $email,
-                    "note" => "Thank you.",
-                    "sender_item_id" => uniqid(),
-                    "amount" => array(
-                        "value" => $ammount,
-                        "currency" => "USD"
-                    )
-
-                )
-            );
-
-        $payouts->setSenderBatchHeader($senderBatchHeader)
-                ->addItem($senderItem1);
-
-
-        //$request = clone $payouts;
-
-        try {
-            $output = $payouts->create(null,$apiContext);
-        } catch (Exception $ex) {
-            return $ex;
-            exit(1);
-        }
-
-        return $output;
+        return redirect('dashboard')->with('status', 'Your payout request has been sent and will be accepted in the shortest time.');
     }
-
-
-
 }
