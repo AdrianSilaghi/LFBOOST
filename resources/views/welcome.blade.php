@@ -25,7 +25,7 @@
 
             <div class="flex-no-wrap sm:flex-wrap md:flex-wrap-reverse lg:flex-no-wrap xl:flex-wrap ">
                 <div class="flex flex-row sm:flex-col md:flex-row-reverse lg:flex-col-reverse xl:flex m-t-10">
-                    <div class="text-center flex-auto" >
+                    <div class="flex-auto" >
                         <div class="w-full border border-grey-darkest">
                             <div class="text-center px-3 py-2 ">
                                 Popular Boosts
@@ -35,7 +35,7 @@
                             @foreach($posts->chunk(5) as $post)
                                 <div class="flex-row  flex-row sm:flex-col md:flex-row-reverse lg:flex-col-reverse xl:flex m-t-10" id="mainPage">
                                     @foreach($post as $poo)
-                                        <div class="text-center flex-initial sm:flex-col m-r-5 m-l-5 m-t-10" id="PostE">
+                                        <div class="flex-initial sm:flex-col m-r-5 m-l-5 m-t-10" id="PostE">
                                             <div class="card">
                                                 <img class="card-img-top" src="{{asset("uploads/posts/$poo->image")}}" alt="Card image cap">
                                                 <div class="card-body">
