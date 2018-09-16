@@ -25,7 +25,7 @@ $paypal_email = $user->paypal_email;
                 </div>
                 <small class="fomr-text text-muted">
                     <hr>
-                        Maximum ammount: ${{$user->availalbeWithdrawal}}
+                        Maximum ammount: €{{$user->availalbeWithdrawal}}
                         <hr>
                     </small>
             <div class="input-group input-group-lg">
