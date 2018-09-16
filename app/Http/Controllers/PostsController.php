@@ -50,7 +50,7 @@ class PostsController extends Controller
 
     public function welcome()
     {
-        $posts = Post::where('verified',true)->orderBy('created_at','desc')->take(12)->get();
+        $posts = Post::where('verified',true)->orderByViewsCount()->take(10)->get();
         return view('welcome')->with('posts',$posts);
     }
     /**
