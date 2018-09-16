@@ -112,7 +112,7 @@
                         
                     @endif
                 </div>
-                @if(!empty($reviews))
+                @if(count($reviews) > 0)
                     <div class="card-body" id="comments">
                         @foreach($reviews as $review)
                             @php
