@@ -112,49 +112,51 @@
                         
                     @endif
                 </div>
-                <div class="card-body" id="comments">
-                    @foreach($reviews as $review)
-                    @php
-                        $userId = $review->user_id;
-                        $reviewUser = $user->where('id',$userId)->first();
-                        $created_at = new $carbon($review->created_at);
-                        $rate = $review->raiting;
-                    @endphp
+                @if(!empty($reviews))
+                    <div class="card-body" id="comments">
+                        @foreach($reviews as $review)
+                            @php
+                                $userId = $review->user_id;
+                                $reviewUser = $user->where('id',$userId)->first();
+                                $created_at = new $carbon($review->created_at);
+                                $rate = $review->raiting;
+                            @endphp
 
-                    <div class="card m-t-10" id="comment">
-                        <div class="card-body">
-                            <div class="flex flex-col">
-                                <div class="flex items-center">
-                                        <img class="w-10 h-10 rounded-full mr-4" src="https://lfboost.com/uploads/avatars/{{$reviewUser->avatar}}" alt="Avatar of {{$reviewUser->name}}">
-                                        <div class="text-sm">
-                                          <p class="text-black leading-none">
-                                              {{$reviewUser->name}}
-                                              @if($review->raiting)
-                                                @for($i=0;$i<$rate;$i++)
-                                                <small><i class="fas fa-star" style="color:#EDB867;"></i></small>
-                                                @endfor
-                                                <small><span style="color:#EDB867">{{$rate}}</span></small>
-                                            @else
-                                                
-                                            @endif
-                                         </p>
-                                          <p class="text-grey-dark">{{$created_at->toFormattedDateString()}}</p>
+                            <div class="card m-t-10" id="comment">
+                                <div class="card-body">
+                                    <div class="flex flex-col">
+                                        <div class="flex items-center">
+                                            <img class="w-10 h-10 rounded-full mr-4" src="https://lfboost.com/uploads/avatars/{{$reviewUser->avatar}}" alt="Avatar of {{$reviewUser->name}}">
+                                            <div class="text-sm">
+                                                <p class="text-black leading-none">
+                                                    {{$reviewUser->name}}
+                                                    @if($review->raiting)
+                                                        @for($i=0;$i<$rate;$i++)
+                                                            <small><i class="fas fa-star" style="color:#EDB867;"></i></small>
+                                                        @endfor
+                                                        <small><span style="color:#EDB867">{{$rate}}</span></small>
+                                                    @else
+
+                                                    @endif
+                                                </p>
+                                                <p class="text-grey-dark">{{$created_at->toFormattedDateString()}}</p>
+                                            </div>
                                         </div>
-                                </div>
-                                <div class="flex">
-                                    <div class="text-sm ml-16 mt-2">
-                                        <p class="text-black leading-none">
-                                            {{$review->comment}}
-                                        </p>
+                                        <div class="flex">
+                                            <div class="text-sm ml-16 mt-2">
+                                                <p class="text-black leading-none">
+                                                    {{$review->comment}}
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                           </div>
-                        </div>
-                    </div>    
-                    @endforeach
+                            </div>
+                        @endforeach
 
-                    <button class="btn btn-outline-success btn-block m-t-10" id="loadMore" type="button">Show More</button>
-                </div>
+                        <button class="btn btn-outline-success btn-block m-t-10" id="loadMore" type="button">Show More</button>
+                    </div>
+                @endif
 
             </div>
             @foreach($tags as $tag)
