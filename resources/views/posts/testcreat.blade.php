@@ -143,16 +143,16 @@
                                                 <label class="h4 text-muted"  for="price" class="control-label m-t-10 m-l-10">Price:</label>
                                                 <hr>
                                                 <select class="custom-select" id="price" name="price" required>
-                                                        <option value="" disabled selected hidden>$5-$995</option>
+                                                        <option value="" disabled selected hidden>€5-$995</option>
                                                     @for($i = 5; $i < 1000; $i=$i+5)
-                                                        <option value="{{$i}}">${{$i}}</option> 
+                                                        <option value="{{$i}}">€{{$i}}</option>
                                                     @endfor
                                                 </select>
                                                 
                                            </div>
                                            <div class="col">
                                                 <small id="shortDescHelpBlock" class="form-text text-muted">
-                                                        Choose a price between $5 and $995.
+                                                        Choose a price between €5 and €995.
                                                 </small>
                                            </div>
                                     </div>
@@ -249,6 +249,7 @@
                                                     <label class="h5 text-muted" for="">Upload a photo that describes or is related to your Boosting Service</label>
                                                     <small class="form-text text-muted">Files must be in : JPEG, PNG, JPG formats and have a maximum size of 2mb.</small>
                                                     <hr>
+                                                    <small class="form-text text-muted">If you do not upload any image , the default category image will be used.</small>
                                             </div>
                                     <form action="{{url('/api/addImage')}}" class="dropzone">
                                     {{ csrf_field() }}
