@@ -32,8 +32,8 @@ class HomeController extends Controller
     {
         $posts = Post::where('verified',true)->orderBy('created_at','desc')->take(12)->get();
         $popular = Post::where('verified',true)->orderByViewsCount()->take(12)->get();
-        
-        return view('home')->with('posts',$posts)->with('popular',$popular);
+        $feauture = Post::where('verified',true)->where('feautured',true)->get();
+        return view('home')->with('posts',$posts)->with('popular',$popular)->with('feautured',$feauture);
     }
     public function create()
     {
