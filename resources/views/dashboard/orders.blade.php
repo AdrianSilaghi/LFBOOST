@@ -77,8 +77,6 @@ $user = Auth::user();
                                 <ul class="sm:list-reset md:list-reset lg:list-reset xl:list-reset">
                                     @if($user->description==null||
                                     $user->short_description==null||
-                                    $user->firstname==null||
-                                    $user->lastname==null||
                                     $user->paypal_email == null||
                                     count($userLangTa) == 0||
                                     count($userGames) == 0||
@@ -100,11 +98,6 @@ $user = Auth::user();
                                     @if($user->short_description == null)
                                         <li class="font-medium text-orange-dark">
                                             Please update your one line description.
-                                        </li>
-                                    @endif
-                                    @if($user->firstname == null | $user->lastname == null)
-                                        <li class="font-medium text-orange-dark">
-                                            Please update your First and Last name.
                                         </li>
                                     @endif
                                     @if($user->paypal_email == null)
