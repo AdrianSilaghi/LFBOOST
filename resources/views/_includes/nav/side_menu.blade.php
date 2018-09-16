@@ -31,7 +31,7 @@
                 <a class="dropdown-item" href="{{route('showPostByCat',['League of Legends','Solo Queue Boost'])}}">Solo Queue Boost</a>
                 <a class="dropdown-item" href="{{route('showPostByCat',['League of Legends','Duo Queue Boost'])}}">Duo Queue Boost</a>
                 <a class="dropdown-item" href="{{route('showPostByCat',['League of Legends','Full Ranked Team'])}}">Full Ranked Team</a>
-                <a href="{{route('showPostByCat',['League of Legends','Smurfs'])}}" class="dropdown-item">Smurfs</a>
+                <a href="{{route('showPostByCat',['League of Legends','Coaching'])}}" class="dropdown-item">Coaching</a>
               
               
               </div>
