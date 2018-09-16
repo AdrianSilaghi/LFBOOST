@@ -90,7 +90,7 @@
 
                     
             </div>
-
+            @if(count($reviews) > 0)
             <div class="card m-t-20">
                 <div class="card-header">
 
@@ -112,7 +112,7 @@
                         
                     @endif
                 </div>
-                @if(count($reviews) > 0)
+
                     <div class="card-body" id="comments">
                         @foreach($reviews as $review)
                             @php
@@ -156,9 +156,10 @@
 
                         <button class="btn btn-outline-success btn-block m-t-10" id="loadMore" type="button">Show More</button>
                     </div>
-                @endif
+
 
             </div>
+            @endif
             @foreach($tags as $tag)
                 <button class="btn btn-outline-dark btn-sm m-t-10" disabled="disabled">{{$tag->name}}</button>
             @endforeach
