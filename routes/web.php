@@ -41,7 +41,7 @@ Route::post('/api/boost/savechanges','PostsController@updateBoost')->middleware(
 
 Route::get('/sitemap/posts','SiteMapController@posts');
 
-Route::get('/', 'PagesController@index')->name('index');
+Route::get('/', 'PostsController@welcome')->name('index')->middleware('guest');
 Route::get('/privacy-policy','PagesController@privacy')->name('privacy');
 Route::get('/tos','PagesController@tos')->name('tos');
 Route::get('/howtofindabooster','PagesController@booster')->name('howToFind');

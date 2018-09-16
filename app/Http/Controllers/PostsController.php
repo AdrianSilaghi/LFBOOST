@@ -34,7 +34,7 @@ class PostsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except'=>['index','show']]);
+        $this->middleware('auth',['except'=>['index','show','welcome']]);
         
     }
 
@@ -48,6 +48,11 @@ class PostsController extends Controller
         return view('posts.index')->with('categories',$category)->with('realms',$realm)->with('posts',$post)->with('subCat',$subcat);
     }
 
+    public function welcome()
+    {
+        $posts = Post::where('verified',true)->orderBy('created_at','desc')->take(12)->get();
+        return view('welcome')->with('posts',$posts);
+    }
     /**
      * Show the form for creating a new resource.
      *

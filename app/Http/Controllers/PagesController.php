@@ -27,8 +27,8 @@ class PagesController extends Controller
         return view('outsoon');
     }
     public function index(){
-        
-        return view('welcome');
+        $posts = Post::where('verified',true)->take(10)->get();
+        return view('welcome')->with('posts',$posts);
     }
 
     public function becomeSeller(){
