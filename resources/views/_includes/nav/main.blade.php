@@ -6,12 +6,12 @@
       
         @guest
         
-        <a class="navbar-brand m-b-5" href="{{route('home')}}">
+        <a class="navbar-brand m-b-5" href="{{route('index')}}">
                 <img src="{{asset('images/logos/logoGood.png')}}" alt="Logo of LFBOOST">
               </a>
         @else
         <a class="navbar-brand m-b-5" href="{{route('home')}}">
-          <img src="{{asset('images/logos/logoGood.png')}}" alt="">
+          <img src="{{asset('images/logos/logoGood.png')}}" alt="Logo of LFBOOST">
         </a>
         @endguest
         <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">

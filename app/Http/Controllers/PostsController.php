@@ -34,7 +34,7 @@ class PostsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except'=>['index','show','welcome']]);
+        $this->middleware('auth',['except'=>['index','show','welcome','showWithName']]);
         
     }
 
@@ -265,14 +265,18 @@ class PostsController extends Controller
         }
         $post->addView();
 
-        if($post->verified == 1)
-        {
-            $recentlyViewed = new RecentlyViewed;
-            $recentlyViewed->user_id  = Auth::user()->id;
-            $recentlyViewed->post_id = $post->id;
-            $recentlyViewed->save();
-        }
+        if(!Auth::user()){
 
+        }else {
+
+
+            if ($post->verified == 1) {
+                $recentlyViewed = new RecentlyViewed;
+                $recentlyViewed->user_id = Auth::user()->id;
+                $recentlyViewed->post_id = $post->id;
+                $recentlyViewed->save();
+            }
+        }
         return view('posts.show')->with('post',$post)
                                  ->with('user',$users)
                                  ->with('qa',$qPost)
