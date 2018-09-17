@@ -15,6 +15,30 @@
                             <img src="{{asset("uploads/avatars/$user->avatar")}}" style="width:150px; height:150px;border-radius:50%;">
                         </div>
                     <h5 class="card-title text-center m-t-15">{{$user->name}}</h5>
+                                    <p class="text-center">
+                                        @if($user->level == 0 )
+                                            <small class="text-muted" style="display:block;font-weight:500">
+                                                Basic Seller
+                                            </small>
+                                        @endif
+                                        @if($user->level == 1)
+                                            <small class="text-muted" style="display:block;font-weight:500">
+                                                Level One Booster
+                                            </small>
+                                        @endif
+
+                                        @if($user->level == 2)
+                                            <small class="text-muted" style="display:block;font-weight:500">
+                                                Level Two Booster
+                                            </small>
+                                        @endif
+
+                                        @if($user->level == 3)
+                                            <small class="text-yellow-dark" style="display:block;font-weight:500">
+                                                Top Rated Booster
+                                            </small>
+                                        @endif
+                                    </p>
                     <p class="small text-muted text-center" style="">
                             @if(is_null($user->short_description))
                             "You don't have any short description."
